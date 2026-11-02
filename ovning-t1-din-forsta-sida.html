@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Övning T1 · Din första sida – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla sidor</a></nav>
+<h1>Övning T1 · Din första sida</h1>
+<p class="meta">Tisdag 17/11 · Förmiddag · Vecka 47 · Kursmål KUN5, F5 · ca 30 min</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
+<p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
+<p><strong>Du bygger:</strong> en startsida för en påhittad brädspelsklubb, Brädspelsklubben Tärningen. Sidan har en stor rubrik och två stycken text och visas i Chrome. Du skriver den i en egen mapp, <code>ovningar</code>, som du sedan använder i alla övningar i dag.</p>
+<img src="bilder/t1-slutbild.png" alt="Slutbild: rubriken Brädspelsklubben Tärningen och två stycken text" />
+<p><strong>Du behöver:</strong> VS Code med tilläggen Live Server och Prettier, och Google Chrome. Allt det installerade du i morse med installationsguiden. Ett <em>tillägg</em> är ett litet extraprogram som du lägger till i VS Code. Live Server visar din sida i Chrome och laddar om den varje gång du sparar. Prettier ordnar koden, till exempel indraget, varje gång du sparar.</p>
+<hr />
+<h2>Etapp 1 · Mappen</h2>
+<p><em>Varför:</em> en webbsida är filer i en mapp, och VS Code behöver veta vilken mapp du arbetar i.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Öppna VS Code. VS Code är programmet där du skriver koden.</li><li>Välj menyn <strong>File → Open Folder…</strong> (heter <em>Arkiv → Öppna mapp…</em> om din VS Code är på svenska).</li><li>En ruta för att välja mapp öppnas. Gå till mappen <strong>Dokument</strong> (Documents).</li><li>Klicka på <strong>Ny mapp</strong> (Mac: knappen längst ner till vänster i rutan; Windows: knappen <em>Ny mapp</em> högst upp i rutan).</li><li>Skriv namnet <code>ovningar</code> och tryck Enter. Skriv det exakt så: små bokstäver, utan å, ä, ö och utan mellanslag. Sådana tecken i fil- och mappnamn ställer ofta till det när sidan senare ska ut på internet.</li><li>Markera mappen <code>ovningar</code> och klicka <strong>Öppna</strong> (Mac) eller <strong>Välj mapp</strong> (Windows).</li><li>Frågar VS Code <em>"Do you trust the authors of the files in this folder?"</em>: klicka <strong>Yes, I trust the authors</strong>. Det är din egen mapp.</li></ol>
+<p>Till vänster i VS Code finns nu <em>filpanelen</em> (Explorer), listan över filerna i mappen. Högst upp i den står <strong>OVNINGAR</strong>. Den är tom.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Skapa en tom mapp som heter <code>ovningar</code> i Dokument och öppna den i VS Code. Kommandot heter <em>Open Folder</em> och finns i menyn <em>File</em>. Du kan skapa mappen direkt i rutan där du väljer mapp. Mappnamnet: små bokstäver, inga å, ä, ö, inga mellanslag.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>En tom mapp <code>ovningar</code> i Dokument, öppen i VS Code.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Filpanelen till vänster i VS Code visar <strong>OVNINGAR</strong> högst upp, och mappen är tom.</div>
+<h2>Etapp 2 · Skelettet</h2>
+<p><em>Varför:</em> varje HTML-sida börjar med samma grundstruktur, ett <em>skelett</em>, och den skriver du en gång här så att du känner igen den i alla sidor framöver.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Håll muspekaren över <strong>OVNINGAR</strong> i filpanelen. Klicka på ikonen <strong>New File…</strong> (ett papper med ett plustecken).</li><li>Skriv filnamnet <code>index.html</code> och tryck Enter. Filen öppnas i mitten av VS Code. <code>.html</code> på slutet kallas <em>filändelse</em> och säger att filen innehåller HTML, språket som beskriver vad som finns på en webbsida. <code>index.html</code> är namnet webbläsaren letar efter först i en mapp, därför heter startsidan alltid så.</li><li>Skriv av koden nedan i filen, exakt som den står. När du skriver en starttagg, till exempel <code>&lt;title&gt;</code>, skriver VS Code sluttaggen <code>&lt;/title&gt;</code> åt dig direkt efter markören. Skriv då bara innehållet och hoppa förbi sluttaggen med högerpilen. Skriv den inte en gång till.</li></ol>
+<pre><code class="lang-html">   &lt;!doctype html&gt;
+   &lt;html&gt;
+     &lt;head&gt;
+       &lt;meta charset="utf-8" /&gt;
+       &lt;title&gt;Brädspelsklubben Tärningen&lt;/title&gt;
+     &lt;/head&gt;
+     &lt;body&gt;&lt;/body&gt;
+   &lt;/html&gt;</code></pre>
+<ol><li>Spara med <strong>Cmd+S</strong> (Mac) eller <strong>Ctrl+S</strong> (Windows). Den lilla vita pricken på filens flik högst upp försvinner när filen är sparad.</li></ol>
+<p>Det här betyder raderna:</p>
+<ul><li><code>&lt;!doctype html&gt;</code> talar om för webbläsaren att det här är en modern HTML-sida.</li><li>Ett <em>element</em> är en del av sidan. Det börjar med en <em>starttagg</em>, till exempel <code>&lt;title&gt;</code>, och slutar med en <em>sluttagg</em> med snedstreck, <code>&lt;/title&gt;</code>. Det som står mellan taggarna är elementets innehåll.</li><li><code>&lt;html&gt;</code> omsluter hela sidan. Inuti finns två delar: <code>&lt;head&gt;</code> med information <em>om</em> sidan, som inte syns på själva sidan, och <code>&lt;body&gt;</code> med allt som syns.</li><li><code>&lt;meta charset="utf-8" /&gt;</code> säger vilken <em>teckenkodning</em> filen har, alltså hur tecknen är sparade. Utan den kan å, ä och ö bli konstiga tecken. <code>charset="utf-8"</code> är ett <em>attribut</em>: en extra uppgift som skrivs inne i starttaggen, med namn, likhetstecken och ett värde inom citattecken.</li><li><code>&lt;title&gt;</code> är texten som står på fliken i Chrome.</li><li>Att elementen ligger inuti varandra kallas <em>nästling</em>. <code>&lt;head&gt;</code> ligger inuti <code>&lt;html&gt;</code>, och <code>&lt;title&gt;</code> inuti <code>&lt;head&gt;</code>.</li><li>Indraget, mellanslagen i början av raderna, visar nästlingen: ju längre in, desto djupare. Webbläsaren bryr sig inte om indrag, men det gör koden lätt att läsa.</li></ul>
+<p>När du sparar går tillägget Prettier igenom koden och ordnar indraget åt dig. Koden ovan är redan skriven så som Prettier vill ha den, så inget ska flytta på sig. <code>/&gt;</code> sist i <code>&lt;meta … /&gt;</code> betyder ingenting för webbläsaren; Prettier lägger dit det på element som aldrig har något innehåll och därför ingen sluttagg.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Skapa filen <code>index.html</code> i mappen (ikonen <em>New File…</em> i filpanelen). Skriv skelettet, i den här ordningen:</p>
+<ol><li>raden som talar om att det är en HTML-sida (<code>&lt;!doctype html&gt;</code>)</li><li><code>html</code>, som omsluter allt</li><li>inuti <code>html</code>: först <code>head</code>, sedan <code>body</code></li><li>inuti <code>head</code>: <code>meta</code> med attributet <code>charset</code> (värdet <code>utf-8</code>), sedan <code>title</code> med texten <em>Brädspelsklubben Tärningen</em></li><li><code>body</code> får vara tom än så länge</li></ol>
+<p>Spara (Cmd+S / Ctrl+S). Prettier ordnar indraget när du sparar och skriver om några detaljer, till exempel <code>/&gt;</code> sist i <code>meta</code>. Det är rätt.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p><code>index.html</code> i <code>ovningar</code> med ett komplett HTML-skelett. Fliken i Chrome ska heta <em>Brädspelsklubben Tärningen</em>. Å, ä och ö ska visas rätt. Sidan är tom.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> <code>index.html</code> syns i filpanelen och det finns ingen vit prick kvar på filens flik. Koden ser ut exakt som skelettet ovan, med samma indrag, efter att du har sparat.</div>
+<h2>Etapp 3 · Sidan i Chrome</h2>
+<p><em>Varför:</em> du ska se det du skriver medan du skriver, utan att leta upp filen själv.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Titta längst ner till höger i VS Code, i den smala <em>statusraden</em>. Klicka på <strong>Go Live</strong>. (Syns den inte: högerklicka på <code>index.html</code> i filpanelen och välj <strong>Open with Live Server</strong>.)</li><li>Chrome öppnas med sidan. Adressen överst börjar med <code>http://127.0.0.1:5500/</code>. Live Server har startat en liten <em>server</em> på din egen dator, ett program som lämnar ut filerna i mappen till webbläsaren. <code>127.0.0.1</code> betyder "den här datorn".</li><li>Sidan är vit, det finns inget i <code>&lt;body&gt;</code> än. Titta på fliken: där står <em>Brädspelsklubben Tärningen</em>.</li><li>Ställ VS Code och Chrome bredvid varandra på skärmen, så ser du båda samtidigt.</li></ol>
+<p>Öppnades sidan i en annan webbläsare än Chrome (till exempel Safari eller Edge)? Kopiera adressen därifrån, klistra in den i Chrome och arbeta i Chrome.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Starta Live Server: knappen <em>Go Live</em> i statusraden längst ner i VS Code, eller högerklick på filen → <em>Open with Live Server</em>. Sidan ska visas i Chrome. Se till att VS Code och Chrome syns samtidigt.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p><code>index.html</code> visas i Chrome via Live Server.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Chrome visar en vit sida, adressen börjar med <code>http://127.0.0.1:5500/</code>, och fliken heter <em>Brädspelsklubben Tärningen</em> med å och ä rätt.</div>
+<h2>Etapp 4 · Rubrik och två stycken</h2>
+<p><em>Varför:</em> nu syns något på sidan, och du ser att Chrome uppdaterar sig själv varje gång du sparar.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>I <code>index.html</code>: klicka mellan <code>&lt;body&gt;</code> och <code>&lt;/body&gt;</code> och tryck Enter.</li><li>Skriv de här tre raderna där markören står:</li></ol>
+<pre><code class="lang-html">   &lt;h1&gt;Brädspelsklubben Tärningen&lt;/h1&gt;
+   &lt;p&gt;Vi är en klubb för alla som tycker om brädspel.&lt;/p&gt;
+   &lt;p&gt;Vi träffas varje torsdag och spelar tillsammans.&lt;/p&gt;</code></pre>
+<ol><li>Spara. Hela filen ser nu ut så här (Prettier har ordnat indraget):</li></ol>
+<pre><code class="lang-html">   &lt;!doctype html&gt;
+   &lt;html&gt;
+     &lt;head&gt;
+       &lt;meta charset="utf-8" /&gt;
+       &lt;title&gt;Brädspelsklubben Tärningen&lt;/title&gt;
+     &lt;/head&gt;
+     &lt;body&gt;
+       &lt;h1&gt;Brädspelsklubben Tärningen&lt;/h1&gt;
+       &lt;p&gt;Vi är en klubb för alla som tycker om brädspel.&lt;/p&gt;
+       &lt;p&gt;Vi träffas varje torsdag och spelar tillsammans.&lt;/p&gt;
+     &lt;/body&gt;
+   &lt;/html&gt;</code></pre>
+<ol><li>Titta i Chrome utan att klicka på något. Sidan har laddats om av sig själv och visar en stor rubrik och två stycken text.</li></ol>
+<p><code>&lt;h1&gt;</code> är sidans huvudrubrik, den största rubriknivån. <code>&lt;p&gt;</code> betyder <em>stycke</em> (paragraph), ett textstycke.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Inuti <code>body</code>, i den här ordningen:</p>
+<ol><li>en huvudrubrik (<code>h1</code>) med texten <em>Brädspelsklubben Tärningen</em></li><li>ett stycke (<code>p</code>): <em>Vi är en klubb för alla som tycker om brädspel.</em></li><li>ett stycke till: <em>Vi träffas varje torsdag och spelar tillsammans.</em></li></ol>
+<p>Spara och titta i Chrome utan att ladda om.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Sidan ser ut som slutbilden överst: en huvudrubrik och två stycken.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Chrome visar rubriken <em>Brädspelsklubben Tärningen</em> i stor fetstil och två stycken text under, utan att du har laddat om sidan själv. Sidan ser ut som slutbilden överst.</div>
+<h2>Etapp 5 · Titta in i sidan med DevTools</h2>
+<p><em>Varför:</em> DevTools är Chromes verktyg för att se hur webbläsaren har läst din kod, och det är där du letar när något ser fel ut.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>I Chrome: högerklicka på rubriken och välj <strong>Inspektera</strong> (Inspect på engelska). Det går också med <strong>Cmd+Option+I</strong> (Mac) eller <strong>F12</strong> (Windows).</li><li>En panel öppnas, <em>DevTools</em>. Klicka på fliken <strong>Elements</strong> (heter <em>Element</em> om Chrome är på svenska) om den inte redan är vald.</li><li>Du ser koden för sidan, med små trianglar framför <code>&lt;head&gt;</code> och <code>&lt;body&gt;</code>. Klicka på trianglarna för att öppna och stänga dem. Det är samma nästling som i din fil.</li><li>Håll muspekaren över raden <code>&lt;p&gt;</code> i Elements. Stycket markeras i blått på sidan.</li><li>Dubbelklicka på texten i rubriken inne i Elements, skriv något annat och tryck Enter. Rubriken på sidan ändras.</li><li>Ladda om sidan (Cmd+R / Ctrl+R). Din gamla rubrik är tillbaka. Det du ändrar i DevTools är bara ett test i webbläsaren; filen i VS Code är den riktiga sidan.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Öppna DevTools i Chrome (högerklick → <em>Inspektera</em>, eller Cmd+Option+I / F12) och gå till fliken <em>Elements</em>. Öppna <code>head</code> och <code>body</code> med trianglarna. Håll pekaren över ett element och se vad som markeras på sidan. Ändra rubrikens text i Elements och ladda sedan om sidan: vad händer med din ändring?</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Hitta dina tre element i DevTools under Elements. Ändra rubriken där, ladda om, och förklara för dig själv varför ändringen försvann.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Under Elements ser du <code>&lt;h1&gt;</code> och två <code>&lt;p&gt;</code> inuti <code>&lt;body&gt;</code>, och <code>&lt;title&gt;</code> inuti <code>&lt;head&gt;</code>. När du håller pekaren över ett av dem markeras det på sidan. Du kan säga varför en ändring i Elements försvinner när du laddar om.</div>
+<hr />
+<h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
+<p>Ta bort sluttaggen <code>&lt;/p&gt;</code> från det första stycket och spara. Titta i filen: vad gjorde Prettier? Ta bort <code>&lt;/p&gt;</code> igen och spara den här gången <em>utan</em> att Prettier rör filen: tryck <strong>Cmd+K</strong>, släpp, tryck <strong>S</strong> (Windows: <strong>Ctrl+K</strong>, sedan <strong>S</strong>). Ser sidan annorlunda ut i Chrome? Titta i Elements: där står <code>&lt;/p&gt;</code> ändå, för webbläsaren har gissat var stycket slutar. Byt sedan <code>&lt;/h1&gt;</code> mot <code>&lt;h1&gt;</code> och spara vanligt. Vad händer på sidan, och vad gör Prettier nu? Skriv en mening om varför det är bättre att alltid skriva sluttaggen själv. Lägg sedan tillbaka allt.</p>
+<h2>Vanliga fel</h2>
+<ul><li><strong>Ändringen syns inte i Chrome:</strong> filen är inte sparad. En vit prick på filens flik i VS Code betyder osparat. Spara med Cmd+S / Ctrl+S. Syns det fortfarande inte: kontrollera att adressen i Chrome börjar med <code>http://127.0.0.1:5500/</code> och inte med <code>file://</code> (då har du öppnat filen direkt och inte via Live Server).</li><li><strong>Prettier ordnar inte indraget när du sparar, eller allt efter rubriken blir också stor rubrik:</strong> något är fel i taggarna. De två vanligaste: en sluttagg utan snedstreck (<code>&lt;h1&gt;</code> två gånger i stället för <code>&lt;h1&gt;</code> … <code>&lt;/h1&gt;</code>), eller en sluttagg som står två gånger för att VS Code redan hade skrivit den åt dig. Prettier rör inte koden när taggarna inte går ihop, så "inget indrag när jag sparar" är en bra varningssignal. Jämför rad för rad med koden i Grön.</li><li><strong>Chrome visar en lista med filnamn, eller texten "Cannot GET":</strong> Live Server hittar ingen <code>index.html</code>. Kontrollera att filen heter exakt <code>index.html</code> (inte <code>Index.html</code> eller <code>index.html.txt</code>) och att du öppnade mappen <code>ovningar</code> med <em>Open Folder</em>, inte bara filen.</li></ul>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>
