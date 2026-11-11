@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Buggjakt 1 · Odlarföreningen Kålroten – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Buggjakt 1 · Odlarföreningen Kålroten</h1>
+<p class="meta">Torsdag 19/11 · Eftermiddag · Vecka 47 · Kursmål KOM5, F5 · 25 min jakt + 10 min gemensam lösning · i lag</p>
+<p><strong>Så går det till:</strong> Odlarföreningen Kålroten har en liten webbplats med två sidor. I <code>index.html</code> finns <strong>5 inplanterade fel</strong> av olika sorter. Ert lag ska hitta och rätta alla fem, och skriva en rad per fel: <em>var</em> felet finns, <em>vad</em> som är fel och hur ni rättade det, och <em>varför</em> det är fel. Första laget som har alla fem rätta och förklarade vinner. När ni är klara räcker ni upp handen, och Jonatan frågar någon i laget om ett av felen. <strong>Alla i laget ska kunna förklara alla fel</strong>, annars gäller inte svaret och ni jagar vidare. Så hjälp varandra att förstå, inte bara att hitta.</p>
+<p>Poängen går till ligan: 1:a, 2:a och 3:e plats.</p>
+<p><strong>Ni behöver:</strong> minst en dator per lag med VS Code, Live Server och Chrome, och mappen <code>buggjakt-1</code>, som ligger som zip-fil bredvid den här filen i Learnpoint. Packa upp den och öppna den i VS Code (<strong>File → Open Folder…</strong>, välj <code>buggjakt-1</code>).</p>
+<p><strong>Regler</strong></p>
+<ul><li>Alla fem fel finns i <code>index.html</code>. <code>lotter.html</code> är felfri, men ni kan behöva den.</li><li>Ni får använda allt ni har lärt er: Chrome, DevTools, W3C-validatorn (validator.w3.org) och övningarna från i förmiddags.</li><li>Ingen AI-chatt under jakten. Det är er egen felsökning som tränas.</li><li>Ett fel räknas när det är rättat i koden <em>och</em> raden i tabellen nedan är ifylld.</li></ul>
+<p><strong>Tips för att komma igång:</strong> Titta på sidan i Chrome. Ser något konstigt ut? Klicka på allt som går att klicka på. Kör sedan validatorn. Fem fel är fler än validatorn hittar.</p>
+<hr />
+<h2>Ert svar</h2>
+<p>Skriv av tabellen på ett papper eller i en fil, en rad per fel.</p>
+<table><thead><tr><th>#</th><th>Var (fil och rad)</th><th>Vad var fel, och hur rättade ni?</th><th>Varför är det fel?</th></tr></thead><tbody><tr><td>1</td><td></td><td></td><td></td></tr><tr><td>2</td><td></td><td></td><td></td></tr><tr><td>3</td><td></td><td></td><td></td></tr><tr><td>4</td><td></td><td></td><td></td></tr><tr><td>5</td><td></td><td></td><td></td></tr></tbody></table>
+<p>Exempel på en rad (ett fel som <em>inte</em> finns i filen): *<code>index.html</code> rad 9 · <code>&lt;title&gt;</code> saknades, vi lade till <code>&lt;title&gt;Odlarföreningen Kålroten&lt;/title&gt;</code> i <code>&lt;head&gt;</code> · utan titel har fliken inget namn, och en skärmläsare har inget att läsa upp när sidan öppnas.*</p>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>

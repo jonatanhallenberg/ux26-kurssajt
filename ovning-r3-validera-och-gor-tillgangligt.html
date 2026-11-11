@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Övning R3 · Validera och gör tillgängligt – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Övning R3 · Validera och gör tillgängligt</h1>
+<p class="meta">Torsdag 19/11 · Förmiddag · Vecka 47 · Kursmål F5, KOM5 · ca 40 min</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
+<p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
+<p><strong>Du bygger:</strong> Fyrmuseet i Hamnviken har en sida som ser hel ut i Chrome, men koden har <strong>8 fel</strong>. Du hittar dem med <em>W3C-validatorn</em>, ett gratis verktyg på nätet som läser din HTML och jämför den med reglerna för HTML (W3C är organisationen som skriver reglerna). Validatorn hittar sju av felen. Det åttonde är en <em>tillgänglighetsbrist</em>, något som gör sidan svårare att använda med skärmläsare eller tangentbord, och den hittar du själv. När du är klar säger validatorn att sidan är felfri, och sidan följer det du kan om WCAG från Interaktionsdesign: alt-texter, rubriker i ordning, etiketter på alla fält och sidans språk.</p>
+<img src="bilder/r3-slutbild.png" alt="Slutbild: Fyrmuseet i Hamnviken med en bild på fyren, öppettider, en bild på linsen, en länk och ett formulär med fyra fält" />
+<p><strong>Du behöver:</strong> mappen <code>ovningar</code> öppen i VS Code, Live Server och Chrome. Mappen <code>r3-start</code>, som ligger som zip-fil bredvid den här övningen i Learnpoint. Internet (validatorn finns på validator.w3.org).</p>
+<hr />
+<h2>Etapp 1 · Hämta sidan och titta</h2>
+<p><em>Varför:</em> du behöver veta hur sidan ser ut innan du ändrar något, så att du märker vad som blir annorlunda.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Hämta <code>r3-start.zip</code> från Learnpoint och packa upp den. På Mac dubbelklickar du på zip-filen. På Windows högerklickar du och väljer <strong>Extrahera alla</strong> (Extract All).</li><li>Dra mappen <code>r3-start</code> från Finder (Mac) eller Utforskaren (Windows) och släpp den på <strong>OVNINGAR</strong> i filpanelen i VS Code. I mappen ligger <code>index.html</code> och en mapp <code>bilder</code> med två bilder.</li><li>Högerklicka på <code>index.html</code> under <code>r3-start</code> och välj <strong>Open with Live Server</strong>.</li><li>Titta på fliken i Chrome. Där står adressen, inte ett namn på sidan. Det är en ledtråd.</li><li>Titta på <em>Läs mer om fyrar</em> under bilden på linsen. Det ser inte ut som en länk, och det händer inget när du klickar. Ännu en ledtråd.</li><li>Öppna <code>r3-start/index.html</code> i VS Code. Radnumren som står i den här övningen gäller filen som den ser ut nu, innan du ändrat något.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Packa upp <code>r3-start.zip</code> från Learnpoint, lägg mappen <code>r3-start</code> i <code>ovningar</code> och öppna <code>r3-start/index.html</code> med Live Server. Titta särskilt på fliken i Chrome, på länken under bilden på linsen och på vad som händer när du klickar på etiketterna i formuläret.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Öppna startfilen i Chrome och se vad som ser fel ut eller inte fungerar innan du ändrar något.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Sidan visas i Chrome med adressen <code>/r3-start/index.html</code>. Du har sett att fliken inte har något namn och att <em>Läs mer om fyrar</em> inte går att klicka på.</div>
+<h2>Etapp 2 · Kör validatorn</h2>
+<p><em>Varför:</em> validatorn hittar fel som Chrome tyst rättar till åt dig, och som andra webbläsare och skärmläsare kanske inte rättar på samma sätt.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Öppna en ny flik i Chrome och gå till <code>validator.w3.org</code>.</li><li>Klicka på fliken <strong>Validate by File Upload</strong>.</li><li>Klicka på <strong>Choose File</strong> (Välj fil). Gå till mappen <code>ovningar</code> (i Dokument, om du följde Övning T1), sedan <code>r3-start</code>, och välj <code>index.html</code>.</li><li>Klicka på <strong>Check</strong>.</li><li>Du får en lista med meddelanden på engelska. Varje meddelande har:<ul><li>en typ: <strong>Error</strong> (fel, måste rättas), <strong>Warning</strong> (varning, bör rättas) eller <strong>Info</strong> (bara information)</li><li>en text som beskriver felet</li><li>var felet finns: <em>From line 5, column 3; to line 5, column 9</em> betyder rad 5 i filen</li><li>ett utdrag ur koden där felet är markerat med gult</li></ul></li><li>Räkna: listan har <strong>8 Error</strong> och <strong>1 Warning</strong>. Tre av felen står på samma rad (rad 20), eftersom ett fel kan ge flera meddelanden.</li><li>Lägg märke till ordningen: de två sista meddelandena gäller rad 2 och rad 23, fast de står sist. Validatorn gör vissa kontroller efter resten.</li></ol>
+<p>Om filuppladdningen krånglar kan du i stället använda fliken <strong>Validate by Direct Input</strong>: markera allt i filen i VS Code (Cmd+A på Mac, Ctrl+A på Windows), kopiera (Cmd+C / Ctrl+C), klistra in i rutan på validatorn och klicka <strong>Check</strong>.</p>
+<p>Förstår du inte ett meddelande får du klistra in det i en AI-chatt och be om en förklaring på svenska. Rättningen gör du själv.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Gå till validator.w3.org och ladda upp <code>r3-start/index.html</code> under <em>Validate by File Upload</em>. Läs varje meddelande: typen (Error, Warning, Info), texten och radnumret. Räkna hur många Error och Warning det är.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Validera startfilen i W3C-validatorn och ta reda på vilka fel den hittar.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Validatorn visar 8 rader märkta <strong>Error</strong> och 1 rad märkt <strong>Warning</strong>.</div>
+<h2>Etapp 3 · Rätta felen i början av filen</h2>
+<p><em>Varför:</em> ett fel tidigt i filen kan ge följdfel längre ner, så du rättar uppifrån och validerar igen.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li><strong>Titeln saknas.</strong> Meddelandet <em>Element "head" is missing a required instance of child element "title"</em> betyder att <code>&lt;head&gt;</code> saknar <code>&lt;title&gt;</code>. Klicka sist på rad 4, efter <code>&lt;meta charset="utf-8"&gt;</code>, tryck Enter och skriv:</li></ol>
+<pre><code class="lang-html">    &lt;title&gt;Fyrmuseet i Hamnviken&lt;/title&gt;</code></pre>
+<p>Nu flyttas alla rader under ett steg ned. Därför står radnumret i startfilen inom parentes i stegen nedan.</p>
+<ol start="2"><li><strong>Bilden saknar alt-text.</strong> Meddelandet <em>An "img" element must have an "alt" attribute</em> gäller bilden på fyren (rad 14 i startfilen). <em>Alt-texten</em> är texten som ersätter bilden för den som inte ser den, till exempel när en skärmläsare läser upp sidan eller när bilden inte laddas (WCAG kallar det <em>textalternativ</em>). Den ska säga vad bilden visar, utan "bild av". Byt raden <code>&lt;img src="bilder/fyren.svg"&gt;</code> mot:</li></ol>
+<pre><code class="lang-html">        &lt;img src="bilder/fyren.svg" alt="En vit fyr med rött tak på en klippa vid havet"&gt;</code></pre>
+<p>Raden är lång, så Prettier delar upp den på flera rader när du sparar. Det är bara formatering.</p>
+<ol start="3"><li><strong>Taggarna stängs i fel ordning.</strong> De tre meddelandena på rad 20 i startfilen (<em>End tag "p" seen, but there were open elements</em>, <em>Unclosed element "strong"</em> och <em>No "strong" element in scope but a "strong" end tag seen</em>) är samma fel: <code>&lt;strong&gt;</code> öppnas inuti <code>&lt;p&gt;</code>, men <code>&lt;/p&gt;</code> står före <code>&lt;/strong&gt;</code>. Det element som öppnades sist ska stängas först. Byt raden</li></ol>
+<pre><code class="lang-html">        &lt;p&gt;Entrén är &lt;strong&gt;gratis för barn under 12 år&lt;/p&gt;&lt;/strong&gt;</code></pre>
+<p>mot</p>
+<pre><code class="lang-html">        &lt;p&gt;Entrén är &lt;strong&gt;gratis för barn under 12 år&lt;/strong&gt;&lt;/p&gt;</code></pre>
+<ol start="4"><li>Spara. Validera igen: klicka på <strong>Choose File</strong> och välj <code>index.html</code> på nytt (validatorn läser filen när du väljer den, så du måste välja den igen efter varje ändring), och klicka <strong>Check</strong>.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Rätta de fel som gäller rad 5, 14 och 20 i startfilen: <code>head</code> saknar ett <code>title</code>-element, bilden på fyren saknar attributet <code>alt</code> (beskriv vad bilden visar), och på rad 20 stängs två element i fel ordning (det som öppnades sist ska stängas först). Tre meddelanden på samma rad kan vara ett enda fel. Spara och validera igen. Välj filen på nytt i validatorn varje gång.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Rätta felen som validatorn hittar i första halvan av filen, till och med rad 20, och validera igen.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Fliken i Chrome heter <em>Fyrmuseet i Hamnviken</em>. Validatorn visar nu 3 rader märkta <strong>Error</strong> och 1 märkt <strong>Warning</strong>.</div>
+<h2>Etapp 4 · Rätta felen längre ner</h2>
+<p><em>Varför:</em> rubriker, länkar och etiketter är det som gör att man kan hitta och använda sidan, och här är alla tre trasiga.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li><strong>Rubriken hoppar en nivå.</strong> Meddelandet <em>The heading "h4" (with computed level 4) follows the heading "h2" (with computed level 2), skipping 1 heading level</em> gäller <em>Öppettider</em> (rad 23 i startfilen). Öppettider är ett eget avsnitt, precis som <em>Välkommen upp i tornet</em> och <em>Linsen</em>, så rubriken ska vara en <code>h2</code>. Byt <code>&lt;h4&gt;Öppettider&lt;/h4&gt;</code> mot:</li></ol>
+<pre><code class="lang-html">        &lt;h2&gt;Öppettider&lt;/h2&gt;</code></pre>
+<p>(En <code>h3</code> skulle få validatorn att tystna, men den vore fel ändå: då skulle Öppettider se ut som en del av avsnittet om tornet.)</p>
+<ol start="2"><li><strong>Länken har ett felstavat attribut.</strong> Meddelandet <em>Attribute "herf" not allowed on element "a" at this point</em> (rad 40 i startfilen) betyder att <code>href</code> är stavat <code>herf</code>. Utan <code>href</code> vet länken inte vart den ska. Byt raden mot:</li></ol>
+<pre><code class="lang-html">        &lt;p&gt;&lt;a href="https://sv.wikipedia.org/wiki/Fyr"&gt;Läs mer om fyrar&lt;/a&gt;&lt;/p&gt;</code></pre>
+<ol start="3"><li><strong>Etiketten pekar på ett fält som inte finns.</strong> Meddelandet <em>The value of the "for" attribute of the "label" element must be the ID of a non-hidden form control</em> (rad 58 i startfilen) betyder att etiketten har <code>for="datum"</code>, men fältet har <code>id="besoksdag"</code>. Byt raden <code>&lt;label for="datum"&gt;Önskad dag&lt;/label&gt;</code> mot:</li></ol>
+<pre><code class="lang-html">            &lt;label for="besoksdag"&gt;Önskad dag&lt;/label&gt;</code></pre>
+<ol start="4"><li>Spara och validera igen (välj filen på nytt).</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Rätta felen på rad 23, 40 och 58 i startfilen: en rubrik hoppar över en nivå (fundera på vilken nivå avsnittets rubrik ska ha jämfört med de andra avsnitten), ett attribut på länken är felstavat, och en etikett har ett <code>for</code> som inte matchar fältets <code>id</code>. Spara och validera igen.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Rätta resten av felen som validatorn kallar Error och validera igen.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Validatorn visar inga rader märkta <strong>Error</strong>, bara 1 märkt <strong>Warning</strong>. <em>Läs mer om fyrar</em> är blå och understruken i Chrome. Klickar du på <em>Önskad dag</em> hamnar markören i datumfältet.</div>
+<h2>Etapp 5 · Varningen och felet som validatorn inte ser</h2>
+<p><em>Varför:</em> validatorn kontrollerar reglerna för HTML, inte om sidan går att använda, så den sista kontrollen gör du själv.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li><strong>Sidans språk saknas.</strong> Varningen <em>Consider adding a "lang" attribute to the "html" start tag to declare the language of this document</em> gäller rad 2. Attributet <code>lang</code> talar om vilket språk sidan är skriven på. Utan det gissar skärmläsaren, och läser den svensk text med engelskt uttal blir den svår att förstå (WCAG kräver att sidans språk anges). Byt <code>&lt;html&gt;</code> mot:</li></ol>
+<pre><code class="lang-html">&lt;html lang="sv"&gt;</code></pre>
+<ol start="2"><li><strong>Ett fält saknar etikett.</strong> Klicka på texten <em>Antal personer</em> i Chrome. Markören hamnar inte i rutan. Texten står bara bredvid fältet och är inte kopplad till det, så en skärmläsare läser upp fältet som "redigera nummer" utan att säga vad det gäller. Validatorn kan inte veta att texten var tänkt som etikett, därför säger den inget. Byt raden <code>Antal personer</code> (rad 62 i startfilen) mot:</li></ol>
+<pre><code class="lang-html">            &lt;label for="antal"&gt;Antal personer&lt;/label&gt;</code></pre>
+<ol start="3"><li>Kontrollera alla etiketter: klicka på <em>Namn</em>, <em>E-post</em>, <em>Önskad dag</em> och <em>Antal personer</em> i Chrome. Markören ska hamna i rätt fält varje gång.</li><li>Kontrollera rubrikerna: läs bara rubrikerna uppifrån och ned. <em>Fyrmuseet i Hamnviken</em> (<code>h1</code>), sedan <em>Välkommen upp i tornet</em>, <em>Öppettider</em>, <em>Linsen</em> och <em>Boka en guidad visning</em> (alla <code>h2</code>). Ingen nivå hoppas över.</li><li>Kontrollera alt-texterna: bilden på fyren har den alt-text du skrev, och bilden på linsen har en som redan beskriver bilden.</li><li>Spara.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Rätta varningen: <code>html</code> saknar attributet <code>lang</code> (värdet för svenska är <code>sv</code>). Leta sedan upp felet som validatorn inte hittar: klicka på varje etikett i formuläret och se om markören hamnar i fältet. Ett av fälten har bara en vanlig text bredvid sig i stället för en <code>label</code> med <code>for</code>. Läs till sist igenom rubrikerna och alt-texterna.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Rätta varningen. Hitta och rätta sedan det åttonde felet, som validatorn inte hittar: alla fält ska ha en etikett, rubrikerna ska komma i ordning och alla bilder ska ha en alt-text som beskriver bilden.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Alla fyra etiketter i formuläret flyttar markören till sitt fält när du klickar på dem. <code>&lt;html&gt;</code> har <code>lang="sv"</code>.</div>
+<h2>Etapp 6 · Validera tills det är grönt</h2>
+<p><em>Varför:</em> en sida som validerar utan fel är ett av kraven i projektet, och nu vet du hur du kontrollerar det.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Spara filen i VS Code.</li><li>Validera en sista gång: <strong>Choose File</strong>, välj <code>index.html</code> på nytt, <strong>Check</strong>.</li><li>Inga rader märkta <strong>Error</strong> eller <strong>Warning</strong> ska finnas kvar. I stället står det <em>Document checking completed. No errors or warnings to show.</em> eller <em>The document validates according to the specified schema(s).</em></li><li>Står det rader märkta <strong>Info</strong> med texten <em>Trailing slash on void elements has no effect…</em> kan du strunta i dem. De kommer från att Prettier lägger till <code> /</code> sist i <code>&lt;meta&gt;</code>, <code>&lt;img&gt;</code> och <code>&lt;input&gt;</code> när du sparar. Det är tillåtet och betyder samma sak.</li><li>Hela filen ser ut så här (utan Prettiers <code> /</code>):</li></ol>
+<pre><code class="lang-html">&lt;!doctype html&gt;
+&lt;html lang="sv"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Fyrmuseet i Hamnviken&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Fyrmuseet i Hamnviken&lt;/h1&gt;
+      &lt;p&gt;Ett litet museum i en stor fyr&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;section&gt;
+        &lt;h2&gt;Välkommen upp i tornet&lt;/h2&gt;
+        &lt;img
+          src="bilder/fyren.svg"
+          alt="En vit fyr med rött tak på en klippa vid havet"
+        &gt;
+        &lt;p&gt;
+          Fyren på Hamnviksudden tändes 1874 och visade vägen för fartygen i 120
+          år. I dag är fyrvaktarens bostad ett museum, och du kan gå alla 96
+          trappsteg upp till lyktan.
+        &lt;/p&gt;
+        &lt;p&gt;Entrén är &lt;strong&gt;gratis för barn under 12 år&lt;/strong&gt;&lt;/p&gt;
+      &lt;/section&gt;
+      &lt;section&gt;
+        &lt;h2&gt;Öppettider&lt;/h2&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Maj och september: lördag och söndag 11–16&lt;/li&gt;
+          &lt;li&gt;Juni till augusti: alla dagar 10–17&lt;/li&gt;
+          &lt;li&gt;Oktober till april: stängt, men grupper kan boka visning&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;section&gt;
+        &lt;h2&gt;Linsen&lt;/h2&gt;
+        &lt;img
+          src="bilder/linsen.svg"
+          alt="Fyrens lins: en glaskupa lika hög som en vuxen, byggd av ringar av glas"
+        &gt;
+        &lt;p&gt;
+          Fyrens lins är byggd av hundratals glasringar som samlar ljuset till
+          en stråle som syntes 30 kilometer ut till havs.
+        &lt;/p&gt;
+        &lt;p&gt;&lt;a href="https://sv.wikipedia.org/wiki/Fyr"&gt;Läs mer om fyrar&lt;/a&gt;&lt;/p&gt;
+      &lt;/section&gt;
+      &lt;section&gt;
+        &lt;h2&gt;Boka en guidad visning&lt;/h2&gt;
+        &lt;p&gt;
+          Grupper kan boka en visning med vår fyrvaktare hela året. Skicka en
+          förfrågan så hör vi av oss inom en vecka.
+        &lt;/p&gt;
+        &lt;form&gt;
+          &lt;p&gt;
+            &lt;label for="namn"&gt;Namn&lt;/label&gt;
+            &lt;input type="text" id="namn" required&gt;
+          &lt;/p&gt;
+          &lt;p&gt;
+            &lt;label for="epost"&gt;E-post&lt;/label&gt;
+            &lt;input type="email" id="epost" required&gt;
+          &lt;/p&gt;
+          &lt;p&gt;
+            &lt;label for="besoksdag"&gt;Önskad dag&lt;/label&gt;
+            &lt;input type="date" id="besoksdag"&gt;
+          &lt;/p&gt;
+          &lt;p&gt;
+            &lt;label for="antal"&gt;Antal personer&lt;/label&gt;
+            &lt;input type="number" id="antal"&gt;
+          &lt;/p&gt;
+          &lt;p&gt;
+            &lt;button&gt;Skicka förfrågan&lt;/button&gt;
+          &lt;/p&gt;
+        &lt;/form&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+      &lt;p&gt;Fyrmuseet i Hamnviken · Udden 1, Hamnviken&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Spara och validera en sista gång. Inga Error och inga Warning får finnas kvar. Info-rader om <em>Trailing slash</em> kommer från Prettier och kan lämnas.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Sidan ska validera utan Error och Warning.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Validatorn visar inga rader märkta <strong>Error</strong> eller <strong>Warning</strong> (rader märkta <strong>Info</strong> om <em>Trailing slash</em> är okej). Sidan ser ut som slutbilden.</div>
+<hr />
+<h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
+<p>Chrome har en egen tillgänglighetskontroll. Öppna DevTools, välj fliken <strong>Lighthouse</strong> (finns den inte: klicka på <code>»</code> bredvid flikarna), kryssa bara i <strong>Accessibility</strong> och klicka <strong>Analyze page load</strong>. Vad säger den om startfilen <code>r3-start</code> som validatorn inte sa, och vad säger den om din rättade sida? Ta en kopia av startfilen innan du rättar om du vill jämföra.</p>
+<h2>Vanliga fel</h2>
+<ul><li><strong>Validatorn visar samma fel som förut, fast du har rättat, eller Chrome visar <em>ERR_UPLOAD_FILE_CHANGED</em>:</strong> validatorn läser filen när du väljer den med <em>Choose File</em>. Spara i VS Code, välj filen på nytt och klicka <strong>Check</strong> igen.</li><li><strong>Det dyker upp nya fel efter att du rättat ett:</strong> ofta har du bytt en starttagg men inte sluttaggen, eller tvärtom. Läs det nya meddelandet och titta på raden det pekar på. Kom ihåg att radnumren flyttas när du lägger till rader, och att ett enda fel kan ge flera meddelanden.</li><li><strong>Prettier gör ingenting när du sparar:</strong> Prettier kan inte formatera en fil där taggarna inte går ihop, som i startfilen (rad 20). När felet är rättat formaterar Prettier igen. Det är också därför raderna kan bli fler när du sparar: Prettier delar upp långa rader.</li></ul>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>

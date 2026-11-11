@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Övning T2 · Receptet – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Övning T2 · Receptet</h1>
+<p class="meta">Tisdag 17/11 · Förmiddag · Vecka 47 · Kursmål KUN5, F5 · ca 45 min</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
+<p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
+<p><strong>Du bygger:</strong> en receptsida för pannkakor, <code>recept.html</code>, i din mapp <code>ovningar</code>. Sidan har rubriker, en punktlista med ingredienser, en numrerad lista med stegen, ett par ord i fetstil och kursiv, en bild på pannkakorna och en länk till Wikipedia. Det är samma byggstenar som du använder i projektet senare i dag.</p>
+<img src="bilder/t2-slutbild.png" alt="Slutbild: receptsidan för pannkakor med bild, ingredienslista, numrerade steg och en länk" />
+<p><strong>Du behöver:</strong> mappen <code>ovningar</code> från Övning T1, öppen i VS Code, och Live Server igång (tillägget i VS Code som visar sidan i Chrome och laddar om den när du sparar). Bildfilen <code>pannkakor.jpg</code>, som ligger bredvid den här övningen i Learnpoint.</p>
+<hr />
+<h2>Etapp 1 · En ny sida med skelettet</h2>
+<p><em>Varför:</em> varje sida är en egen fil, och varje fil behöver samma skelett som <code>index.html</code> från T1.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>I VS Code: håll pekaren över <strong>OVNINGAR</strong> i filpanelen (listan över filerna, till vänster) och klicka på ikonen <strong>New File…</strong>. Skriv <code>recept.html</code> och tryck Enter.</li><li>Skriv skelettet i den nya filen. Det är samma som i <code>index.html</code>, bara texten i <code>&lt;title&gt;</code> är ny (du får kopiera från <code>index.html</code> och ändra titeln):</li></ol>
+<pre><code class="lang-html">&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;Recept: Pannkakor&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<ol start="3"><li>Spara (Cmd+S / Ctrl+S).</li><li>I Chrome: klicka i adressfältet och ändra slutet av adressen från <code>index.html</code> till <code>recept.html</code>, så att det står <code>http://127.0.0.1:5500/recept.html</code>. Tryck Enter. (Är Live Server inte igång: högerklicka på <code>recept.html</code> i filpanelen och välj <strong>Open with Live Server</strong>.)</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Skapa <code>recept.html</code> i <code>ovningar</code>. Skriv samma skelett som i <code>index.html</code> (doctype, <code>html</code>, <code>head</code> med <code>meta charset</code> och <code>title</code>, <code>body</code>). Titeln ska vara <em>Recept: Pannkakor</em>. Öppna sidan i Chrome via Live Server: adressen är densamma som för <code>index.html</code>, bara filnamnet sist är annorlunda.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p><code>recept.html</code> i <code>ovningar</code> med komplett skelett och titeln <em>Recept: Pannkakor</em>, öppen i Chrome via Live Server.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Chrome visar en vit sida på adressen <code>http://127.0.0.1:5500/recept.html</code>, och fliken heter <em>Recept: Pannkakor</em>.</div>
+<h2>Etapp 2 · Rubriker och ingress</h2>
+<p><em>Varför:</em> rubrikerna är sidans innehållsförteckning, och nivåerna <code>h1</code> och <code>h2</code> talar om vad som är huvudrubrik och vad som är underrubrik.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Klicka mellan <code>&lt;body&gt;</code> och <code>&lt;/body&gt;</code>, tryck Enter och skriv:</li></ol>
+<pre><code class="lang-html">&lt;h1&gt;Pannkakor&lt;/h1&gt;
+&lt;p&gt;Tunna pannkakor till fyra personer. Det tar ungefär en halvtimme.&lt;/p&gt;
+&lt;h2&gt;Ingredienser&lt;/h2&gt;
+&lt;h2&gt;Gör så här&lt;/h2&gt;</code></pre>
+<ol start="2"><li>Spara och titta i Chrome.</li></ol>
+<p><code>&lt;h1&gt;</code> är huvudrubriken, och en sida har en sådan. <code>&lt;h2&gt;</code> är en underrubrik, en nivå under. Det finns också <code>&lt;h3&gt;</code> för rubriker under en <code>&lt;h2&gt;</code>. Webbläsaren visar <code>h2</code> mindre än <code>h1</code>, men det viktiga är nivån: en skärmläsare (programmet som läser upp sidan för den som inte ser) använder rubriknivåerna för att hoppa runt på sidan. Det känner du igen från WCAG i Interaktionsdesign.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Inuti <code>body</code>, i den här ordningen:</p>
+<ol><li>huvudrubrik (<code>h1</code>): <em>Pannkakor</em></li><li>stycke (<code>p</code>): <em>Tunna pannkakor till fyra personer. Det tar ungefär en halvtimme.</em></li><li>underrubrik (<code>h2</code>): <em>Ingredienser</em></li><li>underrubrik (<code>h2</code>): <em>Gör så här</em></li></ol>
+<p>Listorna kommer mellan underrubrikerna i nästa etapp.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Huvudrubriken <em>Pannkakor</em>, ett stycke som ingress, och underrubrikerna <em>Ingredienser</em> och <em>Gör så här</em> på rätt rubriknivå. Texterna finns i slutbilden.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Chrome visar <em>Pannkakor</em> störst, ingressen under, och <em>Ingredienser</em> och <em>Gör så här</em> i en mindre rubrikstorlek.</div>
+<h2>Etapp 3 · Två listor</h2>
+<p><em>Varför:</em> ingredienserna har ingen ordning, men stegen har det, och HTML har en sorts lista för vardera.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Ställ markören i slutet av raden <code>&lt;h2&gt;Ingredienser&lt;/h2&gt;</code>, tryck Enter och skriv punktlistan:</li></ol>
+<pre><code class="lang-html">&lt;ul&gt;
+  &lt;li&gt;3 dl vetemjöl&lt;/li&gt;
+  &lt;li&gt;6 dl mjölk&lt;/li&gt;
+  &lt;li&gt;3 ägg&lt;/li&gt;
+  &lt;li&gt;en nypa salt&lt;/li&gt;
+  &lt;li&gt;smör till stekpannan&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<ol start="2"><li>Ställ markören i slutet av raden <code>&lt;h2&gt;Gör så här&lt;/h2&gt;</code>, tryck Enter och skriv den numrerade listan:</li></ol>
+<pre><code class="lang-html">&lt;ol&gt;
+  &lt;li&gt;Vispa mjölet med hälften av mjölken till en slät smet.&lt;/li&gt;
+  &lt;li&gt;Vispa i resten av mjölken, äggen och saltet.&lt;/li&gt;
+  &lt;li&gt;Låt smeten vila i minst tio minuter.&lt;/li&gt;
+  &lt;li&gt;Smält lite smör i pannan och häll i ett tunt lager smet.&lt;/li&gt;
+  &lt;li&gt;Vänd pannkakan när undersidan är gyllenbrun.&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<ol start="3"><li>Spara och titta i Chrome.</li></ol>
+<p>Kom ihåg att VS Code skriver sluttaggen (den med snedstreck, till exempel <code>&lt;/ul&gt;</code>) åt dig när du skriver starttaggen <code>&lt;ul&gt;</code>. Hoppa förbi den med högerpilen i stället för att skriva den en gång till.</p>
+<p><code>&lt;ul&gt;</code> är en punktlista (unordered list, lista utan ordning) och <code>&lt;ol&gt;</code> en numrerad lista (ordered list). Varje sak i listan är ett eget <code>&lt;li&gt;</code> (list item), och alla <code>&lt;li&gt;</code> ligger inuti listan. Siffrorna i den numrerade listan skriver du inte själv; webbläsaren räknar.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ul><li>Under <em>Ingredienser</em>: en punktlista (<code>ul</code>) med fem punkter (<code>li</code>): <em>3 dl vetemjöl</em>, <em>6 dl mjölk</em>, <em>3 ägg</em>, <em>en nypa salt</em>, <em>smör till stekpannan</em>.</li><li>Under <em>Gör så här</em>: en numrerad lista (<code>ol</code>) med de fem stegen i slutbilden, ett <code>li</code> per steg. Skriv inga siffror själv.</li></ul>
+<p>Varje <code>li</code> ska ligga inuti sin lista.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Ingredienserna som punktlista och stegen som numrerad lista, med texterna i slutbilden.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Ingredienserna har svarta punkter framför sig och stegen har siffrorna 1–5. I DevTools (högerklicka på sidan → <em>Inspektera</em>) under fliken Elements ligger fem <code>&lt;li&gt;</code> inuti <code>&lt;ul&gt;</code> och fem <code>&lt;li&gt;</code> inuti <code>&lt;ol&gt;</code>.</div>
+<h2>Etapp 4 · Fetstil och kursiv</h2>
+<p><em>Varför:</em> <code>strong</code> och <code>em</code> betonar ord, och betoningen följer med även när sidan läses upp.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>I det tredje steget i den numrerade listan: lägg <code>&lt;strong&gt;</code> och <code>&lt;/strong&gt;</code> runt orden <em>minst tio minuter</em>, så att raden blir:</li></ol>
+<pre><code class="lang-html">&lt;li&gt;Låt smeten vila i &lt;strong&gt;minst tio minuter&lt;/strong&gt;.&lt;/li&gt;</code></pre>
+<ol start="2"><li>Ställ markören i slutet av raden <code>&lt;/ol&gt;</code>, tryck Enter och skriv ett nytt stycke:</li></ol>
+<pre><code class="lang-html">&lt;p&gt;Servera med sylt. De smakar &lt;em&gt;allra&lt;/em&gt; bäst nygräddade.&lt;/p&gt;</code></pre>
+<ol start="3"><li>Spara och titta i Chrome.</li></ol>
+<p><code>&lt;strong&gt;</code> betyder <em>viktigt</em> och visas i fetstil. <code>&lt;em&gt;</code> (emphasis) betyder <em>betonat</em> och visas kursivt, alltså lutande. Här ligger elementen inuti en mening, inuti ett <code>&lt;li&gt;</code> eller ett <code>&lt;p&gt;</code>: det är nästling igen.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ul><li>I steg 3 ska <em>minst tio minuter</em> vara markerat som viktigt (<code>strong</code>). Elementet läggs runt bara de orden, inuti <code>li</code>.</li><li>Efter den numrerade listan: ett nytt stycke, <em>Servera med sylt. De smakar allra bäst nygräddade.</em>, där <em>allra</em> är betonat (<code>em</code>).</li></ul>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p><em>minst tio minuter</em> markerat som viktigt (fetstil) och <em>allra</em> betonat (kursiv) i ett nytt stycke efter stegen, som i slutbilden.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> <em>minst tio minuter</em> är fetstilt och <em>allra</em> är kursivt, och resten av texten ser ut som förut. I Elements ligger <code>&lt;strong&gt;</code> inuti det tredje <code>&lt;li&gt;</code>.</div>
+<h2>Etapp 5 · Bilden</h2>
+<p><em>Varför:</em> en bild är en egen fil som sidan pekar på, och den behöver en alt-text för den som inte ser bilden.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Ladda ner <code>pannkakor.jpg</code> från Learnpoint. Filen hamnar i mappen Hämtade filer (Downloads).</li><li>Flytta filen till mappen <code>ovningar</code>: dra den från Finder (Mac) eller Utforskaren (Windows) och släpp den på <strong>OVNINGAR</strong> i filpanelen i VS Code. Nu ligger <code>pannkakor.jpg</code> i filpanelen, bredvid <code>recept.html</code>.</li><li>I <code>recept.html</code>: ställ markören i slutet av ingressen, raden som börjar med <code>&lt;p&gt;Tunna pannkakor</code>, tryck Enter och skriv:</li></ol>
+<pre><code class="lang-html">&lt;img src="pannkakor.jpg" alt="En hög pannkakor med sylt och blåbär" /&gt;</code></pre>
+<ol start="4"><li>Spara och titta i Chrome.</li></ol>
+<p><code>&lt;img&gt;</code> visar en bild. Attributet <code>src</code> (source, källa) är <em>sökvägen</em> till bildfilen, alltså vägen dit från sidan. Här är det bara filnamnet, eftersom bilden ligger i samma mapp som sidan. Attributet <code>alt</code> är bildens alternativtext: den läses upp av en skärmläsare och visas om bilden inte går att ladda. Skriv vad bilden visar. <code>&lt;img&gt;</code> har inget innehåll och därför ingen sluttagg; Prettier, tillägget som ordnar koden när du sparar, sätter <code>/&gt;</code> sist, precis som på <code>&lt;meta /&gt;</code>.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>Hämta <code>pannkakor.jpg</code> från Learnpoint och lägg den i <code>ovningar</code>, bredvid <code>recept.html</code>.</li><li>Efter ingressen: ett <code>img</code>. Attributet som pekar på bildfilen heter <code>src</code>; filen ligger i samma mapp, så filnamnet räcker. Attributet <code>alt</code> beskriver vad bilden visar.</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Bilden <code>pannkakor.jpg</code> (från Learnpoint) visas efter ingressen och har en alt-text som beskriver vad den visar.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Bilden på pannkakorna syns under ingressen. Ändra tillfälligt <code>src</code> till <code>pannkaka.jpg</code> (utan r) och spara: nu syns en liten trasig bild och din alt-text i stället. Ändra tillbaka.</div>
+<h2>Etapp 6 · Länken till Wikipedia</h2>
+<p><em>Varför:</em> länkar är det som gör webben till en väv, och en länk till en annan webbplats, alltså någon annans sidor på internet, behöver hela adressen.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Ställ markören i slutet av stycket <code>&lt;p&gt;Servera med sylt …&lt;/p&gt;</code>, tryck Enter och skriv:</li></ol>
+<pre><code class="lang-html">&lt;p&gt;
+  Läs mer om pannkakor på
+  &lt;a href="https://sv.wikipedia.org/wiki/Pannkaka"&gt;Wikipedia&lt;/a&gt;.
+&lt;/p&gt;</code></pre>
+<p>Du kan också skriva allt på en rad. När raden blir längre än 80 tecken delar Prettier upp den så här när du sparar. Det ändrar ingenting i Chrome; radbrytningar i koden syns inte på sidan.</p>
+<ol start="2"><li>Spara och titta i Chrome. Klicka på länken <em>Wikipedia</em>. Gå sedan tillbaka med bakåtpilen i Chrome.</li></ol>
+<p><code>&lt;a&gt;</code> är en länk (a för anchor, ankare). Texten mellan taggarna är det man klickar på. Attributet <code>href</code> är adressen länken går till. Till en annan webbplats skriver du hela adressen, med <code>https://</code> först.</p>
+<p>Hela <code>recept.html</code> ser nu ut så här:</p>
+<pre><code class="lang-html">&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;Recept: Pannkakor&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Pannkakor&lt;/h1&gt;
+    &lt;p&gt;Tunna pannkakor till fyra personer. Det tar ungefär en halvtimme.&lt;/p&gt;
+    &lt;img src="pannkakor.jpg" alt="En hög pannkakor med sylt och blåbär" /&gt;
+    &lt;h2&gt;Ingredienser&lt;/h2&gt;
+    &lt;ul&gt;
+      &lt;li&gt;3 dl vetemjöl&lt;/li&gt;
+      &lt;li&gt;6 dl mjölk&lt;/li&gt;
+      &lt;li&gt;3 ägg&lt;/li&gt;
+      &lt;li&gt;en nypa salt&lt;/li&gt;
+      &lt;li&gt;smör till stekpannan&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;h2&gt;Gör så här&lt;/h2&gt;
+    &lt;ol&gt;
+      &lt;li&gt;Vispa mjölet med hälften av mjölken till en slät smet.&lt;/li&gt;
+      &lt;li&gt;Vispa i resten av mjölken, äggen och saltet.&lt;/li&gt;
+      &lt;li&gt;Låt smeten vila i &lt;strong&gt;minst tio minuter&lt;/strong&gt;.&lt;/li&gt;
+      &lt;li&gt;Smält lite smör i pannan och häll i ett tunt lager smet.&lt;/li&gt;
+      &lt;li&gt;Vänd pannkakan när undersidan är gyllenbrun.&lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;p&gt;Servera med sylt. De smakar &lt;em&gt;allra&lt;/em&gt; bäst nygräddade.&lt;/p&gt;
+    &lt;p&gt;
+      Läs mer om pannkakor på
+      &lt;a href="https://sv.wikipedia.org/wiki/Pannkaka"&gt;Wikipedia&lt;/a&gt;.
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Sist i <code>body</code>: ett stycke med texten <em>Läs mer om pannkakor på Wikipedia.</em> där ordet <em>Wikipedia</em> är en länk (<code>a</code>). Attributet med adressen heter <code>href</code>, och adressen är <code>https://sv.wikipedia.org/wiki/Pannkaka</code>. Länken ligger inuti stycket.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Sist på sidan: ett stycke där ordet <em>Wikipedia</em> länkar till Wikipedias artikel om pannkakor (<code>https://sv.wikipedia.org/wiki/Pannkaka</code>).</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> <em>Wikipedia</em> är blått och understruket. Ett klick öppnar Wikipedias artikel om pannkakor, och bakåtpilen tar dig tillbaka. Hela sidan ser ut som slutbilden överst.</div>
+<hr />
+<h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
+<p>Lägg till en underrubrik <em>Tips</em> sist på sidan, och under den en <code>&lt;h3&gt;</code> per tips (till exempel <em>Blåbärspannkakor</em> och <em>Glutenfritt</em>) med ett kort stycke under varje. Gör sedan ingredienslistan mer detaljerad med en lista inuti en lista: punkten <em>smör till stekpannan</em> får en egen liten punktlista under sig med <em>eller margarin</em> och <em>eller rapsolja</em>. Den inre listan ska ligga <em>inuti</em> <code>&lt;li&gt;</code>, före <code>&lt;/li&gt;</code>. Kontrollera i Elements att nästlingen blev som du tänkt.</p>
+<h2>Vanliga fel</h2>
+<ul><li><strong>Bilden syns inte, bara en liten ikon och alt-texten:</strong> Chrome hittar inte filen. Jämför <code>src</code> med filnamnet i filpanelen, tecken för tecken: <code>pannkakor.jpg</code>, inte <code>Pannkakor.jpg</code> eller <code>pannkakor.jpeg</code>. Kontrollera också att bilden ligger i <code>ovningar</code> och inte kvar i Hämtade filer.</li><li><strong>Listan har inga punkter eller siffror, allt står på en rad:</strong> <code>&lt;li&gt;</code> saknas, eller ligger utanför <code>&lt;ul&gt;</code>/<code>&lt;ol&gt;</code>. Varje sak i listan ska omslutas av <code>&lt;li&gt;</code> och <code>&lt;/li&gt;</code>, och alla <code>&lt;li&gt;</code> ska ligga mellan <code>&lt;ul&gt;</code> och <code>&lt;/ul&gt;</code> (eller <code>&lt;ol&gt;</code> och <code>&lt;/ol&gt;</code>).</li><li><strong>Länken öppnar inte Wikipedia, Chrome visar "Cannot GET":</strong> <code>https://</code> saknas i <code>href</code>. Utan den tror Chrome att <code>sv.wikipedia.org/…</code> är en fil i din egen mapp. Skriv hela adressen.</li></ul>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Övning T3 · Två sidor som hänger ihop – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Övning T3 · Två sidor som hänger ihop</h1>
+<p class="meta">Tisdag 17/11 · Förmiddag, för dig som hinner (annars före torsdag) · Vecka 47 · Kursmål KUN5, F5 · ca 30 min</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
+<p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
+<p><strong>Du bygger:</strong> en andra sida till Brädspelsklubben Tärningen från Övning T1, <code>traffar.html</code>, med klubbens spelkvällar och en bild. Startsidan länkar till den nya sidan och den nya sidan länkar tillbaka, så att du kan klicka fram och tillbaka. Bilden ligger i en egen mapp, <code>bilder</code>. Precis så ser ditt projekt ut när det har flera sidor.</p>
+<img src="bilder/t3-slutbild-start.png" alt="Slutbild: startsidan med länken Se när vi träffas" />
+<img src="bilder/t3-slutbild-traffar.png" alt="Slutbild: sidan Våra träffar med bild, lista över spelkvällar och länken tillbaka" />
+<p><strong>Du behöver:</strong> mappen <code>ovningar</code> med <code>index.html</code> från Övning T1, öppen i VS Code, och Live Server igång (tillägget i VS Code som visar sidan i Chrome och laddar om den när du sparar). Bildfilen <code>spelkvall.jpg</code>, som ligger bredvid den här övningen i Learnpoint. Övning T2 behöver du inte ha gjort.</p>
+<hr />
+<h2>Etapp 1 · Mappen för bilder</h2>
+<p><em>Varför:</em> när en webbplats, flera sidor som hör ihop, får fler filer blir det lättare att hitta om bilderna ligger i en egen mapp.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>I VS Code: håll pekaren över <strong>OVNINGAR</strong> i filpanelen (listan över filerna, till vänster) och klicka på ikonen <strong>New Folder…</strong> (en mapp med ett plustecken).</li><li>Skriv <code>bilder</code> och tryck Enter. Små bokstäver, inget mellanslag.</li><li>Ladda ner <code>spelkvall.jpg</code> från Learnpoint. Filen hamnar i Hämtade filer (Downloads).</li><li>Dra filen från Finder (Mac) eller Utforskaren (Windows) och släpp den på mappen <strong>bilder</strong> i filpanelen.</li><li>Klicka på pilen framför <strong>bilder</strong> i filpanelen så att mappen öppnas. <code>spelkvall.jpg</code> ska ligga där, med indrag under <strong>bilder</strong>.</li></ol>
+<p>En mapp inuti en annan mapp kallas <em>undermapp</em>. <code>bilder</code> är en undermapp till <code>ovningar</code>.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Skapa undermappen <code>bilder</code> i <code>ovningar</code> (ikonen <em>New Folder…</em> i filpanelen). Lägg <code>spelkvall.jpg</code> från Learnpoint i den. Mappnamnet: små bokstäver, inget mellanslag.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p><code>spelkvall.jpg</code> ligger i en undermapp <code>bilder</code> i <code>ovningar</code>.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> I filpanelen ser du <strong>bilder</strong> med <code>spelkvall.jpg</code> under sig (med indrag), och <code>index.html</code> ligger kvar direkt under <strong>OVNINGAR</strong>, inte inuti <code>bilder</code>.</div>
+<h2>Etapp 2 · Den andra sidan</h2>
+<p><em>Varför:</em> varje sida är en egen fil med samma skelett, och bara innehållet i <code>&lt;body&gt;</code> skiljer sidorna åt.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Håll pekaren över <strong>OVNINGAR</strong> och klicka på <strong>New File…</strong>. Skriv <code>traffar.html</code> och tryck Enter. Skriv filnamnet utan å, ä och ö, även om ordet är <em>träffar</em>. (Ligger filen inuti <code>bilder</code>? Dra den till <strong>OVNINGAR</strong>. Den ska ligga bredvid <code>index.html</code>.)</li><li>Skriv sidan. Skelettet är samma som i <code>index.html</code>, och du får kopiera det därifrån. VS Code skriver sluttaggarna (de med snedstreck, till exempel <code>&lt;/p&gt;</code>) åt dig när du skriver starttaggen; hoppa förbi dem med högerpilen i stället för att skriva dem en gång till.</li></ol>
+<pre><code class="lang-html">&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;Träffar – Brädspelsklubben Tärningen&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Våra träffar&lt;/h1&gt;
+    &lt;p&gt;Vi spelar i biblioteket varje torsdag klockan 18–21.&lt;/p&gt;
+    &lt;h2&gt;Höstens spelkvällar&lt;/h2&gt;
+    &lt;ul&gt;
+      &lt;li&gt;19 november: kortspel&lt;/li&gt;
+      &lt;li&gt;26 november: strategispel&lt;/li&gt;
+      &lt;li&gt;3 december: frågesport&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<ol start="3"><li>Spara. I Chrome: ändra slutet av adressen till <code>traffar.html</code>, så att det står <code>http://127.0.0.1:5500/traffar.html</code>, och tryck Enter.</li></ol>
+<p>Texten i <code>&lt;title&gt;</code> och på sidan får ha å, ä och ö. Det är bara filnamnet som inte ska ha det.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Skapa <code>traffar.html</code> direkt i <code>ovningar</code> (inte i <code>bilder</code>). Samma skelett som <code>index.html</code>, med titeln <em>Träffar – Brädspelsklubben Tärningen</em>. Inuti <code>body</code>, i ordning:</p>
+<ol><li><code>h1</code>: <em>Våra träffar</em></li><li><code>p</code>: <em>Vi spelar i biblioteket varje torsdag klockan 18–21.</em></li><li><code>h2</code>: <em>Höstens spelkvällar</em></li><li>en punktlista (<code>ul</code>, ett <code>li</code> per rad): <em>19 november: kortspel</em>, <em>26 november: strategispel</em>, <em>3 december: frågesport</em></li></ol>
+<p>Öppna sidan i Chrome via Live Server.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p><code>traffar.html</code> bredvid <code>index.html</code>, med samma skelett och innehållet i slutbilden (utom bilden och länken, som kommer i nästa etapper).</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> <code>http://127.0.0.1:5500/traffar.html</code> visar rubriken <em>Våra träffar</em>, stycket, underrubriken och listan med tre spelkvällar. Fliken heter <em>Träffar – Brädspelsklubben Tärningen</em>.</div>
+<h2>Etapp 3 · Bilden från undermappen</h2>
+<p><em>Varför:</em> när bilden ligger i en annan mapp än sidan måste sökvägen säga vilken mapp den ligger i.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>I <code>traffar.html</code>: ställ markören i slutet av raden som börjar med <code>&lt;p&gt;Vi spelar</code>, tryck Enter och skriv:</li></ol>
+<pre><code class="lang-html">&lt;img src="bilder/spelkvall.jpg" alt="Ett spelbräde, tärningar och kort" /&gt;</code></pre>
+<ol start="2"><li>Spara och titta i Chrome.</li></ol>
+<p><code>&lt;img&gt;</code> visar en bild. Värdet i attributet <code>src</code>, uppgiften i starttaggen som pekar på bildfilen, är en <em>relativ sökväg</em>: vägen till filen räknat från sidan som visar den. <code>bilder/spelkvall.jpg</code> betyder "gå in i mappen <code>bilder</code> och ta filen <code>spelkvall.jpg</code>". Snedstrecket skiljer mappen från filen. Skriv alltid snedstreck framåt, <code>/</code>, även på Windows. <code>alt</code> är bildens alternativtext, som läses upp av en skärmläsare (programmet som läser upp sidan för den som inte ser) och visas om bilden inte går att ladda.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Efter stycket: ett <code>img</code> med <code>src</code> och <code>alt</code>. Sökvägen i <code>src</code> börjar med mappens namn, sedan ett snedstreck <code>/</code>, sedan filnamnet. <code>alt</code> beskriver vad bilden visar.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Bilden <code>bilder/spelkvall.jpg</code> visas efter stycket på <code>traffar.html</code> och har en alt-text som beskriver den.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Bilden med spelbrädet och tärningarna syns under stycket. Ser du i stället en liten trasig bild och alt-texten är sökvägen fel; jämför den med filpanelen.</div>
+<h2>Etapp 4 · Länkar fram och tillbaka</h2>
+<p><em>Varför:</em> två sidor blir en webbplats först när man kan klicka sig mellan dem.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Öppna <code>index.html</code>. Ställ markören i slutet av det sista stycket (raden före <code>&lt;/body&gt;</code>), tryck Enter och skriv:</li></ol>
+<pre><code class="lang-html">&lt;p&gt;&lt;a href="traffar.html"&gt;Se när vi träffas&lt;/a&gt;&lt;/p&gt;</code></pre>
+<ol start="2"><li>Spara. Hela <code>index.html</code> ser nu ut så här:</li></ol>
+<pre><code class="lang-html">&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;Brädspelsklubben Tärningen&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Brädspelsklubben Tärningen&lt;/h1&gt;
+    &lt;p&gt;Vi är en klubb för alla som tycker om brädspel.&lt;/p&gt;
+    &lt;p&gt;Vi träffas varje torsdag och spelar tillsammans.&lt;/p&gt;
+    &lt;p&gt;&lt;a href="traffar.html"&gt;Se när vi träffas&lt;/a&gt;&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<ol start="3"><li>Öppna <code>traffar.html</code>. Ställ markören i slutet av raden <code>&lt;/ul&gt;</code>, tryck Enter och skriv:</li></ol>
+<pre><code class="lang-html">&lt;p&gt;&lt;a href="index.html"&gt;Tillbaka till startsidan&lt;/a&gt;&lt;/p&gt;</code></pre>
+<ol start="4"><li>Spara. Hela <code>traffar.html</code> ser nu ut så här:</li></ol>
+<pre><code class="lang-html">&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;Träffar – Brädspelsklubben Tärningen&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Våra träffar&lt;/h1&gt;
+    &lt;p&gt;Vi spelar i biblioteket varje torsdag klockan 18–21.&lt;/p&gt;
+    &lt;img src="bilder/spelkvall.jpg" alt="Ett spelbräde, tärningar och kort" /&gt;
+    &lt;h2&gt;Höstens spelkvällar&lt;/h2&gt;
+    &lt;ul&gt;
+      &lt;li&gt;19 november: kortspel&lt;/li&gt;
+      &lt;li&gt;26 november: strategispel&lt;/li&gt;
+      &lt;li&gt;3 december: frågesport&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;&lt;a href="index.html"&gt;Tillbaka till startsidan&lt;/a&gt;&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<ol start="5"><li>I Chrome: gå till <code>http://127.0.0.1:5500/index.html</code>. Klicka på <em>Se när vi träffas</em>, och sedan på <em>Tillbaka till startsidan</em>. Titta på adressen efter varje klick.</li></ol>
+<p><code>&lt;a&gt;</code> är en länk och <code>href</code> adressen den går till. Här är adressen bara ett filnamn, en relativ sökväg igen: sidorna ligger i samma mapp, så Chrome letar efter filen bredvid sidan du står på. Därför fungerar länkarna också när sidan ligger på internet, där adressen börjar på något helt annat än <code>127.0.0.1</code>.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ul><li>På <code>index.html</code>, sist i <code>body</code>: ett stycke som innehåller en länk (<code>a</code>) med texten <em>Se när vi träffas</em>. Attributet <code>href</code> är filnamnet på den andra sidan.</li><li>På <code>traffar.html</code>, sist i <code>body</code>: ett stycke med en länk <em>Tillbaka till startsidan</em> till <code>index.html</code>.</li></ul>
+<p>Båda sidorna ligger i samma mapp, så filnamnet räcker som sökväg.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Startsidan länkar till <code>traffar.html</code> med texten <em>Se när vi träffas</em>, och <code>traffar.html</code> länkar tillbaka med texten <em>Tillbaka till startsidan</em>. Båda sidorna ser ut som slutbilderna överst.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Du kan klicka fram och tillbaka mellan sidorna hur många gånger som helst. Adressen i Chrome slutar på <code>traffar.html</code> respektive <code>index.html</code>, och ingen av sidorna visar "Cannot GET". Båda sidorna ser ut som slutbilderna överst.</div>
+<hr />
+<h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
+<p>Har du gjort Övning T2? Flytta <code>pannkakor.jpg</code> till mappen <code>bilder</code> och rätta <code>src</code> i <code>recept.html</code> så att bilden syns igen. Gör sedan en <em>meny</em> på alla tre sidorna: en punktlista högst upp i <code>body</code> där varje <code>&lt;li&gt;</code> innehåller en länk, till <em>Start</em> (<code>index.html</code>), <em>Träffar</em> (<code>traffar.html</code>) och <em>Recept</em> (<code>recept.html</code>). Klicka runt mellan alla sidor och kontrollera att ingen länk leder till "Cannot GET".</p>
+<h2>Vanliga fel</h2>
+<ul><li><strong>Chrome visar "Cannot GET /traffar.html" när du klickar på länken:</strong> <code>href</code> och filnamnet stämmer inte överens. Jämför tecken för tecken med filpanelen: <code>traffar.html</code>, inte <code>träffar.html</code> eller <code>traffar.htm</code>. Kontrollera också att <code>traffar.html</code> ligger direkt i <code>ovningar</code> och inte inuti <code>bilder</code>.</li><li><strong>Bilden visas inte, bara alt-texten:</strong> sökvägen i <code>src</code> stämmer inte med var filen ligger. Mappen ska heta <code>bilder</code> exakt (inte <code>Bilder</code> eller <code>bild</code>), och sökvägen ska vara <code>bilder/spelkvall.jpg</code> med snedstreck framåt.</li><li><strong>Länken syns men går inte att klicka på, och är svart i stället för blå:</strong> attributet <code>href</code> saknas eller är felstavat (till exempel <code>herf</code>). En <code>&lt;a&gt;</code> utan <code>href</code> är ingen länk för webbläsaren.</li></ul>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>

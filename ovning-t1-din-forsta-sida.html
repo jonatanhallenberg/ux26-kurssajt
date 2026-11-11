@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
     <title>Övning T1 · Din första sida – Frontend UX26</title>
     <style>
 :root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
@@ -30,7 +31,7 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
   </head>
   <body>
     <main>
-      <nav class="topp"><a href="index.html">← Alla sidor</a></nav>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
 <h1>Övning T1 · Din första sida</h1>
 <p class="meta">Tisdag 17/11 · Förmiddag · Vecka 47 · Kursmål KUN5, F5 · ca 30 min</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
 <p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
@@ -55,15 +56,15 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <p><em>Varför:</em> varje HTML-sida börjar med samma grundstruktur, ett <em>skelett</em>, och den skriver du en gång här så att du känner igen den i alla sidor framöver.</p>
 <details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
 <ol><li>Håll muspekaren över <strong>OVNINGAR</strong> i filpanelen. Klicka på ikonen <strong>New File…</strong> (ett papper med ett plustecken).</li><li>Skriv filnamnet <code>index.html</code> och tryck Enter. Filen öppnas i mitten av VS Code. <code>.html</code> på slutet kallas <em>filändelse</em> och säger att filen innehåller HTML, språket som beskriver vad som finns på en webbsida. <code>index.html</code> är namnet webbläsaren letar efter först i en mapp, därför heter startsidan alltid så.</li><li>Skriv av koden nedan i filen, exakt som den står. När du skriver en starttagg, till exempel <code>&lt;title&gt;</code>, skriver VS Code sluttaggen <code>&lt;/title&gt;</code> åt dig direkt efter markören. Skriv då bara innehållet och hoppa förbi sluttaggen med högerpilen. Skriv den inte en gång till.</li></ol>
-<pre><code class="lang-html">   &lt;!doctype html&gt;
-   &lt;html&gt;
-     &lt;head&gt;
-       &lt;meta charset="utf-8" /&gt;
-       &lt;title&gt;Brädspelsklubben Tärningen&lt;/title&gt;
-     &lt;/head&gt;
-     &lt;body&gt;&lt;/body&gt;
-   &lt;/html&gt;</code></pre>
-<ol><li>Spara med <strong>Cmd+S</strong> (Mac) eller <strong>Ctrl+S</strong> (Windows). Den lilla vita pricken på filens flik högst upp försvinner när filen är sparad.</li></ol>
+<pre><code class="lang-html">&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;Brädspelsklubben Tärningen&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<ol start="4"><li>Spara med <strong>Cmd+S</strong> (Mac) eller <strong>Ctrl+S</strong> (Windows). Den lilla vita pricken på filens flik högst upp försvinner när filen är sparad.</li></ol>
 <p>Det här betyder raderna:</p>
 <ul><li><code>&lt;!doctype html&gt;</code> talar om för webbläsaren att det här är en modern HTML-sida.</li><li>Ett <em>element</em> är en del av sidan. Det börjar med en <em>starttagg</em>, till exempel <code>&lt;title&gt;</code>, och slutar med en <em>sluttagg</em> med snedstreck, <code>&lt;/title&gt;</code>. Det som står mellan taggarna är elementets innehåll.</li><li><code>&lt;html&gt;</code> omsluter hela sidan. Inuti finns två delar: <code>&lt;head&gt;</code> med information <em>om</em> sidan, som inte syns på själva sidan, och <code>&lt;body&gt;</code> med allt som syns.</li><li><code>&lt;meta charset="utf-8" /&gt;</code> säger vilken <em>teckenkodning</em> filen har, alltså hur tecknen är sparade. Utan den kan å, ä och ö bli konstiga tecken. <code>charset="utf-8"</code> är ett <em>attribut</em>: en extra uppgift som skrivs inne i starttaggen, med namn, likhetstecken och ett värde inom citattecken.</li><li><code>&lt;title&gt;</code> är texten som står på fliken i Chrome.</li><li>Att elementen ligger inuti varandra kallas <em>nästling</em>. <code>&lt;head&gt;</code> ligger inuti <code>&lt;html&gt;</code>, och <code>&lt;title&gt;</code> inuti <code>&lt;head&gt;</code>.</li><li>Indraget, mellanslagen i början av raderna, visar nästlingen: ju längre in, desto djupare. Webbläsaren bryr sig inte om indrag, men det gör koden lätt att läsa.</li></ul>
 <p>När du sparar går tillägget Prettier igenom koden och ordnar indraget åt dig. Koden ovan är redan skriven så som Prettier vill ha den, så inget ska flytta på sig. <code>/&gt;</code> sist i <code>&lt;meta … /&gt;</code> betyder ingenting för webbläsaren; Prettier lägger dit det på element som aldrig har något innehåll och därför ingen sluttagg.</p>
@@ -94,23 +95,23 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <p><em>Varför:</em> nu syns något på sidan, och du ser att Chrome uppdaterar sig själv varje gång du sparar.</p>
 <details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
 <ol><li>I <code>index.html</code>: klicka mellan <code>&lt;body&gt;</code> och <code>&lt;/body&gt;</code> och tryck Enter.</li><li>Skriv de här tre raderna där markören står:</li></ol>
-<pre><code class="lang-html">   &lt;h1&gt;Brädspelsklubben Tärningen&lt;/h1&gt;
-   &lt;p&gt;Vi är en klubb för alla som tycker om brädspel.&lt;/p&gt;
-   &lt;p&gt;Vi träffas varje torsdag och spelar tillsammans.&lt;/p&gt;</code></pre>
-<ol><li>Spara. Hela filen ser nu ut så här (Prettier har ordnat indraget):</li></ol>
-<pre><code class="lang-html">   &lt;!doctype html&gt;
-   &lt;html&gt;
-     &lt;head&gt;
-       &lt;meta charset="utf-8" /&gt;
-       &lt;title&gt;Brädspelsklubben Tärningen&lt;/title&gt;
-     &lt;/head&gt;
-     &lt;body&gt;
-       &lt;h1&gt;Brädspelsklubben Tärningen&lt;/h1&gt;
-       &lt;p&gt;Vi är en klubb för alla som tycker om brädspel.&lt;/p&gt;
-       &lt;p&gt;Vi träffas varje torsdag och spelar tillsammans.&lt;/p&gt;
-     &lt;/body&gt;
-   &lt;/html&gt;</code></pre>
-<ol><li>Titta i Chrome utan att klicka på något. Sidan har laddats om av sig själv och visar en stor rubrik och två stycken text.</li></ol>
+<pre><code class="lang-html">&lt;h1&gt;Brädspelsklubben Tärningen&lt;/h1&gt;
+&lt;p&gt;Vi är en klubb för alla som tycker om brädspel.&lt;/p&gt;
+&lt;p&gt;Vi träffas varje torsdag och spelar tillsammans.&lt;/p&gt;</code></pre>
+<ol start="3"><li>Spara. Hela filen ser nu ut så här (Prettier har ordnat indraget):</li></ol>
+<pre><code class="lang-html">&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;Brädspelsklubben Tärningen&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Brädspelsklubben Tärningen&lt;/h1&gt;
+    &lt;p&gt;Vi är en klubb för alla som tycker om brädspel.&lt;/p&gt;
+    &lt;p&gt;Vi träffas varje torsdag och spelar tillsammans.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<ol start="4"><li>Titta i Chrome utan att klicka på något. Sidan har laddats om av sig själv och visar en stor rubrik och två stycken text.</li></ol>
 <p><code>&lt;h1&gt;</code> är sidans huvudrubrik, den största rubriknivån. <code>&lt;p&gt;</code> betyder <em>stycke</em> (paragraph), ett textstycke.</p>
 </div></details>
 <details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">

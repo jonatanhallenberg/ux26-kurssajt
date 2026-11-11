@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Övning R1 · Städa strukturen – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Övning R1 · Städa strukturen</h1>
+<p class="meta">Torsdag 19/11 · Förmiddag · Vecka 47 · Kursmål KUN5, F5 · ca 35 min</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
+<p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
+<p><strong>Du bygger:</strong> Fotoklubben Bländaren har redan en startsida, men den som skrev koden använde <code>&lt;div&gt;</code> till allt. En <code>div</code> är en låda utan betydelse: den säger ingenting om vad som ligger i den. Du byter lådorna mot <em>semantiska element</em>, alltså element vars namn säger vad innehållet är (sidhuvud, meny, huvudinnehåll, sidfot), och rättar rubrikerna så att de kommer i rätt ordning. Sidan ser nästan likadan ut efteråt, men nu kan en <em>skärmläsare</em> (programmet som läser upp sidan för den som inte ser skärmen) hoppa direkt till menyn eller till huvudinnehållet.</p>
+<img src="bilder/r1-slutbild.png" alt="Slutbild: rubriken Fotoklubben Bländaren överst, menyn, tre avsnitt med lika stora rubriker och tre träffar med mindre rubriker" />
+<p><strong>Du behöver:</strong> mappen <code>ovningar</code> från i tisdags, öppen i VS Code, och Live Server. Mappen <code>r1-start</code>, som ligger som zip-fil bredvid den här övningen i Learnpoint. Klipp 3 (semantisk HTML) sett.</p>
+<hr />
+<h2>Etapp 1 · Hämta sidan och titta under huven</h2>
+<p><em>Varför:</em> innan du städar behöver du se vad som är rörigt.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Hämta <code>r1-start.zip</code> från Learnpoint och packa upp den. På Mac dubbelklickar du på zip-filen. På Windows högerklickar du på den och väljer <strong>Extrahera alla</strong> (Extract All). Nu har du en vanlig mapp som heter <code>r1-start</code>.</li><li>Dra mappen <code>r1-start</code> från Finder (Mac) eller Utforskaren (Windows) och släpp den på <strong>OVNINGAR</strong> i filpanelen i VS Code (listan över filerna, till vänster).</li><li>Klicka på pilen framför <code>r1-start</code> i filpanelen. Där ligger <code>index.html</code>.</li><li>Högerklicka på <code>index.html</code> under <code>r1-start</code> och välj <strong>Open with Live Server</strong>. Sidan öppnas i Chrome.</li><li>Titta på sidan. Klubbens namn överst är liten fet text, och <em>Lördag 28 november: Fotopromenad i hamnen</em> är den största rubriken på hela sidan. Så ska det inte se ut.</li><li>Högerklicka på texten <em>Fotoklubben Bländaren</em> i Chrome och välj <strong>Inspektera</strong> (Inspect). DevTools öppnas med fliken <strong>Elements</strong>, som visar sidans element som ett träd. Klicka på de små pilarna framför elementen: allt under <code>&lt;body&gt;</code> är <code>&lt;div&gt;</code>.</li><li>Klicka på <code>index.html</code> under <code>r1-start</code> i filpanelen i VS Code, så att filen öppnas. Radnumren står längst till vänster. Alla radnummer i den här övningen gäller den filen, och de ändras inte när du följer stegen, eftersom du bara byter ut taggar och aldrig lägger till eller tar bort rader.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Packa upp <code>r1-start.zip</code> från Learnpoint och lägg mappen <code>r1-start</code> i <code>ovningar</code>. Öppna <code>r1-start/index.html</code> med Live Server. Titta i DevTools, fliken Elements, vilka element som ligger direkt under <code>body</code>. Leta sedan i koden efter rubrikerna: vilka nivåer (<code>h1</code>, <code>h2</code>, <code>h3</code>) har de, och vilka "rubriker" är bara fet text (<code>strong</code>) i en <code>div</code>?</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Öppna startfilen i Chrome och ta reda på hur den är uppbyggd: vilka element som används och vilka rubriknivåer som finns.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Sidan visas i Chrome och adressen slutar på <code>/r1-start/index.html</code>. I DevTools → Elements ser du att allt direkt under <code>&lt;body&gt;</code> är <code>&lt;div&gt;</code>.</div>
+<h2>Etapp 2 · Sidhuvud och meny</h2>
+<p><em>Varför:</em> <code>header</code> och <code>nav</code> talar om var sidhuvudet och menyn finns, så att en skärmläsare kan hoppa dit direkt.</p>
+<p><code>&lt;header&gt;</code> är sidhuvudet: det som står överst, oftast namnet och menyn. <code>&lt;nav&gt;</code> (av engelskans <em>navigation</em>) är menyn: en grupp länkar till sidans andra delar. <code>&lt;h1&gt;</code> är sidans huvudrubrik, och det ska bara finnas en.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<p>Varje <code>div</code> har en starttagg <code>&lt;div&gt;</code> och en sluttagg <code>&lt;/div&gt;</code>. Byter du den ena måste du byta den andra också. Indraget hjälper dig: starttaggen och dess sluttagg står lika långt in.</p>
+<ol><li>Rad 8: byt <code>&lt;div&gt;</code> mot <code>&lt;header&gt;</code>.</li><li>Rad 9: byt hela raden <code>&lt;div&gt;&lt;strong&gt;Fotoklubben Bländaren&lt;/strong&gt;&lt;/div&gt;</code> mot <code>&lt;h1&gt;Fotoklubben Bländaren&lt;/h1&gt;</code>.</li><li>Rad 10: byt <code>&lt;div&gt;</code> mot <code>&lt;nav&gt;</code>.</li><li>Rad 14: byt <code>&lt;/div&gt;</code> mot <code>&lt;/nav&gt;</code>.</li><li>Rad 15: byt <code>&lt;/div&gt;</code> mot <code>&lt;/header&gt;</code>.</li><li>Rad 8–15 ser nu ut så här:</li></ol>
+<pre><code class="lang-html">    &lt;header&gt;
+      &lt;h1&gt;Fotoklubben Bländaren&lt;/h1&gt;
+      &lt;nav&gt;
+        &lt;a href="index.html"&gt;Start&lt;/a&gt;
+        &lt;a href="traffar.html"&gt;Träffar&lt;/a&gt;
+        &lt;a href="bli-medlem.html"&gt;Bli medlem&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;</code></pre>
+<ol start="7"><li>Spara med Cmd+S (Mac) eller Ctrl+S (Windows). Live Server laddar om sidan i Chrome av sig själv.</li></ol>
+<p>Länkarna <em>Träffar</em> och <em>Bli medlem</em> går till sidor som inte finns i övningen. Klickar du på dem visar Live Server <em>Cannot GET</em>. Det är väntat, gå tillbaka med bakåtpilen.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Det yttersta blocket överst (rad 8–15) är sidhuvudet och ska bli <code>header</code>. Klubbnamnet ska bli sidans <code>h1</code> i stället för fet text i en <code>div</code>. Lådan med de tre länkarna ska bli <code>nav</code>. Byt både starttagg och sluttagg varje gång.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Sidhuvudet med klubbnamnet och menyn ska vara uppmärkt med semantiska element, och klubbnamnet ska vara sidans huvudrubrik.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> <em>Fotoklubben Bländaren</em> är nu en stor rubrik (lika stor som <em>Lördag 28 november</em>, den rättar du i etapp 4). I DevTools → Elements står <code>&lt;header&gt;</code> först under <code>&lt;body&gt;</code>, och i den ligger <code>&lt;h1&gt;</code> och <code>&lt;nav&gt;</code>.</div>
+<h2>Etapp 3 · Huvudinnehållet och avsnitten</h2>
+<p><em>Varför:</em> <code>main</code> visar var sidans eget innehåll finns, och <code>section</code> delar in det i avsnitt med var sin rubrik.</p>
+<p><code>&lt;main&gt;</code> är huvudinnehållet: det som är unikt för just den här sidan, alltså inte sidhuvudet och inte sidfoten. Det finns en <code>main</code> per sida. <code>&lt;section&gt;</code> är ett avsnitt, en del av sidan som handlar om en sak och har en egen rubrik. Rubrikerna fungerar som en innehållsförteckning: <code>h1</code> är sidans rubrik, <code>h2</code> är avsnittens rubriker och <code>h3</code> är rubriker inuti ett avsnitt. Du hoppar aldrig över en nivå.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Rad 16: byt <code>&lt;div&gt;</code> mot <code>&lt;main&gt;</code>. Rad 59: byt <code>&lt;/div&gt;</code> mot <code>&lt;/main&gt;</code>.</li><li>Rad 17: byt <code>&lt;div&gt;</code> mot <code>&lt;section&gt;</code>. Rad 25: byt <code>&lt;/div&gt;</code> mot <code>&lt;/section&gt;</code>.</li><li>Rad 18: byt <code>&lt;h3&gt;Om klubben&lt;/h3&gt;</code> mot <code>&lt;h2&gt;Om klubben&lt;/h2&gt;</code>.</li><li>Rad 26: byt <code>&lt;div&gt;</code> mot <code>&lt;section&gt;</code>. Rad 49: byt <code>&lt;/div&gt;</code> mot <code>&lt;/section&gt;</code>.</li><li>Rad 27: byt hela raden <code>&lt;div&gt;&lt;strong&gt;Kommande träffar&lt;/strong&gt;&lt;/div&gt;</code> mot <code>&lt;h2&gt;Kommande träffar&lt;/h2&gt;</code>.</li><li>Rad 50: byt <code>&lt;div&gt;</code> mot <code>&lt;section&gt;</code>. Rad 58: byt <code>&lt;/div&gt;</code> mot <code>&lt;/section&gt;</code>.</li><li>Spara. De rader du ändrat ser nu ut så här (<code>…</code> står för raderna emellan, som du inte rör):</li></ol>
+<pre><code class="lang-html">    &lt;main&gt;
+      &lt;section&gt;
+        &lt;h2&gt;Om klubben&lt;/h2&gt;
+        …
+      &lt;/section&gt;
+      &lt;section&gt;
+        &lt;h2&gt;Kommande träffar&lt;/h2&gt;
+        …
+      &lt;/section&gt;
+      &lt;section&gt;
+        &lt;h2&gt;Bli medlem&lt;/h2&gt;
+        …
+      &lt;/section&gt;
+    &lt;/main&gt;</code></pre>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Lådan som omsluter allt mellan sidhuvudet och sidfoten (rad 16–59) ska bli <code>main</code>. De tre lådorna i den (Om klubben, Kommande träffar, Bli medlem) ska bli var sin <code>section</code>. Varje avsnitt börjar med en <code>h2</code>: <em>Om klubben</em> är i dag en <code>h3</code>, och <em>Kommande träffar</em> är bara fet text i en <code>div</code>. <em>Bli medlem</em> har redan rätt nivå.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Sidans huvudinnehåll och dess tre avsnitt ska vara uppmärkta med semantiska element, och varje avsnitt ska ha en rubrik på rätt nivå.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> <em>Om klubben</em>, <em>Kommande träffar</em> och <em>Bli medlem</em> är lika stora. I DevTools → Elements ligger <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code> och en <code>&lt;div&gt;</code> direkt under <code>&lt;body&gt;</code>, och i <code>&lt;main&gt;</code> ligger tre <code>&lt;section&gt;</code>.</div>
+<h2>Etapp 4 · Träffarna som artiklar</h2>
+<p><em>Varför:</em> varje träff är en fristående del som går att förstå även om den lyfts ut ur sidan, och då är <code>article</code> rätt element.</p>
+<p><code>&lt;article&gt;</code> är en fristående bit innehåll, till exempel ett inlägg, en nyhet eller ett evenemang. En träff har eget datum, egen rubrik och egen text, så den kan stå för sig själv.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Rad 28: byt <code>&lt;div&gt;</code> mot <code>&lt;article&gt;</code>. Rad 34: byt <code>&lt;/div&gt;</code> mot <code>&lt;/article&gt;</code>.</li><li>Rad 29: byt <code>&lt;h1&gt;Lördag 28 november: Fotopromenad i hamnen&lt;/h1&gt;</code> mot <code>&lt;h3&gt;Lördag 28 november: Fotopromenad i hamnen&lt;/h3&gt;</code>.</li><li>Rad 35: byt <code>&lt;div&gt;</code> mot <code>&lt;article&gt;</code>. Rad 41: byt <code>&lt;/div&gt;</code> mot <code>&lt;/article&gt;</code>.</li><li>Rad 36: byt <code>&lt;h2&gt;Onsdag 2 december: Bildkväll&lt;/h2&gt;</code> mot <code>&lt;h3&gt;Onsdag 2 december: Bildkväll&lt;/h3&gt;</code>.</li><li>Rad 42: byt <code>&lt;div&gt;</code> mot <code>&lt;article&gt;</code>. Rad 48: byt <code>&lt;/div&gt;</code> mot <code>&lt;/article&gt;</code>.</li><li>Rad 43: byt hela raden <code>&lt;div&gt;&lt;strong&gt;Lördag 12 december: Julmarknaden&lt;/strong&gt;&lt;/div&gt;</code> mot <code>&lt;h3&gt;Lördag 12 december: Julmarknaden&lt;/h3&gt;</code>.</li><li>Spara. Rad 26–49 ser nu ut så här:</li></ol>
+<pre><code class="lang-html">      &lt;section&gt;
+        &lt;h2&gt;Kommande träffar&lt;/h2&gt;
+        &lt;article&gt;
+          &lt;h3&gt;Lördag 28 november: Fotopromenad i hamnen&lt;/h3&gt;
+          &lt;p&gt;
+            Vi går längs kajen i skymningen och provar att fotografera ljus i
+            mörker. Samling kl. 15 vid färjeläget.
+          &lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+          &lt;h3&gt;Onsdag 2 december: Bildkväll&lt;/h3&gt;
+          &lt;p&gt;
+            Ta med fem bilder du är nöjd med. Vi visar dem på storskärm och ger
+            varandra tips.
+          &lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+          &lt;h3&gt;Lördag 12 december: Julmarknaden&lt;/h3&gt;
+          &lt;p&gt;
+            Porträtt och detaljer bland marknadsstånden. Samling kl. 11 vid
+            fontänen på torget.
+          &lt;/p&gt;
+        &lt;/article&gt;
+      &lt;/section&gt;</code></pre>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>De tre lådorna inuti <em>Kommande träffar</em> ska bli var sin <code>article</code>. Varje träffs rubrik ska vara en <code>h3</code>, en nivå under avsnittets <code>h2</code>. I dag är de en <code>h1</code>, en <code>h2</code> och fet text i en <code>div</code>.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Varje träff ska vara en fristående del av avsnittet och ha en rubrik en nivå under avsnittets rubrik.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> De tre träffrubrikerna är lika stora och mindre än <em>Kommande träffar</em>. Bara <em>Fotoklubben Bländaren</em> är riktigt stor. I DevTools → Elements ligger tre <code>&lt;article&gt;</code> i den andra <code>&lt;section&gt;</code>.</div>
+<h2>Etapp 5 · Sidfoten och slutkontrollen</h2>
+<p><em>Varför:</em> <code>footer</code> markerar sidfoten, och en sista sökning visar att ingen <code>div</code> blev kvar.</p>
+<p><code>&lt;footer&gt;</code> är sidfoten: det som står längst ner, till exempel adress och kontaktuppgifter.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Rad 60: byt <code>&lt;div&gt;</code> mot <code>&lt;footer&gt;</code>. Rad 62: byt <code>&lt;/div&gt;</code> mot <code>&lt;/footer&gt;</code>.</li><li>Spara.</li><li>Sök efter <code>div</code> i filen: tryck Cmd+F (Mac) eller Ctrl+F (Windows) i VS Code och skriv <code>div</code>. Sökrutan ska visa <em>No results</em>. Stäng sökrutan med Esc.</li><li>Gå till Chrome. I DevTools → Elements ligger nu <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code> och <code>&lt;footer&gt;</code> direkt under <code>&lt;body&gt;</code>.</li><li>Hela filen ser ut så här. Jämför rad för rad om något ser konstigt ut:</li></ol>
+<pre><code class="lang-html">&lt;!doctype html&gt;
+&lt;html lang="sv"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Fotoklubben Bländaren&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Fotoklubben Bländaren&lt;/h1&gt;
+      &lt;nav&gt;
+        &lt;a href="index.html"&gt;Start&lt;/a&gt;
+        &lt;a href="traffar.html"&gt;Träffar&lt;/a&gt;
+        &lt;a href="bli-medlem.html"&gt;Bli medlem&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;section&gt;
+        &lt;h2&gt;Om klubben&lt;/h2&gt;
+        &lt;p&gt;
+          Bländaren är en ideell förening för alla som gillar att fotografera,
+          med mobilen eller med en riktig kamera. Vi träffas varannan onsdag i
+          Ekby medborgarhus och går ut och fotograferar tillsammans en lördag i
+          månaden. Du behöver inte kunna något om kameror för att vara med.
+        &lt;/p&gt;
+      &lt;/section&gt;
+      &lt;section&gt;
+        &lt;h2&gt;Kommande träffar&lt;/h2&gt;
+        &lt;article&gt;
+          &lt;h3&gt;Lördag 28 november: Fotopromenad i hamnen&lt;/h3&gt;
+          &lt;p&gt;
+            Vi går längs kajen i skymningen och provar att fotografera ljus i
+            mörker. Samling kl. 15 vid färjeläget.
+          &lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+          &lt;h3&gt;Onsdag 2 december: Bildkväll&lt;/h3&gt;
+          &lt;p&gt;
+            Ta med fem bilder du är nöjd med. Vi visar dem på storskärm och ger
+            varandra tips.
+          &lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+          &lt;h3&gt;Lördag 12 december: Julmarknaden&lt;/h3&gt;
+          &lt;p&gt;
+            Porträtt och detaljer bland marknadsstånden. Samling kl. 11 vid
+            fontänen på torget.
+          &lt;/p&gt;
+        &lt;/article&gt;
+      &lt;/section&gt;
+      &lt;section&gt;
+        &lt;h2&gt;Bli medlem&lt;/h2&gt;
+        &lt;p&gt;Medlemskapet kostar 150 kronor per år och ger dig:&lt;/p&gt;
+        &lt;ul&gt;
+          &lt;li&gt;plats på alla träffar och promenader&lt;/li&gt;
+          &lt;li&gt;rätt att låna klubbens kameror och stativ&lt;/li&gt;
+          &lt;li&gt;en egen sida i klubbens årsbok&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+      &lt;p&gt;Bländaren · Ekby medborgarhus · blandaren@example.se&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>När du sparar lägger Prettier till <code> /</code> sist i <code>&lt;meta charset="utf-8"&gt;</code>, så att det blir <code>&lt;meta charset="utf-8" /&gt;</code>. Det är ofarligt och betyder samma sak.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Den sista lådan (rad 60–62) är sidfoten och ska bli <code>footer</code>. Sök sedan efter <code>div</code> i filen med VS Code:s sökfunktion (Cmd+F / Ctrl+F): det ska inte finnas någon kvar. Kontrollera i DevTools → Elements vilka element som ligger direkt under <code>body</code>.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Sidfoten ska vara uppmärkt med ett semantiskt element. Det får inte finnas någon <code>div</code> kvar i filen, och sidan ska se ut som slutbilden.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Sökningen på <code>div</code> i VS Code ger <em>No results</em>. DevTools → Elements visar <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code> och <code>&lt;footer&gt;</code> direkt under <code>&lt;body&gt;</code>. Sidan ser ut som slutbilden: en stor rubrik överst, tre lika stora avsnittsrubriker och tre lika stora, mindre träffrubriker.</div>
+<hr />
+<h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
+<p>Gör länken <em>Träffar</em> sann: skapa <code>traffar.html</code> i <code>r1-start</code> med samma <code>header</code> och <code>nav</code> som startsidan och en <code>main</code> där varje träff är en <code>article</code>. Fundera sedan på om avsnittet <em>Bli medlem</em> också borde vara en <code>article</code>. Vad talar för, och vad talar emot?</p>
+<h2>Vanliga fel</h2>
+<ul><li><strong>Sidan ser konstig ut efter att du sparat, och Prettier ändrar inte indraget längre:</strong> du har bytt en starttagg men inte dess sluttagg (eller tvärtom), så taggarna går inte ihop. Prettier kan inte formatera en fil där taggarna inte går ihop, och det står ett fel vid <em>Prettier</em> längst ner i VS Code. Leta upp paret: starttaggen och sluttaggen står lika långt in. Rätta och spara igen.</li><li><strong>Två eller tre rubriker är lika stora som klubbnamnet:</strong> någon träffrubrik är fortfarande en <code>h1</code> eller <code>h2</code>. Det ska finnas exakt en <code>h1</code> på sidan, och träffarna ska vara <code>h3</code>.</li><li><strong>Du klickar på <em>Träffar</em> eller <em>Bli medlem</em> och får <em>Cannot GET</em>:</strong> sidorna finns inte i övningen. Det är väntat och inget fel i din kod. Gå tillbaka med bakåtpilen.</li></ul>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>

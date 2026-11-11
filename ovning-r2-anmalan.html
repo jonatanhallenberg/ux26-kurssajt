@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Övning R2 · Anmälan – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Övning R2 · Anmälan</h1>
+<p class="meta">Torsdag 19/11 · Förmiddag · Vecka 47 · Kursmål KUN5, F5 · ca 35 min</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
+<p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
+<p><strong>Du bygger:</strong> en anmälningssida till Fotoklubben Bländarens fotopromenad, <code>anmalan.html</code>. Sidan har ett <em>formulär</em>, den del av en sida där besökaren skriver eller väljer något: textrutor, en datumväljare, en lista att välja ur och en knapp. Formuläret skickar ingenting någonstans. Att ta emot en anmälan kräver JavaScript eller en server, och det kommer senare i kursen. När du klickar på knappen laddas sidan bara om och fälten töms.</p>
+<img src="bilder/r2-slutbild.png" alt="Slutbild: rubriken Anmälan till fotopromenad, ett stycke text och sex fält med etiketter, sist knappen Skicka anmälan" />
+<p><strong>Du behöver:</strong> mappen <code>ovningar</code> öppen i VS Code, och Live Server. Klipp 3 (formulär) sett.</p>
+<hr />
+<h2>Etapp 1 · Sidan och ett tomt formulär</h2>
+<p><em>Varför:</em> formuläret behöver en sida att ligga på, och <code>&lt;form&gt;</code> talar om var formuläret börjar och slutar.</p>
+<p><code>&lt;form&gt;</code> omsluter alla fält som hör till samma formulär. Allt du skriver i etapp 2–5 hamnar mellan <code>&lt;form&gt;</code> och <code>&lt;/form&gt;</code>.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>I VS Code: håll pekaren över <strong>OVNINGAR</strong> i filpanelen och klicka på ikonen <strong>New File…</strong>. Skriv <code>anmalan.html</code> (utan å och ä) och tryck Enter.</li><li>Skriv in det här i den tomma filen:</li></ol>
+<pre><code class="lang-html">&lt;!doctype html&gt;
+&lt;html lang="sv"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Anmälan till fotopromenad&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Anmälan till fotopromenad&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;p&gt;
+        Fotoklubben Bländaren går en fotopromenad en lördag i månaden, och alla
+        får följa med. Du behöver ingen kamera, mobilen räcker. Anmäl dig så att
+        vi vet hur många som kommer.
+      &lt;/p&gt;
+      &lt;form&gt;
+      &lt;/form&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+      &lt;p&gt;Fotoklubben Bländaren · Ekby medborgarhus&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p><code>lang="sv"</code> på <code>&lt;html&gt;</code> talar om att sidan är på svenska, så att en skärmläsare läser upp den med svenskt uttal. Mer om det i Övning R3.</p>
+<ol start="3"><li>Spara med Cmd+S (Mac) eller Ctrl+S (Windows). Prettier drar kanske ihop <code>&lt;form&gt;</code> och <code>&lt;/form&gt;</code> till en rad, <code>&lt;form&gt;&lt;/form&gt;</code>. Det gör inget: i nästa etapp klickar du mellan <code>&lt;form&gt;</code> och <code>&lt;/form&gt;</code> och trycker Enter för att få plats.</li><li>Högerklicka på <code>anmalan.html</code> i filpanelen och välj <strong>Open with Live Server</strong>.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Skapa <code>anmalan.html</code> i <code>ovningar</code> med samma skelett som tidigare, men med <code>lang="sv"</code> på <code>html</code> och titeln <em>Anmälan till fotopromenad</em>. I <code>body</code>: en <code>header</code> med en <code>h1</code>, en <code>main</code> med ett stycke som presenterar promenaden och ett tomt <code>form</code>, och en <code>footer</code> med klubbens namn och adress.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>En sida <code>anmalan.html</code> med sidhuvud, huvudinnehåll och sidfot. I huvudinnehållet: en kort text om fotopromenaden och ett tomt formulär.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Fliken i Chrome heter <em>Anmälan till fotopromenad</em>, och sidan visar rubriken, stycket och sidfoten. I DevTools → Elements ligger <code>&lt;form&gt;</code> inuti <code>&lt;main&gt;</code> (formuläret är tomt, så det syns inget av det på sidan än).</div>
+<h2>Etapp 2 · Namn och e-post</h2>
+<p><em>Varför:</em> varje fält behöver en etikett som säger vad det är till, och etiketten måste vara kopplad till fältet.</p>
+<p><code>&lt;input&gt;</code> är ett fält att skriva i. Det har ingen sluttagg, precis som <code>&lt;img&gt;</code>. Attributet <code>type</code> bestämmer vilken sorts fält det är: <code>text</code> för vanlig text och <code>email</code> för en e-postadress. <code>&lt;label&gt;</code> är fältets etikett, texten som säger vad som ska skrivas. Attributet <code>id</code> ger fältet ett namn som bara får finnas en gång på sidan, och attributet <code>for</code> på etiketten pekar på det namnet. Då hör etiketten och fältet ihop: klickar du på etiketten hamnar markören i fältet, och en skärmläsare läser upp etiketten när någon går till fältet.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Klicka mellan <code>&lt;form&gt;</code> och <code>&lt;/form&gt;</code> och skriv in det här:</li></ol>
+<pre><code class="lang-html">        &lt;p&gt;
+          &lt;label for="namn"&gt;Namn&lt;/label&gt;
+          &lt;input type="text" id="namn"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+          &lt;label for="epost"&gt;E-post&lt;/label&gt;
+          &lt;input type="email" id="epost"&gt;
+        &lt;/p&gt;</code></pre>
+<p>Varje fält ligger i ett eget stycke, <code>&lt;p&gt;</code>, så att det hamnar på en egen rad. Senare i kursen lär du dig att ordna fälten med CSS i stället.</p>
+<ol start="2"><li>Spara. Prettier lägger till <code> /</code> sist i varje <code>&lt;input&gt;</code>, så att det blir <code>&lt;input type="text" id="namn" /&gt;</code>. Det är ofarligt och betyder samma sak.</li><li>Klicka på ordet <em>Namn</em> på sidan i Chrome. Markören hamnar i rutan bredvid.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Två fält i formuläret, vart och ett i ett eget <code>p</code>: ett <code>input</code> med <code>type</code> <code>text</code> för namnet och ett med <code>type</code> <code>email</code> för e-postadressen. Varje fält får ett <code>id</code>, och varje fält får en <code>label</code> vars <code>for</code> har exakt samma värde som fältets <code>id</code>.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Formuläret ska ha ett fält för namn och ett för e-postadress, vart och ett med en etikett som är kopplad till fältet.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Två fält syns, <em>Namn</em> och <em>E-post</em>, på var sin rad. Klickar du på ordet <em>Namn</em> hamnar markören i namnrutan, och klickar du på <em>E-post</em> hamnar den i e-postrutan.</div>
+<h2>Etapp 3 · Datum och antal</h2>
+<p><em>Varför:</em> rätt <code>type</code> ger besökaren rätt verktyg: en kalender för datum och ett fält som bara tar emot siffror för antal.</p>
+<p><code>type="date"</code> ger ett datumfält med en liten kalender. <code>type="number"</code> ger ett fält där man bara kan skriva siffror.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Klicka efter det sista <code>&lt;/p&gt;</code> före <code>&lt;/form&gt;</code>, tryck Enter och skriv in det här:</li></ol>
+<pre><code class="lang-html">        &lt;p&gt;
+          &lt;label for="datum"&gt;Vilken lördag vill du gå?&lt;/label&gt;
+          &lt;input type="date" id="datum"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+          &lt;label for="antal"&gt;Hur många kommer ni?&lt;/label&gt;
+          &lt;input type="number" id="antal"&gt;
+        &lt;/p&gt;</code></pre>
+<ol start="2"><li>Spara och titta i Chrome.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Två fält till, efter e-posten och i var sitt <code>p</code>: ett <code>input</code> med <code>type</code> <code>date</code> för vilken lördag besökaren vill gå, och ett <code>input</code> med <code>type</code> <code>number</code> för hur många som kommer. Båda med <code>id</code> och en kopplad <code>label</code>.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Formuläret ska också fråga vilken lördag besökaren vill gå och hur många som kommer. Datumet ska kunna väljas i en kalender, och antalet ska bara gå att skriva med siffror.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Datumfältet visar <code>åååå-mm-dd</code> (eller <code>mm/dd/yyyy</code> om Chrome är på engelska) och en liten kalenderikon som öppnar en kalender. I antalsfältet går det inte att skriva bokstäver. Båda etiketterna flyttar markören till sitt fält när du klickar på dem.</div>
+<h2>Etapp 4 · Välja ur en lista och skriva fritt</h2>
+<p><em>Varför:</em> när svaren är kända i förväg är en lista snabbare och säkrare än att skriva, och när de inte är det behövs en större textruta.</p>
+<p><code>&lt;select&gt;</code> är en lista att välja ur, en så kallad rullgardinsmeny. Varje val i listan är ett <code>&lt;option&gt;</code>. <code>&lt;textarea&gt;</code> är en större textruta där man kan skriva flera rader. Till skillnad från <code>&lt;input&gt;</code> har både <code>&lt;select&gt;</code> och <code>&lt;textarea&gt;</code> en sluttagg.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Klicka efter det sista <code>&lt;/p&gt;</code> före <code>&lt;/form&gt;</code>, tryck Enter och skriv in det här:</li></ol>
+<pre><code class="lang-html">        &lt;p&gt;
+          &lt;label for="kamera"&gt;Vad fotograferar du med?&lt;/label&gt;
+          &lt;select id="kamera"&gt;
+            &lt;option&gt;Mobilen&lt;/option&gt;
+            &lt;option&gt;Systemkamera&lt;/option&gt;
+            &lt;option&gt;Kompaktkamera&lt;/option&gt;
+            &lt;option&gt;Vet inte än&lt;/option&gt;
+          &lt;/select&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+          &lt;label for="meddelande"&gt;Något vi behöver veta?&lt;/label&gt;
+          &lt;textarea id="meddelande"&gt;&lt;/textarea&gt;
+        &lt;/p&gt;</code></pre>
+<ol start="2"><li>Spara och titta i Chrome.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Två fält till, i var sitt <code>p</code>: en <code>select</code> med fyra <code>option</code> (Mobilen, Systemkamera, Kompaktkamera, Vet inte än) för vad besökaren fotograferar med, och en <code>textarea</code> för ett fritt meddelande. Även <code>select</code> och <code>textarea</code> behöver <code>id</code> och en kopplad <code>label</code>.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Formuläret ska fråga vad besökaren fotograferar med (Mobilen, Systemkamera, Kompaktkamera eller Vet inte än, valt ur en lista) och ha en ruta för ett fritt meddelande på flera rader.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Klickar du på listan visas fyra val, och <em>Mobilen</em> är förvalt. I meddelanderutan kan du skriva flera rader, och du kan göra rutan större genom att dra i hörnet längst ner till höger. Båda etiketterna flyttar markören till sitt fält.</div>
+<h2>Etapp 5 · Knappen och obligatoriska fält</h2>
+<p><em>Varför:</em> knappen skickar formuläret, och <code>required</code> gör att Chrome säger till om något viktigt saknas innan det skickas.</p>
+<p><code>&lt;button&gt;</code> är en knapp. Ligger den i ett formulär försöker den skicka formuläret när man klickar. <code>required</code> är ett attribut utan värde: det räcker att ordet står i taggen. Det betyder "det här fältet måste fyllas i".</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Klicka efter det sista <code>&lt;/p&gt;</code> före <code>&lt;/form&gt;</code>, tryck Enter och skriv in det här:</li></ol>
+<pre><code class="lang-html">        &lt;p&gt;
+          &lt;button&gt;Skicka anmälan&lt;/button&gt;
+        &lt;/p&gt;</code></pre>
+<ol start="2"><li>Lägg till ordet <code>required</code> sist i tre av fälten, före <code>&gt;</code> (eller före <code> /&gt;</code> om Prettier redan lagt till det):</li></ol>
+<pre><code class="lang-html">          &lt;input type="text" id="namn" required&gt;</code></pre>
+<pre><code class="lang-html">          &lt;input type="email" id="epost" required&gt;</code></pre>
+<pre><code class="lang-html">          &lt;input type="date" id="datum" required&gt;</code></pre>
+<ol start="3"><li>Spara.</li><li>Prova i Chrome: klicka på <strong>Skicka anmälan</strong> utan att fylla i något. Chrome visar en pratbubbla vid <em>Namn</em>: <em>Fyll i det här fältet.</em> (på engelska <em>Please fill out this field.</em>).</li><li>Skriv ditt namn och <code>hej</code> i e-postfältet och klicka igen. Chrome säger att e-postadressen saknar <code>@</code>. Det kommer från <code>type="email"</code>.</li><li>Fyll i namn, en riktig e-postadress och ett datum och klicka. Sidan laddas om och fälten blir tomma, och adressen i Chrome slutar på <code>anmalan.html?</code>. Ingenting skickades någonstans. Så ska det vara.</li><li>Hela filen ser ut så här:</li></ol>
+<pre><code class="lang-html">&lt;!doctype html&gt;
+&lt;html lang="sv"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Anmälan till fotopromenad&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Anmälan till fotopromenad&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;p&gt;
+        Fotoklubben Bländaren går en fotopromenad en lördag i månaden, och alla
+        får följa med. Du behöver ingen kamera, mobilen räcker. Anmäl dig så att
+        vi vet hur många som kommer.
+      &lt;/p&gt;
+      &lt;form&gt;
+        &lt;p&gt;
+          &lt;label for="namn"&gt;Namn&lt;/label&gt;
+          &lt;input type="text" id="namn" required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+          &lt;label for="epost"&gt;E-post&lt;/label&gt;
+          &lt;input type="email" id="epost" required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+          &lt;label for="datum"&gt;Vilken lördag vill du gå?&lt;/label&gt;
+          &lt;input type="date" id="datum" required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+          &lt;label for="antal"&gt;Hur många kommer ni?&lt;/label&gt;
+          &lt;input type="number" id="antal"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+          &lt;label for="kamera"&gt;Vad fotograferar du med?&lt;/label&gt;
+          &lt;select id="kamera"&gt;
+            &lt;option&gt;Mobilen&lt;/option&gt;
+            &lt;option&gt;Systemkamera&lt;/option&gt;
+            &lt;option&gt;Kompaktkamera&lt;/option&gt;
+            &lt;option&gt;Vet inte än&lt;/option&gt;
+          &lt;/select&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+          &lt;label for="meddelande"&gt;Något vi behöver veta?&lt;/label&gt;
+          &lt;textarea id="meddelande"&gt;&lt;/textarea&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+          &lt;button&gt;Skicka anmälan&lt;/button&gt;
+        &lt;/p&gt;
+      &lt;/form&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+      &lt;p&gt;Fotoklubben Bländaren · Ekby medborgarhus&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Sist i formuläret, i ett eget <code>p</code>: en <code>button</code> med texten <em>Skicka anmälan</em>. Lägg sedan attributet <code>required</code> på fälten för namn, e-post och datum. Prova knappen med tomma fält, med en felaktig e-postadress och med allt ifyllt.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Formuläret ska ha en knapp, <em>Skicka anmälan</em>. Namn, e-post och datum ska vara obligatoriska, så att Chrome säger till om de saknas när man klickar på knappen.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Klickar du på knappen med tomma fält visar Chrome en pratbubbla vid <em>Namn</em>. Med <code>hej</code> som e-postadress klagar Chrome på e-posten. Med allt obligatoriskt ifyllt laddas sidan om, fälten töms och adressen slutar på <code>anmalan.html?</code>. Sidan ser ut som slutbilden.</div>
+<hr />
+<h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
+<p>Lägg till ett fält för telefonnummer. Ta reda på (på MDN, Mozillas uppslagsverk om webben på developer.mozilla.org, eller med valfri AI-chatt) vilken <code>type</code> som passar för telefonnummer och vad den gör annorlunda i mobilen än <code>type="text"</code>. Fältet ska ha en kopplad etikett och får inte vara obligatoriskt.</p>
+<h2>Vanliga fel</h2>
+<ul><li><strong>Du klickar på en etikett och inget händer:</strong> <code>for</code> och <code>id</code> är inte exakt likadana. Ett bindestreck (<code>epost</code> mot <code>e-post</code>) eller en stor bokstav räcker för att de inte ska höra ihop. Jämför tecken för tecken.</li><li><strong>Datumfältet är en vanlig textruta utan kalender:</strong> värdet i <code>type</code> är felstavat, till exempel <code>type="data"</code>. Chrome känner inte igen värdet och visar ett vanligt textfält i stället. Rätta stavningen.</li><li><strong>Ingen pratbubbla när du klickar på knappen med tomma fält:</strong> antingen saknas <code>required</code> på fältet, eller så ligger knappen utanför formuläret. <code>&lt;button&gt;</code> måste stå mellan <code>&lt;form&gt;</code> och <code>&lt;/form&gt;</code>.</li></ul>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>
