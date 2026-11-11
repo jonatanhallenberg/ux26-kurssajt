@@ -27,23 +27,20 @@ details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>sum
 .valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
 nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
 footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
-</style>
-  </head>
-  <body>
-    <main>
-      
-<h1>Frontend UX26</h1><p class="meta">Övningarna i kursen. Klipp, guider, startfiler och inlämningar finns i Learnpoint.</p><section class="grupp" data-fran="2026-11-17"><h2>Tisdag 17/11 · HTML: din första sida</h2><p class="oppnas">Öppnas tisdag 17/11.</p><ul><li><a href="ovning-t1-din-forsta-sida.html">Övning T1 · Din första sida</a><span class="tid">ca 30 min</span></li><li><a href="ovning-t2-receptet.html">Övning T2 · Receptet</a><span class="tid">ca 45 min</span></li><li><a href="ovning-t3-tva-sidor-som-hanger-ihop.html">Övning T3 · Två sidor som hänger ihop</a><span class="tid">ca 30 min</span></li></ul></section>
-<section class="grupp" data-fran="2026-11-19"><h2>Torsdag 19/11 · Struktur, formulär och publicering</h2><p class="oppnas">Öppnas torsdag 19/11.</p><ul><li><a href="ovning-r1-stada-strukturen.html">Övning R1 · Städa strukturen</a><span class="tid">ca 35 min</span></li><li><a href="ovning-r2-anmalan.html">Övning R2 · Anmälan</a><span class="tid">ca 35 min</span></li><li><a href="ovning-r3-validera-och-gor-tillgangligt.html">Övning R3 · Validera och gör tillgängligt</a><span class="tid">ca 40 min</span></li><li><a href="buggjakt-1-odlarforeningen-kalroten.html">Buggjakt 1 · Odlarföreningen Kålroten</a><span class="tid">i lag, efter lunch</span></li></ul></section><style>
+
 .grupp{margin:0 0 22px;padding:14px 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
 .grupp h2{margin:0 0 8px;padding:0;border:0;font-size:1.2rem}.grupp ul{list-style:none;padding:0;margin:0}
 .grupp li{padding:7px 0;border-top:1px solid var(--linje)}.grupp li:first-child{border-top:0}
 .grupp a{color:var(--ram);font-weight:600;text-decoration:none}.grupp a:hover{text-decoration:underline}
 .grupp .tid{color:var(--dov);font-size:.9rem;margin-left:8px}.grupp.kommer a{pointer-events:none;color:var(--dov);font-weight:400}
 .grupp .oppnas{display:none;color:var(--dov);font-size:.9rem;margin:0 0 6px}.grupp.kommer .oppnas{display:block}
-</style><script>
-const alla=new URLSearchParams(location.search).has('alla');const nu=new Date();const idag=nu.getFullYear()+'-'+String(nu.getMonth()+1).padStart(2,'0')+'-'+String(nu.getDate()).padStart(2,'0');
-document.querySelectorAll('.grupp[data-fran]').forEach(g=>{if(!alla&&g.dataset.fran>idag){g.classList.add('kommer');g.querySelectorAll('a').forEach(a=>{a.removeAttribute('href');a.setAttribute('aria-disabled','true')})}});
-</script>
+</style>
+  </head>
+  <body>
+    <main>
+      
+<h1>Frontend UX26</h1><p class="meta">Övningarna i kursen. Klipp, guider, startfiler och inlämningar finns i Learnpoint.</p><section class="grupp" data-fran="2026-11-17"><h2>Tisdag 17/11 · HTML: din första sida</h2><p class="oppnas">Öppnas tisdag 17/11.</p><ul><li><a href="ovning-t1-din-forsta-sida.html">Övning T1 · Din första sida</a><span class="tid">ca 30 min</span></li><li><a href="ovning-t2-receptet.html">Övning T2 · Receptet</a><span class="tid">ca 45 min</span></li><li><a href="ovning-t3-tva-sidor-som-hanger-ihop.html">Övning T3 · Två sidor som hänger ihop</a><span class="tid">ca 30 min</span></li></ul></section>
+<section class="grupp" data-fran="2026-11-19"><h2>Torsdag 19/11 · Struktur, formulär och publicering</h2><p class="oppnas">Öppnas torsdag 19/11.</p><ul><li><a href="ovning-r1-stada-strukturen.html">Övning R1 · Städa strukturen</a><span class="tid">ca 35 min</span></li><li><a href="ovning-r2-anmalan.html">Övning R2 · Anmälan</a><span class="tid">ca 35 min</span></li><li><a href="ovning-r3-validera-och-gor-tillgangligt.html">Övning R3 · Validera och gör tillgängligt</a><span class="tid">ca 40 min</span></li><li><a href="buggjakt-1-odlarforeningen-kalroten.html">Buggjakt 1 · Odlarföreningen Kålroten</a><span class="tid">i lag, efter lunch</span></li></ul></section>
       <footer>Frontend UX26 · STI · vecka 47–50</footer>
     </main>
     <script>
@@ -54,6 +51,9 @@ knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
 let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
 document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
 b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+
+const alla=new URLSearchParams(location.search).has('alla');const nu=new Date();const idag=nu.getFullYear()+'-'+String(nu.getMonth()+1).padStart(2,'0')+'-'+String(nu.getDate()).padStart(2,'0');
+document.querySelectorAll('.grupp[data-fran]').forEach(g=>{if(!alla&&g.dataset.fran>idag){g.classList.add('kommer');g.querySelectorAll('a').forEach(a=>{a.removeAttribute('href');a.setAttribute('aria-disabled','true')})}});
 </script>
   </body>
 </html>
