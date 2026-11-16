@@ -43,7 +43,7 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <h2>Etapp 1 · Hämta sidan och titta</h2>
 <p><em>Varför:</em> du behöver veta hur sidan ser ut innan du ändrar något, så att du märker vad som blir annorlunda.</p>
 <details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
-<ol><li>Hämta <code>r3-start.zip</code> från Learnpoint och packa upp den. På Mac dubbelklickar du på zip-filen. På Windows högerklickar du och väljer <strong>Extrahera alla</strong> (Extract All).</li><li>Dra mappen <code>r3-start</code> från Finder (Mac) eller Utforskaren (Windows) och släpp den på <strong>OVNINGAR</strong> i filpanelen i VS Code. I mappen ligger <code>index.html</code> och en mapp <code>bilder</code> med två bilder.</li><li>Högerklicka på <code>index.html</code> under <code>r3-start</code> och välj <strong>Open with Live Server</strong>.</li><li>Titta på fliken i Chrome. Där står adressen, inte ett namn på sidan. Det är en ledtråd.</li><li>Titta på <em>Läs mer om fyrar</em> under bilden på linsen. Det ser inte ut som en länk, och det händer inget när du klickar. Ännu en ledtråd.</li><li>Öppna <code>r3-start/index.html</code> i VS Code. Radnumren som står i den här övningen gäller filen som den ser ut nu, innan du ändrat något.</li></ol>
+<ol><li>Hämta <code>r3-start.zip</code> från Learnpoint och packa upp den. På Mac dubbelklickar du på zip-filen. På Windows högerklickar du och väljer <strong>Extrahera alla</strong> (Extract All).</li><li>Dra mappen <code>r3-start</code> från Finder (Mac) eller Utforskaren (Windows) och släpp den på <strong>OVNINGAR</strong> i filpanelen i VS Code. I mappen ligger <code>index.html</code> och en mapp <code>images</code> med två bilder.</li><li>Högerklicka på <code>index.html</code> under <code>r3-start</code> och välj <strong>Open with Live Server</strong>.</li><li>Titta på fliken i Chrome. Där står adressen, inte ett namn på sidan. Det är en ledtråd.</li><li>Titta på <em>Läs mer om fyrar</em> under bilden på linsen. Det ser inte ut som en länk, och det händer inget när du klickar. Ännu en ledtråd.</li><li>Öppna <code>r3-start/index.html</code> i VS Code. Radnumren som står i den här övningen gäller filen som den ser ut nu, innan du ändrat något.</li></ol>
 </div></details>
 <details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
 <p>Packa upp <code>r3-start.zip</code> från Learnpoint, lägg mappen <code>r3-start</code> i <code>ovningar</code> och öppna <code>r3-start/index.html</code> med Live Server. Titta särskilt på fliken i Chrome, på länken under bilden på linsen och på vad som händer när du klickar på etiketterna i formuläret.</p>
@@ -72,8 +72,8 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <ol><li><strong>Titeln saknas.</strong> Meddelandet <em>Element "head" is missing a required instance of child element "title"</em> betyder att <code>&lt;head&gt;</code> saknar <code>&lt;title&gt;</code>. Klicka sist på rad 4, efter <code>&lt;meta charset="utf-8"&gt;</code>, tryck Enter och skriv:</li></ol>
 <pre><code class="lang-html">    &lt;title&gt;Fyrmuseet i Hamnviken&lt;/title&gt;</code></pre>
 <p>Nu flyttas alla rader under ett steg ned. Därför står radnumret i startfilen inom parentes i stegen nedan.</p>
-<ol start="2"><li><strong>Bilden saknar alt-text.</strong> Meddelandet <em>An "img" element must have an "alt" attribute</em> gäller bilden på fyren (rad 14 i startfilen). <em>Alt-texten</em> är texten som ersätter bilden för den som inte ser den, till exempel när en skärmläsare läser upp sidan eller när bilden inte laddas (WCAG kallar det <em>textalternativ</em>). Den ska säga vad bilden visar, utan "bild av". Byt raden <code>&lt;img src="bilder/fyren.svg"&gt;</code> mot:</li></ol>
-<pre><code class="lang-html">        &lt;img src="bilder/fyren.svg" alt="En vit fyr med rött tak på en klippa vid havet"&gt;</code></pre>
+<ol start="2"><li><strong>Bilden saknar alt-text.</strong> Meddelandet <em>An "img" element must have an "alt" attribute</em> gäller bilden på fyren (rad 14 i startfilen). <em>Alt-texten</em> är texten som ersätter bilden för den som inte ser den, till exempel när en skärmläsare läser upp sidan eller när bilden inte laddas (WCAG kallar det <em>textalternativ</em>). Den ska säga vad bilden visar, utan "bild av". Byt raden <code>&lt;img src="images/lighthouse.svg"&gt;</code> mot:</li></ol>
+<pre><code class="lang-html">        &lt;img src="images/lighthouse.svg" alt="En vit fyr med rött tak på en klippa vid havet"&gt;</code></pre>
 <p>Raden är lång, så Prettier delar upp den på flera rader när du sparar. Det är bara formatering.</p>
 <ol start="3"><li><strong>Taggarna stängs i fel ordning.</strong> De tre meddelandena på rad 20 i startfilen (<em>End tag "p" seen, but there were open elements</em>, <em>Unclosed element "strong"</em> och <em>No "strong" element in scope but a "strong" end tag seen</em>) är samma fel: <code>&lt;strong&gt;</code> öppnas inuti <code>&lt;p&gt;</code>, men <code>&lt;/p&gt;</code> står före <code>&lt;/strong&gt;</code>. Det element som öppnades sist ska stängas först. Byt raden</li></ol>
 <pre><code class="lang-html">        &lt;p&gt;Entrén är &lt;strong&gt;gratis för barn under 12 år&lt;/p&gt;&lt;/strong&gt;</code></pre>
@@ -96,8 +96,8 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <p>(En <code>h3</code> skulle få validatorn att tystna, men den vore fel ändå: då skulle Öppettider se ut som en del av avsnittet om tornet.)</p>
 <ol start="2"><li><strong>Länken har ett felstavat attribut.</strong> Meddelandet <em>Attribute "herf" not allowed on element "a" at this point</em> (rad 40 i startfilen) betyder att <code>href</code> är stavat <code>herf</code>. Utan <code>href</code> vet länken inte vart den ska. Byt raden mot:</li></ol>
 <pre><code class="lang-html">        &lt;p&gt;&lt;a href="https://sv.wikipedia.org/wiki/Fyr"&gt;Läs mer om fyrar&lt;/a&gt;&lt;/p&gt;</code></pre>
-<ol start="3"><li><strong>Etiketten pekar på ett fält som inte finns.</strong> Meddelandet <em>The value of the "for" attribute of the "label" element must be the ID of a non-hidden form control</em> (rad 58 i startfilen) betyder att etiketten har <code>for="datum"</code>, men fältet har <code>id="besoksdag"</code>. Byt raden <code>&lt;label for="datum"&gt;Önskad dag&lt;/label&gt;</code> mot:</li></ol>
-<pre><code class="lang-html">            &lt;label for="besoksdag"&gt;Önskad dag&lt;/label&gt;</code></pre>
+<ol start="3"><li><strong>Etiketten pekar på ett fält som inte finns.</strong> Meddelandet <em>The value of the "for" attribute of the "label" element must be the ID of a non-hidden form control</em> (rad 58 i startfilen) betyder att etiketten har <code>for="date"</code>, men fältet har <code>id="visit-day"</code>. Byt raden <code>&lt;label for="date"&gt;Önskad dag&lt;/label&gt;</code> mot:</li></ol>
+<pre><code class="lang-html">            &lt;label for="visit-day"&gt;Önskad dag&lt;/label&gt;</code></pre>
 <ol start="4"><li>Spara och validera igen (välj filen på nytt).</li></ol>
 </div></details>
 <details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
@@ -113,7 +113,7 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <ol><li><strong>Sidans språk saknas.</strong> Varningen <em>Consider adding a "lang" attribute to the "html" start tag to declare the language of this document</em> gäller rad 2. Attributet <code>lang</code> talar om vilket språk sidan är skriven på. Utan det gissar skärmläsaren, och läser den svensk text med engelskt uttal blir den svår att förstå (WCAG kräver att sidans språk anges). Byt <code>&lt;html&gt;</code> mot:</li></ol>
 <pre><code class="lang-html">&lt;html lang="sv"&gt;</code></pre>
 <ol start="2"><li><strong>Ett fält saknar etikett.</strong> Klicka på texten <em>Antal personer</em> i Chrome. Markören hamnar inte i rutan. Texten står bara bredvid fältet och är inte kopplad till det, så en skärmläsare läser upp fältet som "redigera nummer" utan att säga vad det gäller. Validatorn kan inte veta att texten var tänkt som etikett, därför säger den inget. Byt raden <code>Antal personer</code> (rad 62 i startfilen) mot:</li></ol>
-<pre><code class="lang-html">            &lt;label for="antal"&gt;Antal personer&lt;/label&gt;</code></pre>
+<pre><code class="lang-html">            &lt;label for="count"&gt;Antal personer&lt;/label&gt;</code></pre>
 <ol start="3"><li>Kontrollera alla etiketter: klicka på <em>Namn</em>, <em>E-post</em>, <em>Önskad dag</em> och <em>Antal personer</em> i Chrome. Markören ska hamna i rätt fält varje gång.</li><li>Kontrollera rubrikerna: läs bara rubrikerna uppifrån och ned. <em>Fyrmuseet i Hamnviken</em> (<code>h1</code>), sedan <em>Välkommen upp i tornet</em>, <em>Öppettider</em>, <em>Linsen</em> och <em>Boka en guidad visning</em> (alla <code>h2</code>). Ingen nivå hoppas över.</li><li>Kontrollera alt-texterna: bilden på fyren har den alt-text du skrev, och bilden på linsen har en som redan beskriver bilden.</li><li>Spara.</li></ol>
 </div></details>
 <details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
@@ -142,7 +142,7 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
       &lt;section&gt;
         &lt;h2&gt;Välkommen upp i tornet&lt;/h2&gt;
         &lt;img
-          src="bilder/fyren.svg"
+          src="images/lighthouse.svg"
           alt="En vit fyr med rött tak på en klippa vid havet"
         &gt;
         &lt;p&gt;
@@ -163,7 +163,7 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
       &lt;section&gt;
         &lt;h2&gt;Linsen&lt;/h2&gt;
         &lt;img
-          src="bilder/linsen.svg"
+          src="images/lens.svg"
           alt="Fyrens lins: en glaskupa lika hög som en vuxen, byggd av ringar av glas"
         &gt;
         &lt;p&gt;
@@ -180,20 +180,20 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
         &lt;/p&gt;
         &lt;form&gt;
           &lt;p&gt;
-            &lt;label for="namn"&gt;Namn&lt;/label&gt;
-            &lt;input type="text" id="namn" required&gt;
+            &lt;label for="name"&gt;Namn&lt;/label&gt;
+            &lt;input type="text" id="name" required&gt;
           &lt;/p&gt;
           &lt;p&gt;
-            &lt;label for="epost"&gt;E-post&lt;/label&gt;
-            &lt;input type="email" id="epost" required&gt;
+            &lt;label for="email"&gt;E-post&lt;/label&gt;
+            &lt;input type="email" id="email" required&gt;
           &lt;/p&gt;
           &lt;p&gt;
-            &lt;label for="besoksdag"&gt;Önskad dag&lt;/label&gt;
-            &lt;input type="date" id="besoksdag"&gt;
+            &lt;label for="visit-day"&gt;Önskad dag&lt;/label&gt;
+            &lt;input type="date" id="visit-day"&gt;
           &lt;/p&gt;
           &lt;p&gt;
-            &lt;label for="antal"&gt;Antal personer&lt;/label&gt;
-            &lt;input type="number" id="antal"&gt;
+            &lt;label for="count"&gt;Antal personer&lt;/label&gt;
+            &lt;input type="number" id="count"&gt;
           &lt;/p&gt;
           &lt;p&gt;
             &lt;button&gt;Skicka förfrågan&lt;/button&gt;

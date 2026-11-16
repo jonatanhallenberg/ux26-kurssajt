@@ -36,7 +36,7 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <h1>Övning R2 · Anmälan</h1>
 <p class="meta">Torsdag 19/11 · Förmiddag · Vecka 47 · Kursmål KUN5, F5 · ca 35 min</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
 <p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
-<p><strong>Du bygger:</strong> en anmälningssida till Fotoklubben Bländarens fotopromenad, <code>anmalan.html</code>. Sidan har ett <em>formulär</em>, den del av en sida där besökaren skriver eller väljer något: textrutor, en datumväljare, en lista att välja ur och en knapp. Formuläret skickar ingenting någonstans. Att ta emot en anmälan kräver JavaScript eller en server, och det kommer senare i kursen. När du klickar på knappen laddas sidan bara om och fälten töms.</p>
+<p><strong>Du bygger:</strong> en anmälningssida till Fotoklubben Bländarens fotopromenad, <code>signup.html</code>. Sidan har ett <em>formulär</em>, den del av en sida där besökaren skriver eller väljer något: textrutor, en datumväljare, en lista att välja ur och en knapp. Formuläret skickar ingenting någonstans. Att ta emot en anmälan kräver JavaScript eller en server, och det kommer senare i kursen. När du klickar på knappen laddas sidan bara om och fälten töms.</p>
 <img src="bilder/r2-slutbild.png" alt="Slutbild: rubriken Anmälan till fotopromenad, ett stycke text och sex fält med etiketter, sist knappen Skicka anmälan" />
 <p><strong>Du behöver:</strong> mappen <code>ovningar</code> öppen i VS Code, och Live Server. Klipp 3 (formulär) sett.</p>
 <hr />
@@ -44,7 +44,7 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <p><em>Varför:</em> formuläret behöver en sida att ligga på, och <code>&lt;form&gt;</code> talar om var formuläret börjar och slutar.</p>
 <p><code>&lt;form&gt;</code> omsluter alla fält som hör till samma formulär. Allt du skriver i etapp 2–5 hamnar mellan <code>&lt;form&gt;</code> och <code>&lt;/form&gt;</code>.</p>
 <details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
-<ol><li>I VS Code: håll pekaren över <strong>OVNINGAR</strong> i filpanelen och klicka på ikonen <strong>New File…</strong>. Skriv <code>anmalan.html</code> (utan å och ä) och tryck Enter.</li><li>Skriv in det här i den tomma filen:</li></ol>
+<ol><li>I VS Code: håll pekaren över <strong>OVNINGAR</strong> i filpanelen och klicka på ikonen <strong>New File…</strong>. Skriv <code>signup.html</code> (<em>signup</em> betyder anmälan) och tryck Enter.</li><li>Skriv in det här i den tomma filen:</li></ol>
 <pre><code class="lang-html">&lt;!doctype html&gt;
 &lt;html lang="sv"&gt;
   &lt;head&gt;
@@ -70,13 +70,13 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 <p><code>lang="sv"</code> på <code>&lt;html&gt;</code> talar om att sidan är på svenska, så att en skärmläsare läser upp den med svenskt uttal. Mer om det i Övning R3.</p>
-<ol start="3"><li>Spara med Cmd+S (Mac) eller Ctrl+S (Windows). Prettier drar kanske ihop <code>&lt;form&gt;</code> och <code>&lt;/form&gt;</code> till en rad, <code>&lt;form&gt;&lt;/form&gt;</code>. Det gör inget: i nästa etapp klickar du mellan <code>&lt;form&gt;</code> och <code>&lt;/form&gt;</code> och trycker Enter för att få plats.</li><li>Högerklicka på <code>anmalan.html</code> i filpanelen och välj <strong>Open with Live Server</strong>.</li></ol>
+<ol start="3"><li>Spara med Cmd+S (Mac) eller Ctrl+S (Windows). Prettier drar kanske ihop <code>&lt;form&gt;</code> och <code>&lt;/form&gt;</code> till en rad, <code>&lt;form&gt;&lt;/form&gt;</code>. Det gör inget: i nästa etapp klickar du mellan <code>&lt;form&gt;</code> och <code>&lt;/form&gt;</code> och trycker Enter för att få plats.</li><li>Högerklicka på <code>signup.html</code> i filpanelen och välj <strong>Open with Live Server</strong>.</li></ol>
 </div></details>
 <details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
-<p>Skapa <code>anmalan.html</code> i <code>ovningar</code> med samma skelett som tidigare, men med <code>lang="sv"</code> på <code>html</code> och titeln <em>Anmälan till fotopromenad</em>. I <code>body</code>: en <code>header</code> med en <code>h1</code>, en <code>main</code> med ett stycke som presenterar promenaden och ett tomt <code>form</code>, och en <code>footer</code> med klubbens namn och adress.</p>
+<p>Skapa <code>signup.html</code> i <code>ovningar</code> med samma skelett som tidigare, men med <code>lang="sv"</code> på <code>html</code> och titeln <em>Anmälan till fotopromenad</em>. I <code>body</code>: en <code>header</code> med en <code>h1</code>, en <code>main</code> med ett stycke som presenterar promenaden och ett tomt <code>form</code>, och en <code>footer</code> med klubbens namn och adress.</p>
 </div></details>
 <details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
-<p>En sida <code>anmalan.html</code> med sidhuvud, huvudinnehåll och sidfot. I huvudinnehållet: en kort text om fotopromenaden och ett tomt formulär.</p>
+<p>En sida <code>signup.html</code> med sidhuvud, huvudinnehåll och sidfot. I huvudinnehållet: en kort text om fotopromenaden och ett tomt formulär.</p>
 </div></details>
 <div class="klar"><strong>Så vet du att etappen är klar:</strong> Fliken i Chrome heter <em>Anmälan till fotopromenad</em>, och sidan visar rubriken, stycket och sidfoten. I DevTools → Elements ligger <code>&lt;form&gt;</code> inuti <code>&lt;main&gt;</code> (formuläret är tomt, så det syns inget av det på sidan än).</div>
 <h2>Etapp 2 · Namn och e-post</h2>
@@ -85,15 +85,15 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
 <ol><li>Klicka mellan <code>&lt;form&gt;</code> och <code>&lt;/form&gt;</code> och skriv in det här:</li></ol>
 <pre><code class="lang-html">        &lt;p&gt;
-          &lt;label for="namn"&gt;Namn&lt;/label&gt;
-          &lt;input type="text" id="namn"&gt;
+          &lt;label for="name"&gt;Namn&lt;/label&gt;
+          &lt;input type="text" id="name"&gt;
         &lt;/p&gt;
         &lt;p&gt;
-          &lt;label for="epost"&gt;E-post&lt;/label&gt;
-          &lt;input type="email" id="epost"&gt;
+          &lt;label for="email"&gt;E-post&lt;/label&gt;
+          &lt;input type="email" id="email"&gt;
         &lt;/p&gt;</code></pre>
 <p>Varje fält ligger i ett eget stycke, <code>&lt;p&gt;</code>, så att det hamnar på en egen rad. Senare i kursen lär du dig att ordna fälten med CSS i stället.</p>
-<ol start="2"><li>Spara. Prettier lägger till <code> /</code> sist i varje <code>&lt;input&gt;</code>, så att det blir <code>&lt;input type="text" id="namn" /&gt;</code>. Det är ofarligt och betyder samma sak.</li><li>Klicka på ordet <em>Namn</em> på sidan i Chrome. Markören hamnar i rutan bredvid.</li></ol>
+<ol start="2"><li>Spara. Prettier lägger till <code> /</code> sist i varje <code>&lt;input&gt;</code>, så att det blir <code>&lt;input type="text" id="name" /&gt;</code>. Det är ofarligt och betyder samma sak.</li><li>Klicka på ordet <em>Namn</em> på sidan i Chrome. Markören hamnar i rutan bredvid.</li></ol>
 </div></details>
 <details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
 <p>Två fält i formuläret, vart och ett i ett eget <code>p</code>: ett <code>input</code> med <code>type</code> <code>text</code> för namnet och ett med <code>type</code> <code>email</code> för e-postadressen. Varje fält får ett <code>id</code>, och varje fält får en <code>label</code> vars <code>for</code> har exakt samma värde som fältets <code>id</code>.</p>
@@ -108,12 +108,12 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
 <ol><li>Klicka efter det sista <code>&lt;/p&gt;</code> före <code>&lt;/form&gt;</code>, tryck Enter och skriv in det här:</li></ol>
 <pre><code class="lang-html">        &lt;p&gt;
-          &lt;label for="datum"&gt;Vilken lördag vill du gå?&lt;/label&gt;
-          &lt;input type="date" id="datum"&gt;
+          &lt;label for="date"&gt;Vilken lördag vill du gå?&lt;/label&gt;
+          &lt;input type="date" id="date"&gt;
         &lt;/p&gt;
         &lt;p&gt;
-          &lt;label for="antal"&gt;Hur många kommer ni?&lt;/label&gt;
-          &lt;input type="number" id="antal"&gt;
+          &lt;label for="count"&gt;Hur många kommer ni?&lt;/label&gt;
+          &lt;input type="number" id="count"&gt;
         &lt;/p&gt;</code></pre>
 <ol start="2"><li>Spara och titta i Chrome.</li></ol>
 </div></details>
@@ -130,8 +130,8 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
 <ol><li>Klicka efter det sista <code>&lt;/p&gt;</code> före <code>&lt;/form&gt;</code>, tryck Enter och skriv in det här:</li></ol>
 <pre><code class="lang-html">        &lt;p&gt;
-          &lt;label for="kamera"&gt;Vad fotograferar du med?&lt;/label&gt;
-          &lt;select id="kamera"&gt;
+          &lt;label for="camera"&gt;Vad fotograferar du med?&lt;/label&gt;
+          &lt;select id="camera"&gt;
             &lt;option&gt;Mobilen&lt;/option&gt;
             &lt;option&gt;Systemkamera&lt;/option&gt;
             &lt;option&gt;Kompaktkamera&lt;/option&gt;
@@ -139,8 +139,8 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
           &lt;/select&gt;
         &lt;/p&gt;
         &lt;p&gt;
-          &lt;label for="meddelande"&gt;Något vi behöver veta?&lt;/label&gt;
-          &lt;textarea id="meddelande"&gt;&lt;/textarea&gt;
+          &lt;label for="message"&gt;Något vi behöver veta?&lt;/label&gt;
+          &lt;textarea id="message"&gt;&lt;/textarea&gt;
         &lt;/p&gt;</code></pre>
 <ol start="2"><li>Spara och titta i Chrome.</li></ol>
 </div></details>
@@ -160,10 +160,10 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
           &lt;button&gt;Skicka anmälan&lt;/button&gt;
         &lt;/p&gt;</code></pre>
 <ol start="2"><li>Lägg till ordet <code>required</code> sist i tre av fälten, före <code>&gt;</code> (eller före <code> /&gt;</code> om Prettier redan lagt till det):</li></ol>
-<pre><code class="lang-html">          &lt;input type="text" id="namn" required&gt;</code></pre>
-<pre><code class="lang-html">          &lt;input type="email" id="epost" required&gt;</code></pre>
-<pre><code class="lang-html">          &lt;input type="date" id="datum" required&gt;</code></pre>
-<ol start="3"><li>Spara.</li><li>Prova i Chrome: klicka på <strong>Skicka anmälan</strong> utan att fylla i något. Chrome visar en pratbubbla vid <em>Namn</em>: <em>Fyll i det här fältet.</em> (på engelska <em>Please fill out this field.</em>).</li><li>Skriv ditt namn och <code>hej</code> i e-postfältet och klicka igen. Chrome säger att e-postadressen saknar <code>@</code>. Det kommer från <code>type="email"</code>.</li><li>Fyll i namn, en riktig e-postadress och ett datum och klicka. Sidan laddas om och fälten blir tomma, och adressen i Chrome slutar på <code>anmalan.html?</code>. Ingenting skickades någonstans. Så ska det vara.</li><li>Hela filen ser ut så här:</li></ol>
+<pre><code class="lang-html">          &lt;input type="text" id="name" required&gt;</code></pre>
+<pre><code class="lang-html">          &lt;input type="email" id="email" required&gt;</code></pre>
+<pre><code class="lang-html">          &lt;input type="date" id="date" required&gt;</code></pre>
+<ol start="3"><li>Spara.</li><li>Prova i Chrome: klicka på <strong>Skicka anmälan</strong> utan att fylla i något. Chrome visar en pratbubbla vid <em>Namn</em>: <em>Fyll i det här fältet.</em> (på engelska <em>Please fill out this field.</em>).</li><li>Skriv ditt namn och <code>hej</code> i e-postfältet och klicka igen. Chrome säger att e-postadressen saknar <code>@</code>. Det kommer från <code>type="email"</code>.</li><li>Fyll i namn, en riktig e-postadress och ett datum och klicka. Sidan laddas om och fälten blir tomma, och adressen i Chrome slutar på <code>signup.html?</code>. Ingenting skickades någonstans. Så ska det vara.</li><li>Hela filen ser ut så här:</li></ol>
 <pre><code class="lang-html">&lt;!doctype html&gt;
 &lt;html lang="sv"&gt;
   &lt;head&gt;
@@ -182,24 +182,24 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
       &lt;/p&gt;
       &lt;form&gt;
         &lt;p&gt;
-          &lt;label for="namn"&gt;Namn&lt;/label&gt;
-          &lt;input type="text" id="namn" required&gt;
+          &lt;label for="name"&gt;Namn&lt;/label&gt;
+          &lt;input type="text" id="name" required&gt;
         &lt;/p&gt;
         &lt;p&gt;
-          &lt;label for="epost"&gt;E-post&lt;/label&gt;
-          &lt;input type="email" id="epost" required&gt;
+          &lt;label for="email"&gt;E-post&lt;/label&gt;
+          &lt;input type="email" id="email" required&gt;
         &lt;/p&gt;
         &lt;p&gt;
-          &lt;label for="datum"&gt;Vilken lördag vill du gå?&lt;/label&gt;
-          &lt;input type="date" id="datum" required&gt;
+          &lt;label for="date"&gt;Vilken lördag vill du gå?&lt;/label&gt;
+          &lt;input type="date" id="date" required&gt;
         &lt;/p&gt;
         &lt;p&gt;
-          &lt;label for="antal"&gt;Hur många kommer ni?&lt;/label&gt;
-          &lt;input type="number" id="antal"&gt;
+          &lt;label for="count"&gt;Hur många kommer ni?&lt;/label&gt;
+          &lt;input type="number" id="count"&gt;
         &lt;/p&gt;
         &lt;p&gt;
-          &lt;label for="kamera"&gt;Vad fotograferar du med?&lt;/label&gt;
-          &lt;select id="kamera"&gt;
+          &lt;label for="camera"&gt;Vad fotograferar du med?&lt;/label&gt;
+          &lt;select id="camera"&gt;
             &lt;option&gt;Mobilen&lt;/option&gt;
             &lt;option&gt;Systemkamera&lt;/option&gt;
             &lt;option&gt;Kompaktkamera&lt;/option&gt;
@@ -207,8 +207,8 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
           &lt;/select&gt;
         &lt;/p&gt;
         &lt;p&gt;
-          &lt;label for="meddelande"&gt;Något vi behöver veta?&lt;/label&gt;
-          &lt;textarea id="meddelande"&gt;&lt;/textarea&gt;
+          &lt;label for="message"&gt;Något vi behöver veta?&lt;/label&gt;
+          &lt;textarea id="message"&gt;&lt;/textarea&gt;
         &lt;/p&gt;
         &lt;p&gt;
           &lt;button&gt;Skicka anmälan&lt;/button&gt;
@@ -227,12 +227,12 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
 <p>Formuläret ska ha en knapp, <em>Skicka anmälan</em>. Namn, e-post och datum ska vara obligatoriska, så att Chrome säger till om de saknas när man klickar på knappen.</p>
 </div></details>
-<div class="klar"><strong>Så vet du att etappen är klar:</strong> Klickar du på knappen med tomma fält visar Chrome en pratbubbla vid <em>Namn</em>. Med <code>hej</code> som e-postadress klagar Chrome på e-posten. Med allt obligatoriskt ifyllt laddas sidan om, fälten töms och adressen slutar på <code>anmalan.html?</code>. Sidan ser ut som slutbilden.</div>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Klickar du på knappen med tomma fält visar Chrome en pratbubbla vid <em>Namn</em>. Med <code>hej</code> som e-postadress klagar Chrome på e-posten. Med allt obligatoriskt ifyllt laddas sidan om, fälten töms och adressen slutar på <code>signup.html?</code>. Sidan ser ut som slutbilden.</div>
 <hr />
 <h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
 <p>Lägg till ett fält för telefonnummer. Ta reda på (på MDN, Mozillas uppslagsverk om webben på developer.mozilla.org, eller med valfri AI-chatt) vilken <code>type</code> som passar för telefonnummer och vad den gör annorlunda i mobilen än <code>type="text"</code>. Fältet ska ha en kopplad etikett och får inte vara obligatoriskt.</p>
 <h2>Vanliga fel</h2>
-<ul><li><strong>Du klickar på en etikett och inget händer:</strong> <code>for</code> och <code>id</code> är inte exakt likadana. Ett bindestreck (<code>epost</code> mot <code>e-post</code>) eller en stor bokstav räcker för att de inte ska höra ihop. Jämför tecken för tecken.</li><li><strong>Datumfältet är en vanlig textruta utan kalender:</strong> värdet i <code>type</code> är felstavat, till exempel <code>type="data"</code>. Chrome känner inte igen värdet och visar ett vanligt textfält i stället. Rätta stavningen.</li><li><strong>Ingen pratbubbla när du klickar på knappen med tomma fält:</strong> antingen saknas <code>required</code> på fältet, eller så ligger knappen utanför formuläret. <code>&lt;button&gt;</code> måste stå mellan <code>&lt;form&gt;</code> och <code>&lt;/form&gt;</code>.</li></ul>
+<ul><li><strong>Du klickar på en etikett och inget händer:</strong> <code>for</code> och <code>id</code> är inte exakt likadana. Ett bindestreck (<code>email</code> mot <code>e-mail</code>) eller en stor bokstav räcker för att de inte ska höra ihop. Jämför tecken för tecken.</li><li><strong>Datumfältet är en vanlig textruta utan kalender:</strong> värdet i <code>type</code> är felstavat, till exempel <code>type="data"</code>. Chrome känner inte igen värdet och visar ett vanligt textfält i stället. Rätta stavningen.</li><li><strong>Ingen pratbubbla när du klickar på knappen med tomma fält:</strong> antingen saknas <code>required</code> på fältet, eller så ligger knappen utanför formuläret. <code>&lt;button&gt;</code> måste stå mellan <code>&lt;form&gt;</code> och <code>&lt;/form&gt;</code>.</li></ul>
       <footer>Frontend UX26 · STI · vecka 47–50</footer>
     </main>
     <script>

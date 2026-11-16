@@ -36,14 +36,14 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <h1>Övning T2 · Receptet</h1>
 <p class="meta">Tisdag 17/11 · Förmiddag · Vecka 47 · Kursmål KUN5, F5 · ca 45 min</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
 <p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
-<p><strong>Du bygger:</strong> en receptsida för pannkakor, <code>recept.html</code>, i din mapp <code>ovningar</code>. Sidan har rubriker, en punktlista med ingredienser, en numrerad lista med stegen, ett par ord i fetstil och kursiv, en bild på pannkakorna och en länk till Wikipedia. Det är samma byggstenar som du använder i projektet senare i dag.</p>
+<p><strong>Du bygger:</strong> en receptsida för pannkakor, <code>recipe.html</code>, i din mapp <code>ovningar</code>. Filnamnet är på engelska (<em>recipe</em> betyder recept). Namn i koden, som filer och mappar, skriver vi på engelska; texten på sidan skriver vi på svenska. Sidan har rubriker, en punktlista med ingredienser, en numrerad lista med stegen, ett par ord i fetstil och kursiv, en bild på pannkakorna och en länk till Wikipedia. Det är samma byggstenar som du använder i projektet senare i dag.</p>
 <img src="bilder/t2-slutbild.png" alt="Slutbild: receptsidan för pannkakor med bild, ingredienslista, numrerade steg och en länk" />
-<p><strong>Du behöver:</strong> mappen <code>ovningar</code> från Övning T1, öppen i VS Code, och Live Server igång (tillägget i VS Code som visar sidan i Chrome och laddar om den när du sparar). Bildfilen <code>pannkakor.jpg</code>, som ligger bredvid den här övningen i Learnpoint.</p>
+<p><strong>Du behöver:</strong> mappen <code>ovningar</code> från Övning T1, öppen i VS Code, och Live Server igång (tillägget i VS Code som visar sidan i Chrome och laddar om den när du sparar). Bildfilen <code>pancakes.jpg</code>, som ligger bredvid den här övningen i Learnpoint.</p>
 <hr />
 <h2>Etapp 1 · En ny sida med skelettet</h2>
 <p><em>Varför:</em> varje sida är en egen fil, och varje fil behöver samma skelett som <code>index.html</code> från T1.</p>
 <details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
-<ol><li>I VS Code: håll pekaren över <strong>OVNINGAR</strong> i filpanelen (listan över filerna, till vänster) och klicka på ikonen <strong>New File…</strong>. Skriv <code>recept.html</code> och tryck Enter.</li><li>Skriv skelettet i den nya filen. Det är samma som i <code>index.html</code>, bara texten i <code>&lt;title&gt;</code> är ny (du får kopiera från <code>index.html</code> och ändra titeln):</li></ol>
+<ol><li>I VS Code: håll pekaren över <strong>OVNINGAR</strong> i filpanelen (listan över filerna, till vänster) och klicka på ikonen <strong>New File…</strong>. Skriv <code>recipe.html</code> och tryck Enter.</li><li>Skriv skelettet i den nya filen. Det är samma som i <code>index.html</code>, bara texten i <code>&lt;title&gt;</code> är ny (du får kopiera från <code>index.html</code> och ändra titeln):</li></ol>
 <pre><code class="lang-html">&lt;!doctype html&gt;
 &lt;html&gt;
   &lt;head&gt;
@@ -52,15 +52,15 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
   &lt;/head&gt;
   &lt;body&gt;&lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<ol start="3"><li>Spara (Cmd+S / Ctrl+S).</li><li>I Chrome: klicka i adressfältet och ändra slutet av adressen från <code>index.html</code> till <code>recept.html</code>, så att det står <code>http://127.0.0.1:5500/recept.html</code>. Tryck Enter. (Är Live Server inte igång: högerklicka på <code>recept.html</code> i filpanelen och välj <strong>Open with Live Server</strong>.)</li></ol>
+<ol start="3"><li>Spara (Cmd+S / Ctrl+S).</li><li>I Chrome: klicka i adressfältet och ändra slutet av adressen från <code>index.html</code> till <code>recipe.html</code>, så att det står <code>http://127.0.0.1:5500/recipe.html</code>. Tryck Enter. (Är Live Server inte igång: högerklicka på <code>recipe.html</code> i filpanelen och välj <strong>Open with Live Server</strong>.)</li></ol>
 </div></details>
 <details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
-<p>Skapa <code>recept.html</code> i <code>ovningar</code>. Skriv samma skelett som i <code>index.html</code> (doctype, <code>html</code>, <code>head</code> med <code>meta charset</code> och <code>title</code>, <code>body</code>). Titeln ska vara <em>Recept: Pannkakor</em>. Öppna sidan i Chrome via Live Server: adressen är densamma som för <code>index.html</code>, bara filnamnet sist är annorlunda.</p>
+<p>Skapa <code>recipe.html</code> i <code>ovningar</code>. Skriv samma skelett som i <code>index.html</code> (doctype, <code>html</code>, <code>head</code> med <code>meta charset</code> och <code>title</code>, <code>body</code>). Titeln ska vara <em>Recept: Pannkakor</em>. Öppna sidan i Chrome via Live Server: adressen är densamma som för <code>index.html</code>, bara filnamnet sist är annorlunda.</p>
 </div></details>
 <details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
-<p><code>recept.html</code> i <code>ovningar</code> med komplett skelett och titeln <em>Recept: Pannkakor</em>, öppen i Chrome via Live Server.</p>
+<p><code>recipe.html</code> i <code>ovningar</code> med komplett skelett och titeln <em>Recept: Pannkakor</em>, öppen i Chrome via Live Server.</p>
 </div></details>
-<div class="klar"><strong>Så vet du att etappen är klar:</strong> Chrome visar en vit sida på adressen <code>http://127.0.0.1:5500/recept.html</code>, och fliken heter <em>Recept: Pannkakor</em>.</div>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Chrome visar en vit sida på adressen <code>http://127.0.0.1:5500/recipe.html</code>, och fliken heter <em>Recept: Pannkakor</em>.</div>
 <h2>Etapp 2 · Rubriker och ingress</h2>
 <p><em>Varför:</em> rubrikerna är sidans innehållsförteckning, och nivåerna <code>h1</code> och <code>h2</code> talar om vad som är huvudrubrik och vad som är underrubrik.</p>
 <details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
@@ -132,18 +132,18 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <h2>Etapp 5 · Bilden</h2>
 <p><em>Varför:</em> en bild är en egen fil som sidan pekar på, och den behöver en alt-text för den som inte ser bilden.</p>
 <details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
-<ol><li>Ladda ner <code>pannkakor.jpg</code> från Learnpoint. Filen hamnar i mappen Hämtade filer (Downloads).</li><li>Flytta filen till mappen <code>ovningar</code>: dra den från Finder (Mac) eller Utforskaren (Windows) och släpp den på <strong>OVNINGAR</strong> i filpanelen i VS Code. Nu ligger <code>pannkakor.jpg</code> i filpanelen, bredvid <code>recept.html</code>.</li><li>I <code>recept.html</code>: ställ markören i slutet av ingressen, raden som börjar med <code>&lt;p&gt;Tunna pannkakor</code>, tryck Enter och skriv:</li></ol>
-<pre><code class="lang-html">&lt;img src="pannkakor.jpg" alt="En hög pannkakor med sylt och blåbär" /&gt;</code></pre>
+<ol><li>Ladda ner <code>pancakes.jpg</code> från Learnpoint. Filen hamnar i mappen Hämtade filer (Downloads).</li><li>Flytta filen till mappen <code>ovningar</code>: dra den från Finder (Mac) eller Utforskaren (Windows) och släpp den på <strong>OVNINGAR</strong> i filpanelen i VS Code. Nu ligger <code>pancakes.jpg</code> i filpanelen, bredvid <code>recipe.html</code>.</li><li>I <code>recipe.html</code>: ställ markören i slutet av ingressen, raden som börjar med <code>&lt;p&gt;Tunna pannkakor</code>, tryck Enter och skriv:</li></ol>
+<pre><code class="lang-html">&lt;img src="pancakes.jpg" alt="En hög pannkakor med sylt och blåbär" /&gt;</code></pre>
 <ol start="4"><li>Spara och titta i Chrome.</li></ol>
 <p><code>&lt;img&gt;</code> visar en bild. Attributet <code>src</code> (source, källa) är <em>sökvägen</em> till bildfilen, alltså vägen dit från sidan. Här är det bara filnamnet, eftersom bilden ligger i samma mapp som sidan. Attributet <code>alt</code> är bildens alternativtext: den läses upp av en skärmläsare och visas om bilden inte går att ladda. Skriv vad bilden visar. <code>&lt;img&gt;</code> har inget innehåll och därför ingen sluttagg; Prettier, tillägget som ordnar koden när du sparar, sätter <code>/&gt;</code> sist, precis som på <code>&lt;meta /&gt;</code>.</p>
 </div></details>
 <details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
-<ol><li>Hämta <code>pannkakor.jpg</code> från Learnpoint och lägg den i <code>ovningar</code>, bredvid <code>recept.html</code>.</li><li>Efter ingressen: ett <code>img</code>. Attributet som pekar på bildfilen heter <code>src</code>; filen ligger i samma mapp, så filnamnet räcker. Attributet <code>alt</code> beskriver vad bilden visar.</li></ol>
+<ol><li>Hämta <code>pancakes.jpg</code> från Learnpoint och lägg den i <code>ovningar</code>, bredvid <code>recipe.html</code>.</li><li>Efter ingressen: ett <code>img</code>. Attributet som pekar på bildfilen heter <code>src</code>; filen ligger i samma mapp, så filnamnet räcker. Attributet <code>alt</code> beskriver vad bilden visar.</li></ol>
 </div></details>
 <details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
-<p>Bilden <code>pannkakor.jpg</code> (från Learnpoint) visas efter ingressen och har en alt-text som beskriver vad den visar.</p>
+<p>Bilden <code>pancakes.jpg</code> (från Learnpoint) visas efter ingressen och har en alt-text som beskriver vad den visar.</p>
 </div></details>
-<div class="klar"><strong>Så vet du att etappen är klar:</strong> Bilden på pannkakorna syns under ingressen. Ändra tillfälligt <code>src</code> till <code>pannkaka.jpg</code> (utan r) och spara: nu syns en liten trasig bild och din alt-text i stället. Ändra tillbaka.</div>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Bilden på pannkakorna syns under ingressen. Ändra tillfälligt <code>src</code> till <code>pancake.jpg</code> (utan s) och spara: nu syns en liten trasig bild och din alt-text i stället. Ändra tillbaka.</div>
 <h2>Etapp 6 · Länken till Wikipedia</h2>
 <p><em>Varför:</em> länkar är det som gör webben till en väv, och en länk till en annan webbplats, alltså någon annans sidor på internet, behöver hela adressen.</p>
 <details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
@@ -155,7 +155,7 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <p>Du kan också skriva allt på en rad. När raden blir längre än 80 tecken delar Prettier upp den så här när du sparar. Det ändrar ingenting i Chrome; radbrytningar i koden syns inte på sidan.</p>
 <ol start="2"><li>Spara och titta i Chrome. Klicka på länken <em>Wikipedia</em>. Gå sedan tillbaka med bakåtpilen i Chrome.</li></ol>
 <p><code>&lt;a&gt;</code> är en länk (a för anchor, ankare). Texten mellan taggarna är det man klickar på. Attributet <code>href</code> är adressen länken går till. Till en annan webbplats skriver du hela adressen, med <code>https://</code> först.</p>
-<p>Hela <code>recept.html</code> ser nu ut så här:</p>
+<p>Hela <code>recipe.html</code> ser nu ut så här:</p>
 <pre><code class="lang-html">&lt;!doctype html&gt;
 &lt;html&gt;
   &lt;head&gt;
@@ -165,7 +165,7 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
   &lt;body&gt;
     &lt;h1&gt;Pannkakor&lt;/h1&gt;
     &lt;p&gt;Tunna pannkakor till fyra personer. Det tar ungefär en halvtimme.&lt;/p&gt;
-    &lt;img src="pannkakor.jpg" alt="En hög pannkakor med sylt och blåbär" /&gt;
+    &lt;img src="pancakes.jpg" alt="En hög pannkakor med sylt och blåbär" /&gt;
     &lt;h2&gt;Ingredienser&lt;/h2&gt;
     &lt;ul&gt;
       &lt;li&gt;3 dl vetemjöl&lt;/li&gt;
@@ -201,7 +201,7 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
 <p>Lägg till en underrubrik <em>Tips</em> sist på sidan, och under den en <code>&lt;h3&gt;</code> per tips (till exempel <em>Blåbärspannkakor</em> och <em>Glutenfritt</em>) med ett kort stycke under varje. Gör sedan ingredienslistan mer detaljerad med en lista inuti en lista: punkten <em>smör till stekpannan</em> får en egen liten punktlista under sig med <em>eller margarin</em> och <em>eller rapsolja</em>. Den inre listan ska ligga <em>inuti</em> <code>&lt;li&gt;</code>, före <code>&lt;/li&gt;</code>. Kontrollera i Elements att nästlingen blev som du tänkt.</p>
 <h2>Vanliga fel</h2>
-<ul><li><strong>Bilden syns inte, bara en liten ikon och alt-texten:</strong> Chrome hittar inte filen. Jämför <code>src</code> med filnamnet i filpanelen, tecken för tecken: <code>pannkakor.jpg</code>, inte <code>Pannkakor.jpg</code> eller <code>pannkakor.jpeg</code>. Kontrollera också att bilden ligger i <code>ovningar</code> och inte kvar i Hämtade filer.</li><li><strong>Listan har inga punkter eller siffror, allt står på en rad:</strong> <code>&lt;li&gt;</code> saknas, eller ligger utanför <code>&lt;ul&gt;</code>/<code>&lt;ol&gt;</code>. Varje sak i listan ska omslutas av <code>&lt;li&gt;</code> och <code>&lt;/li&gt;</code>, och alla <code>&lt;li&gt;</code> ska ligga mellan <code>&lt;ul&gt;</code> och <code>&lt;/ul&gt;</code> (eller <code>&lt;ol&gt;</code> och <code>&lt;/ol&gt;</code>).</li><li><strong>Länken öppnar inte Wikipedia, Chrome visar "Cannot GET":</strong> <code>https://</code> saknas i <code>href</code>. Utan den tror Chrome att <code>sv.wikipedia.org/…</code> är en fil i din egen mapp. Skriv hela adressen.</li></ul>
+<ul><li><strong>Bilden syns inte, bara en liten ikon och alt-texten:</strong> Chrome hittar inte filen. Jämför <code>src</code> med filnamnet i filpanelen, tecken för tecken: <code>pancakes.jpg</code>, inte <code>Pancakes.jpg</code> eller <code>pancakes.jpeg</code>. Kontrollera också att bilden ligger i <code>ovningar</code> och inte kvar i Hämtade filer.</li><li><strong>Listan har inga punkter eller siffror, allt står på en rad:</strong> <code>&lt;li&gt;</code> saknas, eller ligger utanför <code>&lt;ul&gt;</code>/<code>&lt;ol&gt;</code>. Varje sak i listan ska omslutas av <code>&lt;li&gt;</code> och <code>&lt;/li&gt;</code>, och alla <code>&lt;li&gt;</code> ska ligga mellan <code>&lt;ul&gt;</code> och <code>&lt;/ul&gt;</code> (eller <code>&lt;ol&gt;</code> och <code>&lt;/ol&gt;</code>).</li><li><strong>Länken öppnar inte Wikipedia, Chrome visar "Cannot GET":</strong> <code>https://</code> saknas i <code>href</code>. Utan den tror Chrome att <code>sv.wikipedia.org/…</code> är en fil i din egen mapp. Skriv hela adressen.</li></ul>
       <footer>Frontend UX26 · STI · vecka 47–50</footer>
     </main>
     <script>

@@ -62,8 +62,8 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
       &lt;h1&gt;Fotoklubben Bländaren&lt;/h1&gt;
       &lt;nav&gt;
         &lt;a href="index.html"&gt;Start&lt;/a&gt;
-        &lt;a href="traffar.html"&gt;Träffar&lt;/a&gt;
-        &lt;a href="bli-medlem.html"&gt;Bli medlem&lt;/a&gt;
+        &lt;a href="meetups.html"&gt;Träffar&lt;/a&gt;
+        &lt;a href="join.html"&gt;Bli medlem&lt;/a&gt;
       &lt;/nav&gt;
     &lt;/header&gt;</code></pre>
 <ol start="7"><li>Spara med Cmd+S (Mac) eller Ctrl+S (Windows). Live Server laddar om sidan i Chrome av sig själv.</li></ol>
@@ -156,8 +156,8 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
       &lt;h1&gt;Fotoklubben Bländaren&lt;/h1&gt;
       &lt;nav&gt;
         &lt;a href="index.html"&gt;Start&lt;/a&gt;
-        &lt;a href="traffar.html"&gt;Träffar&lt;/a&gt;
-        &lt;a href="bli-medlem.html"&gt;Bli medlem&lt;/a&gt;
+        &lt;a href="meetups.html"&gt;Träffar&lt;/a&gt;
+        &lt;a href="join.html"&gt;Bli medlem&lt;/a&gt;
       &lt;/nav&gt;
     &lt;/header&gt;
     &lt;main&gt;
@@ -220,7 +220,7 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
 <div class="klar"><strong>Så vet du att etappen är klar:</strong> Sökningen på <code>div</code> i VS Code ger <em>No results</em>. DevTools → Elements visar <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code> och <code>&lt;footer&gt;</code> direkt under <code>&lt;body&gt;</code>. Sidan ser ut som slutbilden: en stor rubrik överst, tre lika stora avsnittsrubriker och tre lika stora, mindre träffrubriker.</div>
 <hr />
 <h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
-<p>Gör länken <em>Träffar</em> sann: skapa <code>traffar.html</code> i <code>r1-start</code> med samma <code>header</code> och <code>nav</code> som startsidan och en <code>main</code> där varje träff är en <code>article</code>. Fundera sedan på om avsnittet <em>Bli medlem</em> också borde vara en <code>article</code>. Vad talar för, och vad talar emot?</p>
+<p>Gör länken <em>Träffar</em> sann: skapa <code>meetups.html</code> i <code>r1-start</code> med samma <code>header</code> och <code>nav</code> som startsidan och en <code>main</code> där varje träff är en <code>article</code>. Fundera sedan på om avsnittet <em>Bli medlem</em> också borde vara en <code>article</code>. Vad talar för, och vad talar emot?</p>
 <h2>Vanliga fel</h2>
 <ul><li><strong>Sidan ser konstig ut efter att du sparat, och Prettier ändrar inte indraget längre:</strong> du har bytt en starttagg men inte dess sluttagg (eller tvärtom), så taggarna går inte ihop. Prettier kan inte formatera en fil där taggarna inte går ihop, och det står ett fel vid <em>Prettier</em> längst ner i VS Code. Leta upp paret: starttaggen och sluttaggen står lika långt in. Rätta och spara igen.</li><li><strong>Två eller tre rubriker är lika stora som klubbnamnet:</strong> någon träffrubrik är fortfarande en <code>h1</code> eller <code>h2</code>. Det ska finnas exakt en <code>h1</code> på sidan, och träffarna ska vara <code>h3</code>.</li><li><strong>Du klickar på <em>Träffar</em> eller <em>Bli medlem</em> och får <em>Cannot GET</em>:</strong> sidorna finns inte i övningen. Det är väntat och inget fel i din kod. Gå tillbaka med bakåtpilen.</li></ul>
       <footer>Frontend UX26 · STI · vecka 47–50</footer>
