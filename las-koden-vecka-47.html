@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Läs koden · Vecka 47 – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+img[src*="mobil"]{max-width:300px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Läs koden · Vecka 47</h1>
+<p class="meta">Tisdag 17/11 · Eftermiddag, i lag · Vecka 47 · Kursmål KUN5, KOM5 · ca 30 min</p>
+<p><strong>Så här gör du:</strong> Varje fråga visar en bild av hur Chrome visar en liten bit HTML, och tre kodalternativ, A, B och C. Ett av dem ger exakt bilden. Titta noga på bilden, läs alla tre alternativen och välj. Fråga 4, 8 och 9 är tvärtom: en kod och tre bilder, och du väljer bilden som koden ger. Gör frågorna tillsammans med ditt lag. Kom överens om ett svar innan du går vidare, och se till att du kan säga <em>varför</em> de andra två alternativen är fel. Facit står längst ner.</p>
+<p>Koden i alternativen är bara det som står inuti <code>&lt;body&gt;</code>. Skelettet runt omkring (<code>&lt;!doctype html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> …) är detsamma i alla och syns inte på sidan. Ingen av sidorna har någon egen formgivning, så det du ser är webbläsarens egna standardutseende för varje element: rubriker är stora och feta, listor har punkter eller siffror, länkar är blå och understrukna.</p>
+<hr />
+<h2>Fråga 1 · Museets startsida</h2>
+<img src="bilder/las-koden-01.png" alt="Fråga 1: en stor fet rubrik Stadsmuseet och under den ett stycke om öppettider" />
+<p>Vilken kod ger bilden?</p>
+<p><strong>A</strong></p>
+<pre><code class="lang-html">&lt;p&gt;Stadsmuseet&lt;/p&gt;
+&lt;p&gt;Öppet tisdag till söndag klockan 10–17.&lt;/p&gt;</code></pre>
+<p><strong>B</strong></p>
+<pre><code class="lang-html">&lt;h1&gt;Stadsmuseet&lt;/h1&gt;
+&lt;p&gt;Öppet tisdag till söndag klockan 10–17.&lt;/p&gt;</code></pre>
+<p><strong>C</strong></p>
+<pre><code class="lang-html">&lt;h3&gt;Stadsmuseet&lt;/h3&gt;
+&lt;p&gt;Öppet tisdag till söndag klockan 10–17.&lt;/p&gt;</code></pre>
+<h2>Fråga 2 · Vägen till museet</h2>
+<img src="bilder/las-koden-02.png" alt="Fråga 2: rubriken Så hittar du till museet och en lista med siffrorna 1 till 3" />
+<p>Vilken kod ger bilden?</p>
+<p><strong>A</strong></p>
+<pre><code class="lang-html">&lt;h2&gt;Så hittar du till museet&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Ta buss 4 mot Hamnen.&lt;/li&gt;
+  &lt;li&gt;Gå av vid Torget.&lt;/li&gt;
+  &lt;li&gt;Gå till vänster förbi kyrkan.&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<p><strong>B</strong></p>
+<pre><code class="lang-html">&lt;h2&gt;Så hittar du till museet&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Ta buss 4 mot Hamnen.&lt;/li&gt;
+  &lt;li&gt;Gå av vid Torget.&lt;/li&gt;
+  &lt;li&gt;Gå till vänster förbi kyrkan.&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p><strong>C</strong></p>
+<pre><code class="lang-html">&lt;h2&gt;Så hittar du till museet&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;1. Ta buss 4 mot Hamnen.&lt;/li&gt;
+  &lt;li&gt;2. Gå av vid Torget.&lt;/li&gt;
+  &lt;li&gt;3. Gå till vänster förbi kyrkan.&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<h2>Fråga 3 · Konserten</h2>
+<img src="bilder/las-koden-03.png" alt="Fråga 3: ett stycke där bara orden klockan 19 är i fetstil" />
+<p>Vilken kod ger bilden?</p>
+<p><strong>A</strong></p>
+<pre><code class="lang-html">&lt;p&gt;Konserten börjar &lt;em&gt;klockan 19&lt;/em&gt;. Dörrarna öppnar en timme innan.&lt;/p&gt;</code></pre>
+<p><strong>B</strong></p>
+<pre><code class="lang-html">&lt;p&gt;&lt;strong&gt;Konserten börjar klockan 19.&lt;/strong&gt; Dörrarna öppnar en timme innan.&lt;/p&gt;</code></pre>
+<p><strong>C</strong></p>
+<pre><code class="lang-html">&lt;p&gt;Konserten börjar &lt;strong&gt;klockan 19&lt;/strong&gt;. Dörrarna öppnar en timme innan.&lt;/p&gt;</code></pre>
+<h2>Fråga 4 · Biljetten (en kod, tre bilder)</h2>
+<pre><code class="lang-html">&lt;p&gt;Biljetten gäller &lt;em&gt;bara&lt;/em&gt; i dag.&lt;/p&gt;</code></pre>
+<img src="bilder/las-koden-04.png" alt="Fråga 4: tre rutor. A: ordet bara i fetstil. B: ordet bara kursivt. C: ordet bara som en rubrik på egen rad" />
+<p>Vilken bild, A, B eller C, visar vad koden ger?</p>
+<h2>Fråga 5 · Loppisen</h2>
+<img src="bilder/las-koden-05.png" alt="Fråga 5: två stycken. Det första börjar med Loppisen är i vanlig stil, och från ordet stängd är resten av texten fetstil, också hela det andra stycket" />
+<p>Vilken kod ger bilden? Titta noga på var fetstilen börjar och slutar.</p>
+<p><strong>A</strong></p>
+<pre><code class="lang-html">&lt;p&gt;Loppisen är &lt;strong&gt;stängd i dag.&lt;/p&gt;
+&lt;p&gt;Välkommen tillbaka i morgon!&lt;/p&gt;</code></pre>
+<p><strong>B</strong></p>
+<pre><code class="lang-html">&lt;p&gt;Loppisen är &lt;strong&gt;stängd&lt;/strong&gt; i dag.&lt;/p&gt;
+&lt;p&gt;Välkommen tillbaka i morgon!&lt;/p&gt;</code></pre>
+<p><strong>C</strong></p>
+<pre><code class="lang-html">&lt;p&gt;Loppisen är &lt;strong&gt;stängd&lt;/strong&gt; i dag.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Välkommen tillbaka i morgon!&lt;/strong&gt;&lt;/p&gt;</code></pre>
+<h2>Fråga 6 · Våningsplanen</h2>
+<img src="bilder/las-koden-06.png" alt="Fråga 6: rubriken Utställningar och en punktlista: Plan 1, med två indragna punkter Vikingar och Medeltiden under sig, och sist Plan 2" />
+<p>Vilken kod ger bilden?</p>
+<p><strong>A</strong></p>
+<pre><code class="lang-html">&lt;h2&gt;Utställningar&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Plan 1&lt;/li&gt;
+  &lt;li&gt;Vikingar&lt;/li&gt;
+  &lt;li&gt;Medeltiden&lt;/li&gt;
+  &lt;li&gt;Plan 2&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p><strong>B</strong></p>
+<pre><code class="lang-html">&lt;h2&gt;Utställningar&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    Plan 1
+    &lt;ol&gt;
+      &lt;li&gt;Vikingar&lt;/li&gt;
+      &lt;li&gt;Medeltiden&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Plan 2&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p><strong>C</strong></p>
+<pre><code class="lang-html">&lt;h2&gt;Utställningar&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    Plan 1
+    &lt;ul&gt;
+      &lt;li&gt;Vikingar&lt;/li&gt;
+      &lt;li&gt;Medeltiden&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Plan 2&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<h2>Fråga 7 · Länken till utställningen</h2>
+<img src="bilder/las-koden-07.png" alt="Fråga 7: ett stycke där bara ordet utställningen är blått och understruket" />
+<p>Vilken kod ger bilden?</p>
+<p><strong>A</strong></p>
+<pre><code class="lang-html">&lt;p&gt;Läs mer på sidan om &lt;a&gt;utställningen&lt;/a&gt;.&lt;/p&gt;</code></pre>
+<p><strong>B</strong></p>
+<pre><code class="lang-html">&lt;p&gt;Läs mer på sidan om &lt;a href="exhibition.html"&gt;utställningen&lt;/a&gt;.&lt;/p&gt;</code></pre>
+<p><strong>C</strong></p>
+<pre><code class="lang-html">&lt;p&gt;&lt;a href="exhibition.html"&gt;Läs mer på sidan om utställningen.&lt;/a&gt;&lt;/p&gt;</code></pre>
+<h2>Fråga 8 · Hamnfestivalen (en kod, tre bilder)</h2>
+<pre><code class="lang-html">&lt;p&gt;
+  Hamnfestivalen
+  pågår hela
+  helgen.
+&lt;/p&gt;</code></pre>
+<img src="bilder/las-koden-08.png" alt="Fråga 8: tre rutor. A: texten på tre rader tätt under varandra. B: tre korta stycken med luft emellan. C: hela texten på en rad" />
+<p>Vilken bild, A, B eller C, visar vad koden ger?</p>
+<h2>Fråga 9 · Bilden som inte syns (en kod, tre bilder)</h2>
+<p>Så här ser mappen ut:</p>
+<pre><code class="lang-">ovningar/
+├── recipe.html
+└── pancakes.jpg</code></pre>
+<p>Och det här står i <code>recipe.html</code>:</p>
+<pre><code class="lang-html">&lt;img src="images/pancakes.jpg" alt="Pannkakor med sylt" /&gt;</code></pre>
+<img src="bilder/las-koden-09.png" alt="Fråga 9: tre rutor. A: bilden på pannkakorna. B: en liten ikon för trasig bild och texten Pannkakor med sylt. C: texten images/pancakes.jpg" />
+<p>Vilken bild, A, B eller C, visar vad Chrome visar?</p>
+<h2>Fråga 10 · Loppis på torget</h2>
+<img src="bilder/las-koden-10.png" alt="Fråga 10: stor rubrik Loppis på torget, mindre rubrik Det här säljs med en punktlista, mindre rubrik Så hittar du med en numrerad lista" />
+<p>Vilken kod ger bilden?</p>
+<p><strong>A</strong></p>
+<pre><code class="lang-html">&lt;h1&gt;Loppis på torget&lt;/h1&gt;
+&lt;h2&gt;Det här säljs&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Böcker&lt;/li&gt;
+  &lt;li&gt;Kläder&lt;/li&gt;
+  &lt;li&gt;Leksaker&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Så hittar du&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Gå av bussen vid Centralen.&lt;/li&gt;
+  &lt;li&gt;Gå mot torget.&lt;/li&gt;
+  &lt;li&gt;Leta efter de gula tälten.&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<p><strong>B</strong></p>
+<pre><code class="lang-html">&lt;h1&gt;Loppis på torget&lt;/h1&gt;
+&lt;h2&gt;Det här säljs&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Böcker&lt;/li&gt;
+  &lt;li&gt;Kläder&lt;/li&gt;
+  &lt;li&gt;Leksaker&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Så hittar du&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Gå av bussen vid Centralen.&lt;/li&gt;
+  &lt;li&gt;Gå mot torget.&lt;/li&gt;
+  &lt;li&gt;Leta efter de gula tälten.&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p><strong>C</strong></p>
+<pre><code class="lang-html">&lt;h1&gt;Loppis på torget&lt;/h1&gt;
+&lt;h1&gt;Det här säljs&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Böcker&lt;/li&gt;
+  &lt;li&gt;Kläder&lt;/li&gt;
+  &lt;li&gt;Leksaker&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Så hittar du&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;Gå av bussen vid Centralen.&lt;/li&gt;
+  &lt;li&gt;Gå mot torget.&lt;/li&gt;
+  &lt;li&gt;Leta efter de gula tälten.&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<hr />
+<h2>Facit</h2>
+<details class="" data-niva=""><summary>Visa facit (titta först när laget har bestämt sig)</summary><div class="inner">
+<ol><li><strong>B.</strong> <code>&lt;h1&gt;</code> är den största rubriknivån. A har ingen rubrik alls, bara två stycken i samma storlek. C är en rubrik, men <code>&lt;h3&gt;</code> är bara lite större än vanlig text.</li><li><strong>A.</strong> Siffrorna kommer från <code>&lt;ol&gt;</code>, den numrerade listan. B ger punkter i stället för siffror. C ger både punkter <em>och</em> siffror, eftersom siffrorna står i texten. Skriv aldrig siffrorna själv; <code>&lt;ol&gt;</code> räknar åt dig.</li><li><strong>C.</strong> Bara <em>klockan 19</em> ligger inuti <code>&lt;strong&gt;</code>, så bara de orden blir feta. A ger kursiv stil (<code>&lt;em&gt;</code>). B gör hela första meningen fet.</li><li><strong>B.</strong> <code>&lt;em&gt;</code> visas kursivt. Fetstil (A) kommer från <code>&lt;strong&gt;</code>, och en rubrik på egen rad (C) kräver ett rubrikelement.</li><li><strong>A.</strong> <code>&lt;strong&gt;</code> stängs aldrig, det saknas <code>&lt;/strong&gt;</code>. Webbläsaren låter fetstilen fortsätta, också in i nästa stycke. B gör bara <em>stängd</em> fet. C gör <em>stängd</em> och hela andra stycket fett, men inte <em>i dag.</em> Varje starttagg behöver sin sluttagg. (Prettier vägrar ordna koden i A när du sparar, och det är en ledtråd om att något är fel.)</li><li><strong>C.</strong> Den inre listan ligger <em>inuti</em> <code>&lt;li&gt;Plan 1 … &lt;/li&gt;</code>, och därför dras den in under Plan 1. En lista inuti en annan lista får andra punkter (ringar). A är en enda platt lista utan indrag. B är också nästlad, men den inre listan är <code>&lt;ol&gt;</code> och får siffror.</li><li><strong>B.</strong> Bara <em>utställningen</em> ligger inuti <code>&lt;a&gt;</code>, och <code>href</code> gör det till en länk. A har ingen <code>href</code> och blir därför inte blå; det är ingen länk för webbläsaren. C gör hela meningen till en länk.</li><li><strong>C.</strong> Radbrytningar och extra mellanslag i koden syns inte på sidan; webbläsaren gör om dem till ett vanligt mellanslag. Vill du ha nya stycken (B) skriver du flera <code>&lt;p&gt;</code>. (Prettier skulle för övrigt göra om koden till en enda rad när du sparar.)</li><li><strong>B.</strong> <code>src</code> säger att bilden ligger i mappen <code>images</code>, men den ligger bredvid <code>recipe.html</code>. Chrome hittar inte filen och visar alt-texten med en ikon för trasig bild. Rätt sökväg här är bara <code>pancakes.jpg</code>, eller så flyttar man bilden till en mapp <code>images</code>. Texten i <code>src</code> (C) visas aldrig på sidan.</li><li><strong>A.</strong> Underrubrikerna är <code>&lt;h2&gt;</code> och därför mindre än <code>&lt;h1&gt;</code>; först kommer punktlistan (<code>&lt;ul&gt;</code>), sedan den numrerade (<code>&lt;ol&gt;</code>). B har bytt plats på listtyperna. C har tre <code>&lt;h1&gt;</code> som blir lika stora. En sida ska ha en <code>&lt;h1&gt;</code>.</li></ol>
+</div></details>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>
