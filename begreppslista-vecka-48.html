@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Begreppslista vecka 48 – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+img[src*="mobil"]{max-width:300px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Begreppslista vecka 48</h1>
+<p class="meta">Klipp 5–8 · Före tisdag 24/11: klipp 5 och 6 · Före torsdag 26/11: klipp 7 och 8</p>
+<p>Här är orden som är nya i klippen, i den ordning de dyker upp. Du behöver inte kunna dem utantill. Slå upp ett ord här när du hör det i klippet, och prova efteråt om du kan förklara vart och ett med egna ord. Siffran inom parentes är instuderingsfrågan där ordet kommer tillbaka.</p>
+<h2>Klipp 5 · CSS: selektorer, egenskaper och lådmodellen</h2>
+<p><strong>Stilmall</strong> – filen där CSS:en står. Den heter <code>style.css</code>, ligger i samma mapp som html-filerna och kopplas till varje sida med en <code>link</code>-rad i <code>head</code>. (fråga 1)</p>
+<p><strong>Regel</strong> – en selektor, och mellan måsvingarna det som ska gälla för det selektorn pekar ut. (fråga 2)</p>
+<p><strong>Selektor</strong> – början på regeln, den del som säger vad regeln gäller. <code>label</code> gäller alla <code>label</code> på sidan, och <code>nav a</code> gäller länkar som ligger inuti <code>nav</code>. (fråga 3)</p>
+<p><strong>Egenskap och värde</strong> – det som står mellan måsvingarna: en egenskap, kolon, ett värde och semikolon, till exempel <code>max-width: 800px;</code>. Tillsammans kallas de en deklaration. (fråga 2)</p>
+<p><strong>Klass</strong> – ett namn du själv hittar på och sätter på element med attributet <code>class</code>. I CSS skriver du samma namn med en punkt före, till exempel <code>.concert</code>. (fråga 3)</p>
+<p><strong>Kaskaden</strong> – det som avgör när två regler säger emot varandra. En regel längre ner i filen vinner över en tidigare, och en klass vinner över ett element. (fråga 3)</p>
+<p><strong>Lådmodellen</strong> – allt på en webbsida är en låda med fyra lager: innehåll, padding, border och margin. (fråga 4)</p>
+<p><strong>Padding och margin</strong> – padding är luften innanför kanten, margin är luften utanför, den som håller avstånd till andra lådor. (fråga 4)</p>
+<h2>Klipp 6 · Färg, typografi, enheter och DevTools</h2>
+<p><strong>Hexkod</strong> – en färg skriven som en fyrkant och sex tecken, två för rött, två för grönt och två för blått, till exempel <code>#2e1f47</code>. (fråga 5)</p>
+<p>**<code>color</code> och <code>background-color</code>** – textens färg och bakgrundens färg. (fråga 5)</p>
+<p><strong>Kontrast</strong> – skillnaden mellan textens färg och bakgrundens. WCAG kräver minst 4,5 till 1 för vanlig text. (fråga 6)</p>
+<p>**<code>font-family</code>** – en lista med typsnitt. Webbläsaren tar det första som finns på datorn, och sist står en reserv som alltid finns. (fråga 7)</p>
+<p>**<code>rem</code>** – en enhet som utgår från webbläsarens textstorlek, normalt 16 pixlar. Har någon ställt in större text i sin webbläsare växer <code>rem</code> med. (fråga 7)</p>
+<p><strong>Hover</strong> – <code>a:hover</code> betyder: när muspekaren är över länken. Regeln gäller bara medan du håller musen där. (fråga 8)</p>
+<p><strong>Styles</strong> – rutan i DevTools där du ser reglerna för ett element och kan prova ändringar. Det du ändrar där försvinner när du laddar om sidan. (fråga 8)</p>
+<h2>Klipp 7 · Flexbox</h2>
+<p><strong>Flexbox</strong> – den del av CSS som lägger saker bredvid varandra. (fråga 9)</p>
+<p><strong>Behållare och barn</strong> – behållaren är lådan runt det som ska ligga på rad, och barnen är elementen direkt inuti den. <code>display: flex</code> sätter du på behållaren. (fråga 9)</p>
+<p>**<code>div</code>** – ett element utan betydelse, en låda bara för layoutens skull. Därför får den en klass. (fråga 9)</p>
+<p>**<code>flex-direction</code>** – bestämmer åt vilket håll barnen läggs. <code>row</code> lägger dem bredvid varandra och är standard, <code>column</code> lägger dem under varandra. (fråga 10)</p>
+<p>**<code>justify-content</code>** – fördelar barnen längs raden. <code>space-between</code> lägger det första längst till vänster och det sista längst till höger, med luften emellan. (fråga 11)</p>
+<p>**<code>align-items</code>** – <code>center</code> centrerar barnen på höjden, så att en hög och en låg sak står mitt för varandra. (fråga 11)</p>
+<p>**<code>flex-wrap</code>** – <code>wrap</code> låter barnen fortsätta på nästa rad när de inte får plats, som ord i en text. (fråga 12)</p>
+<p>**<code>flex: 1</code>** – sätts på barnen, inte på behållaren. Då delar de lika på bredden. (fråga 12)</p>
+<h2>Klipp 8 · Responsivt: mobil först och media queries</h2>
+<p><strong>Responsiv</strong> – en sida som anpassar sig efter skärmens bredd. Ingenting döljs i mobilen, det flyttas om. (fråga 14)</p>
+<p><strong>Viewport</strong> – den yta på skärmen där sidan visas. Viewport-raden i <code>head</code> gör ytan lika bred som skärmen, så att mobilen inte förminskar hela sidan. (fråga 13)</p>
+<p><strong>Mobil först</strong> – reglerna du skriver som vanligt, utan villkor, är mobilens. Sedan lägger du till det som ska ändras när skärmen är bredare. (fråga 14)</p>
+<p><strong>Media query</strong> – ett villkor för CSS, skrivet med <code>@media</code>. Reglerna inuti gäller bara när villkoret stämmer. (fråga 15)</p>
+<p>**<code>min-width</code>** – villkoret vi använder i media queryn. <code>min-width: 700px</code> betyder: när skärmen är minst 700 pixlar bred. (fråga 15)</p>
+<p><strong>Brytpunkt</strong> – bredden där layouten byter, hos oss 700 pixlar. (fråga 15)</p>
+<p><strong>Enhetsläget</strong> – läget i DevTools där du ser sidan i mobilbredd. (fråga 16)</p>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>

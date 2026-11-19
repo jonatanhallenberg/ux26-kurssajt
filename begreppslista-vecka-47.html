@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Begreppslista vecka 47 – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+img[src*="mobil"]{max-width:300px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Begreppslista vecka 47</h1>
+<p class="meta">Klipp 1–4 · Före tisdag 17/11: klipp 1 och 2 · Före torsdag 19/11: klipp 3 och 4</p>
+<p>Här är orden som är nya i klippen, i den ordning de dyker upp. Du behöver inte kunna dem utantill. Slå upp ett ord här när du hör det i klippet, och prova efteråt om du kan förklara vart och ett med egna ord. Siffran inom parentes är instuderingsfrågan där ordet kommer tillbaka.</p>
+<h2>Klipp 1 · Vad händer när du öppnar en webbsida</h2>
+<p><strong>Webbläsare</strong> – programmet som visar webbsidor, till exempel Chrome, Safari eller Edge. (fråga 1)</p>
+<p><strong>Server</strong> – en dator som alltid är på och lämnar ut filer när en webbläsare ber om dem. (fråga 1)</p>
+<p><strong>URL</strong> – ett annat ord för adress. Den pekar på en fil på en server. (fråga 3)</p>
+<p>**<code>index.html</code>** – filen som servern skickar när adressen slutar med ett snedstreck. Därför heter startsidan så. (fråga 3)</p>
+<p><strong>HTML, CSS och JavaScript</strong> – de tre språk som en webbsida byggs av. HTML är innehållet och strukturen, CSS utseendet och JavaScript beteendet. (fråga 2)</p>
+<p><strong>Visa källa</strong> – ett sätt att se filen precis som servern skickade den. (fråga 4)</p>
+<p><strong>DevTools</strong> – utvecklarverktygen i Chrome. Där ser du sidan som webbläsaren har byggt upp just nu, och du kan prova ändringar som bara syns hos dig. (fråga 4)</p>
+<h2>Klipp 2 · HTML: element, taggar, attribut</h2>
+<p><strong>Tagg</strong> – märkningen som säger vad ett innehåll är, till exempel <code>&lt;h1&gt;</code>. En starttagg öppnar, och en sluttagg med snedstreck, <code>&lt;/h1&gt;</code>, stänger. (fråga 5)</p>
+<p><strong>Element</strong> – starttagg, innehåll och sluttagg tillsammans. (fråga 5)</p>
+<p><strong>Nästling</strong> – när ett element ligger inuti ett annat. Det som öppnas sist stängs först. (fråga 7)</p>
+<p><strong>Attribut</strong> – extra information i starttaggen: ett namn, ett likhetstecken och ett värde inom citattecken, till exempel <code>src</code> på en bild. (fråga 6)</p>
+<p><strong>Skelettet</strong> – raderna som varje HTML-sida börjar med. De ser likadana ut i alla dina filer. (fråga 8)</p>
+<p>**<code>head</code> och <code>body</code>** – skelettets två delar. I <code>head</code> står information om sidan som inte syns på själva sidan, och i <code>body</code> står allt som syns. (fråga 8)</p>
+<h2>Klipp 3 · Semantisk HTML, bilder, länkar och formulär</h2>
+<p><strong>Semantisk HTML</strong> – att välja element efter vad innehållet är, till exempel en rubrik, en meny eller en sidfot, och inte efter hur det ska se ut. (fråga 9)</p>
+<p><strong>Landmärke</strong> – en av sidans stora delar: <code>header</code>, <code>nav</code>, <code>main</code> och <code>footer</code>. En skärmläsare kan hoppa direkt mellan dem. (fråga 10)</p>
+<p><strong>Sökväg</strong> – beskrivningen av var en fil ligger, räknat från filen du står i. En bild i en undermapp får sökvägen mappens namn, ett snedstreck och filens namn. (fråga 11)</p>
+<p><strong>Relativ länk</strong> – en länk som bara anger ett filnamn eller en sökväg, utan <code>https://</code> först. Den fungerar både på din dator och på internet. Motsatsen heter absolut länk och har hela adressen. (fråga 11)</p>
+<p><strong>Alt-text</strong> – texten i attributet <code>alt</code> som beskriver en bild för den som inte ser den. (fråga 12)</p>
+<p>**Etikett (<code>label</code>)** – texten som säger vad ett fält i ett formulär är till för. Etiketten kopplas till fältet genom att <code>for</code> på etiketten och <code>id</code> på fältet har samma värde. (fråga 12)</p>
+<h2>Klipp 4 · Git på tio minuter</h2>
+<p><strong>Git</strong> – ett program på din dator som sparar versioner av en mapp. (fråga 13)</p>
+<p><strong>Commit</strong> – en sparad version, med ett kort meddelande om vad du ändrade. Jämför med versionshistoriken i Figma. (fråga 14)</p>
+<p><strong>GitHub</strong> – en webbplats där mappen och alla dess versioner kan ligga på internet. (fråga 13)</p>
+<p><strong>Repo</strong> – det mappen kallas när den ligger på GitHub. (fråga 14)</p>
+<p><strong>GitHub Pages</strong> – tjänsten på GitHub som visar filerna i ditt repo som en webbsida med en egen adress. (fråga 13)</p>
+<p><strong>Sync</strong> – knappen i VS Code som skickar dina nya commits till GitHub. (fråga 14)</p>
+<p><strong>404</strong> – felet du får när sidan inte finns. Den vanligaste orsaken är att startsidan inte heter <code>index.html</code>. (fråga 15)</p>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>
