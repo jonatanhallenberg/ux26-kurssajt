@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Övning T4 · Färg och typsnitt – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+img[src*="mobil"]{max-width:300px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Övning T4 · Färg och typsnitt</h1>
+<p class="meta">Tisdag 24/11 · Förmiddag · Vecka 48 · Kursmål F5 · ca 30 min</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
+<p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
+<p><strong>Du bygger:</strong> Brädspelsklubben Tärningen från förra veckan får färger och typsnitt. HTML-koden är redan klar i en startmapp, så du skriver bara CSS: språket som bestämmer hur sidan ser ut. Du lägger CSS:en i en egen fil som båda sidorna använder, så att startsidan och sidan Träffar ser ut som en och samma webbplats.</p>
+<img src="bilder/t4-slutbild-start.png" alt="Slutbild: startsidan med tegelröda rubriker i Georgia, mörk text på krämvit bakgrund och en fet grön länk" />
+<img src="bilder/t4-slutbild-traffar.png" alt="Slutbild: sidan Träffar med samma färger och typsnitt, bilden och listan med spelkvällar" />
+<p><strong>Du behöver:</strong> mappen <code>ovningar</code>, öppen i VS Code, och Live Server. Mappen <code>t4-start</code>, som ligger som zip-fil bredvid den här övningen i Learnpoint. Klipp 5 och 6 sedda.</p>
+<p><strong>Paletten:</strong> klubbens färger. En <em>hex-kod</em> är en färg skriven som <code>#</code> och sex tecken: två för rött, två för grönt och två för blått, från <code>00</code> (inget) till <code>ff</code> (fullt).</p>
+<table><thead><tr><th>Färg</th><th>Hex-kod</th><th>Används till</th></tr></thead><tbody><tr><td>mörk blåsvart</td><td><code>#2b2d42</code></td><td>brödtext</td></tr><tr><td>krämvit</td><td><code>#fff8ec</code></td><td>bakgrund</td></tr><tr><td>tegelröd</td><td><code>#b5502b</code></td><td>rubriker, länk under muspekaren</td></tr><tr><td>mörk petrol</td><td><code>#1d5c63</code></td><td>länkar</td></tr></tbody></table>
+<hr />
+<h2>Etapp 1 · Startmappen och stilmallen</h2>
+<p><em>Varför:</em> CSS står i en egen fil, en <em>stilmall</em>, och varje sida behöver en länk till den för att använda den.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Hämta <code>t4-start.zip</code> från Learnpoint och packa upp den. På Mac dubbelklickar du på zip-filen. På Windows högerklickar du på den och väljer <strong>Extrahera alla</strong> (Extract All). Nu har du en vanlig mapp som heter <code>t4-start</code>.</li><li>Dra mappen <code>t4-start</code> från Finder (Mac) eller Utforskaren (Windows) och släpp den på <strong>OVNINGAR</strong> i filpanelen i VS Code (listan över filerna, till vänster).</li><li>Klicka på pilen framför <code>t4-start</code>. Där ligger <code>index.html</code>, <code>meetups.html</code> och mappen <code>images</code>. Högerklicka på <code>index.html</code> och välj <strong>Open with Live Server</strong>. Sidan öppnas i Chrome: svart text på vit botten, som förra veckan.</li><li>Högerklicka på mappen <code>t4-start</code> i filpanelen och välj <strong>New File…</strong>. Skriv <code>style.css</code> och tryck Enter. Filen ska ligga i <code>t4-start</code>, bredvid <code>index.html</code>.</li><li>Skriv av koden i <code>style.css</code>:</li></ol>
+<pre><code class="lang-css">/* Brädspelsklubben Tärningen: färger och typsnitt */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff8ec;
+}</code></pre>
+<ol start="6"><li>Spara (Cmd+S / Ctrl+S). Titta i Chrome: ingenting har hänt. Sidan vet ännu inte att stilmallen finns.</li><li>Öppna <code>index.html</code>. Ställ markören i slutet av raden med <code>&lt;title&gt;</code>, tryck Enter och skriv länken till stilmallen. Så här ser <code>&lt;head&gt;</code> ut efteråt:</li></ol>
+<pre><code class="lang-html">&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title&gt;Brädspelsklubben Tärningen&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css" /&gt;
+&lt;/head&gt;</code></pre>
+<ol start="8"><li>Spara och titta i Chrome. Bakgrunden är krämvit.</li><li>Öppna <code>meetups.html</code> och skriv samma <code>&lt;link&gt;</code>-rad efter <code>&lt;title&gt;</code>-raden där. Spara. Klicka på länken <em>Se när vi träffas</em> i Chrome: sidan Träffar har också krämvit bakgrund.</li></ol>
+<p>Det här betyder koden:</p>
+<ul><li><code>/* … */</code> är en <em>kommentar</em>: en anteckning till den som läser koden. Webbläsaren hoppar över den.</li><li>En <em>regel</em> består av en <em>selektor</em>, som väljer vilka element som ska få utseendet (här <code>body</code>, hela den synliga sidan), och ett <em>deklarationsblock</em> inom <code>{</code> och <code>}</code>.</li><li>Inne i blocket står <em>deklarationer</em>: en <em>egenskap</em>, kolon, ett <em>värde</em> och semikolon. <code>background-color: #fff8ec;</code> betyder "bakgrundsfärgen ska vara krämvit".</li><li><code>* { box-sizing: border-box; }</code> är raden vi alltid börjar med, så att bredden du anger är bredden du får. Den märks först när du ger saker bredd, i övning T5.</li><li><code>&lt;link&gt;</code> kopplar sidan till stilmallen. <code>rel="stylesheet"</code> säger att filen är en stilmall, och <code>href</code> är sökvägen dit. Filen ligger i samma mapp som sidan, så filnamnet räcker.</li></ul>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>Packa upp <code>t4-start.zip</code> från Learnpoint, lägg mappen <code>t4-start</code> i <code>ovningar</code> och öppna <code>t4-start/index.html</code> med Live Server.</li><li>Skapa <code>style.css</code> i <code>t4-start</code>, bredvid html-filerna. Börja med en kommentar (<code>/* */</code>) om vad filen är, och sedan raden som alltid står först: <code>box-sizing: border-box</code> på selektorn <code>*</code>.</li><li>Ge <code>body</code> bakgrundsfärgen krämvit ur paletten. Egenskapen heter <code>background-color</code>.</li><li>Länka stilmallen i <code>&lt;head&gt;</code> på <strong>båda</strong> sidorna med ett <code>link</code>-element. Det behöver två attribut: <code>rel</code> med värdet <code>stylesheet</code> och <code>href</code> med sökvägen till filen.</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>En stilmall <code>style.css</code> i <code>t4-start</code> som börjar med en kommentar och box-sizing-raden, är länkad från båda sidorna och ger dem krämvit bakgrund.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Både startsidan och sidan Träffar har krämvit bakgrund i Chrome. I filpanelen ligger <code>style.css</code> i <code>t4-start</code>, på samma nivå som <code>index.html</code>.</div>
+<h2>Etapp 2 · Text och bakgrund på hela sidan</h2>
+<p><em>Varför:</em> det du ger <code>body</code> ärver allt innehåll på sidan, så typsnitt och textfärg behöver bara skrivas en gång.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>I <code>style.css</code>: lägg till tre rader i <code>body</code>-regeln, före <code>background-color</code>, så att regeln blir:</li></ol>
+<pre><code class="lang-css">body {
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: #2b2d42;
+  background-color: #fff8ec;
+}</code></pre>
+<ol start="2"><li>Spara och titta på båda sidorna i Chrome.</li></ol>
+<ul><li><code>font-family</code> är typsnittet. Du skriver en lista med <em>reservtypsnitt</em>: webbläsaren tar det första som finns på datorn. <code>system-ui</code> är datorns eget typsnitt, och <code>sans-serif</code> sist betyder "vilket typsnitt utan klackar som helst", om inget av de andra finns.</li><li><code>line-height</code> är radavståndet. <code>1.5</code> utan enhet betyder en och en halv gång textens storlek.</li><li><code>color</code> är textfärgen. Element inuti <code>body</code> <em>ärver</em> den, alltså får den utan att du skriver den på varje element.</li></ul>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Ge <code>body</code> tre egenskaper till:</p>
+<ul><li><code>font-family</code> med listan <code>system-ui, Helvetica, Arial, sans-serif</code> (reservtypsnitt, webbläsaren tar det första som finns)</li><li><code>line-height</code> på <code>1.5</code>, utan enhet</li><li><code>color</code> med brödtextens färg ur paletten</li></ul>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>All text på båda sidorna är i datorns eget typsnitt utan klackar (med reservtypsnitt), med radavståndet 1,5 och brödtextfärgen ur paletten.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Texten på båda sidorna har bytt typsnitt (inga klackar på bokstäverna längre), raderna har lite mer luft och texten är mörkt blåsvart i stället för helt svart.</div>
+<h2>Etapp 3 · Rubrikerna</h2>
+<p><em>Varför:</em> rubrikerna ska skilja sig från brödtexten, och samma utseende på två rubriknivåer skriver du i en enda regel.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Ställ markören efter <code>body</code>-regelns <code>}</code>, tryck Enter två gånger och skriv:</li></ol>
+<pre><code class="lang-css">h1,
+h2 {
+  font-family: Georgia, serif;
+  line-height: 1.2;
+  color: #b5502b;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}</code></pre>
+<ol start="2"><li>Spara och titta på båda sidorna.</li></ol>
+<ul><li><code>h1, h2</code> är en <em>gruppering</em>: kommatecknet betyder "både <code>h1</code> och <code>h2</code>". Du kan skriva <code>h1, h2 {</code> på en rad; Prettier, tillägget som ordnar koden när du sparar, ställer varje selektor på en egen rad.</li><li><code>Georgia, serif</code> är typsnittet Georgia, med vilket typsnitt med klackar som helst som reserv.</li><li><code>font-size</code> är textstorleken. <code>rem</code> är en enhet där <code>1rem</code> är webbläsarens vanliga textstorlek, 16 pixlar. <code>2.5rem</code> är alltså två och en halv gång så stor text, 40 pixlar.</li><li><code>h1</code> och <code>h2</code> får sina storlekar i var sin regel efter grupperingen, eftersom storlekarna är olika.</li></ul>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>En regel för både <code>h1</code> och <code>h2</code> (gruppera selektorerna med kommatecken): typsnittet <code>Georgia, serif</code>, radavståndet <code>1.2</code> och rubrikfärgen ur paletten.</li><li>En regel för <code>h1</code> med <code>font-size</code> <code>2.5rem</code>, och en för <code>h2</code> med <code>1.5rem</code>. Enheten <code>rem</code> utgår från den vanliga textstorleken, 16 pixlar.</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Alla <code>h1</code> och <code>h2</code> har typsnittet Georgia (med reservtypsnitt) och rubrikfärgen, skrivet i en enda regel. <code>h1</code> är 2,5 gånger och <code>h2</code> 1,5 gånger den vanliga textstorleken, i enheten <code>rem</code>.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Rubrikerna på båda sidorna är tegelröda och har klackar (Georgia). <em>Brädspelsklubben Tärningen</em> är tydligt större än <em>Ny i klubben?</em>. I <code>style.css</code> står <code>h1</code> och <code>h2</code> tillsammans i en regel.</div>
+<h2>Etapp 4 · Länkarna</h2>
+<p><em>Varför:</em> en länk ska synas som en länk, och den ska svara när muspekaren kommer.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Sist i <code>style.css</code>, efter en tom rad, skriv:</li></ol>
+<pre><code class="lang-css">a {
+  font-weight: bold;
+  color: #1d5c63;
+}
+
+a:hover {
+  color: #b5502b;
+  text-decoration: none;
+}</code></pre>
+<ol start="2"><li>Spara. Håll muspekaren över länken <em>Se när vi träffas</em>, och flytta den sedan bort.</li></ol>
+<ul><li><code>font-weight: bold</code> gör texten fet.</li><li><code>a:hover</code> väljer en länk <em>bara medan muspekaren är över den</em>. När pekaren flyttas bort gäller den vanliga <code>a</code>-regeln igen.</li><li><code>text-decoration</code> är linjen under texten. Länkar är understrukna från början; <code>none</code> tar bort linjen.</li></ul>
+<p>Hela <code>style.css</code> ser nu ut så här:</p>
+<pre><code class="lang-css">/* Brädspelsklubben Tärningen: färger och typsnitt */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: #2b2d42;
+  background-color: #fff8ec;
+}
+
+h1,
+h2 {
+  font-family: Georgia, serif;
+  line-height: 1.2;
+  color: #b5502b;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+a {
+  font-weight: bold;
+  color: #1d5c63;
+}
+
+a:hover {
+  color: #b5502b;
+  text-decoration: none;
+}</code></pre>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>Alla länkar (<code>a</code>): fet text (<code>font-weight</code>) och länkfärgen ur paletten.</li><li>En regel som bara gäller medan muspekaren är över en länk: selektorn <code>a:hover</code>. Där byter länken till rubrikfärgen och tappar understrykningen (<code>text-decoration</code> med värdet <code>none</code>).</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Länkarna är feta och mörkt petrolfärgade. När muspekaren är över en länk blir den tegelröd och inte understruken.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Länken är fet, grön och understruken. Under muspekaren blir den röd och understrykningen försvinner. Samma sak med <em>Tillbaka till startsidan</em> på sidan Träffar. Sidorna ser ut som slutbilderna överst.</div>
+<h2>Etapp 5 · Titta och prova i DevTools</h2>
+<p><em>Varför:</em> DevTools visar vilka regler som gäller för ett element, och där kan du prova ett värde innan du skriver det i filen.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>På startsidan i Chrome: högerklicka på rubriken och välj <strong>Inspektera</strong> (Inspect). DevTools öppnas med fliken <strong>Elements</strong>, och <code>&lt;h1&gt;</code> är markerat.</li><li>Bredvid eller under koden finns fliken <strong>Styles</strong>. Där står reglerna som gäller för <code>h1</code>: överst <code>h1 { font-size: 2.5rem; }</code>, under den <code>h1, h2 { … }</code>, och längre ner <code>body { … }</code>. Till höger om varje regel står <code>style.css</code> och radnumret där regeln börjar.</li><li>Håll pekaren över deklarationen <code>color: #b5502b;</code> i regeln <code>h1, h2</code>. En kryssruta visas framför den. Klicka bort krysset: rubriken blir blåsvart, för då ärver den <code>color</code> från <code>body</code>. Klicka i krysset igen.</li><li>Klicka på den lilla färgrutan framför <code>#b5502b</code>. En färgväljare öppnas. Under <em>Contrast ratio</em> står kontrasten mellan rubrikfärgen och bakgrunden, ungefär <code>4.8</code>, med en bock. <em>Kontrast</em> är skillnaden i ljushet mellan text och bakgrund. WCAG, som du känner från Interaktionsdesign, kräver minst 4.5 för vanlig text. Stäng färgväljaren med Esc.</li><li>Klicka på värdet <code>2.5rem</code> i regeln <code>h1</code>, skriv <code>4rem</code> och tryck Enter. Rubriken blir större.</li><li>Ladda om sidan (Cmd+R / Ctrl+R). Rubriken är tillbaka på <code>2.5rem</code>. Det du ändrar i DevTools är bara ett test i webbläsaren; filen i VS Code är den riktiga stilmallen.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Inspektera rubriken på startsidan (högerklick → <em>Inspektera</em>) och titta i fliken <em>Styles</em>. Hitta de tre reglerna som påverkar <code>h1</code> och vilken rad i <code>style.css</code> de står på. Bocka av <code>color</code> i grupperingen och se vilken färg rubriken får i stället. Öppna färgväljaren (färgrutan framför värdet) och läs av kontrasten under <em>Contrast ratio</em>. Ändra textstorleken direkt i Styles och ladda sedan om: vad hände med ändringen?</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Ta reda på i DevTools vilka regler som ger rubriken dess utseende, vilken kontrast rubrikfärgen har mot bakgrunden, och vad som händer med en ändring i Styles när du laddar om.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Du kan peka ut i Styles vilken rad i <code>style.css</code> som ger rubriken dess färg. Du har läst av kontrasten (ungefär 4.8, minst 4.5 krävs). Du kan säga varför ändringen i DevTools försvann.</div>
+<hr />
+<h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
+<p>Gör en egen palett för klubben: fyra färger, en mörk till text, en ljus till bakgrund och två att välja bland för rubriker och länkar. Byt hex-koderna i <code>style.css</code>. Kontrollera sedan kontrasten för brödtexten, rubrikerna, länkarna och länkarna under muspekaren i färgväljaren i DevTools: alla ska vara minst 4.5. För att se kontrasten för länken under muspekaren: markera länken i Elements och klicka på <code>:hov</code> i Styles, bocka i <code>:hover</code>. Hitta en kombination som ser bra ut men inte klarar 4.5, och skriv en mening om vad du ändrade för att den skulle klara det.</p>
+<h2>Vanliga fel</h2>
+<ul><li><strong>Inget händer i Chrome trots att du har sparat stilmallen:</strong> sidan hittar inte stilmallen. Kontrollera tre saker: att <code>&lt;link&gt;</code>-raden finns på sidan du tittar på, att <code>href</code> är exakt <code>style.css</code> (inte <code>styles.css</code> eller <code>Style.css</code>), och att <code>style.css</code> ligger i <code>t4-start</code> och inte i <code>ovningar</code>. I DevTools finns fliken <strong>Console</strong>, där Chrome skriver ut fel: hittas inte filen står där ett rött meddelande med <code>404</code>, som betyder att filen inte finns.</li><li><strong>En del av regeln fungerar men inte resten, eller ingenting efter en viss rad:</strong> ett tecken saknas. Varje deklaration slutar med semikolon, och varje <code>{</code> behöver en <code>}</code>. Får du inget indrag när du sparar, så har Prettier hittat ett sådant fel. I DevTools Styles är en ogiltig deklaration överstruken och har en gul varningstriangel.</li><li><strong>Färgen blir inte alls som i paletten:</strong> <code>#</code> saknas framför hex-koden (<code>color: b5502b;</code>), eller koden har fem eller sju tecken. Utan <code>#</code> förstår webbläsaren inte värdet och hoppar över hela deklarationen. Kopiera hex-koderna från paletten.</li></ul>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>

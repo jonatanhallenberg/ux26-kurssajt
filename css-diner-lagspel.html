@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>CSS Diner · lagspel – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+img[src*="mobil"]{max-width:300px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>CSS Diner · lagspel</h1>
+<p class="meta">Tisdag 24/11 · Eftermiddag · Vecka 48 · Kursmål F5 · 20 min · i lag</p>
+<p><strong>Så går det till:</strong> CSS Diner är ett gratis spel i webbläsaren där du övar <em>selektorer</em>, alltså den del av en CSS-regel som väljer vilka element som ska få utseendet. På ett bord står tallrikar, bentolådor och frukt, och under bordet visas samma bord som HTML-kod. Uppgiften står överst, till exempel <em>Select the plates</em> (välj tallrikarna). Ni skriver en selektor i rutan <em>CSS Editor</em> och trycker Enter. Väljer selektorn exakt rätt saker hoppar de på bordet och ni går vidare till nästa nivå. Spelet finns bara på engelska.</p>
+<p>Laget som har klarat flest nivåer när tiden är slut vinner.</p>
+<p><strong>Ni behöver:</strong> en dator per lag med Chrome, öppnad på <code>https://flukeout.github.io/</code>.</p>
+<p><strong>Regler</strong></p>
+<ul><li>En dator per lag. Den som skriver byts efter <strong>varje</strong> nivå, så att alla i laget skriver. Resten av laget får hjälpa till med orden, men inte ta tangentbordet.</li><li>Klicka på <strong>Reset Progress</strong> i menyn (de tre strecken uppe till höger) innan ni börjar, så att ni startar på nivå 1 med tom lista.</li><li>Det som räknas är antalet klarade nivåer, alltså bockarna i nivålistan i samma meny. Nivåer går att hoppa över genom att skriva en siffra i rutan; en överhoppad nivå har ingen bock och ger ingen poäng.</li><li>Ingen AI-chatt och ingen sökning efter svaren. Panelen till höger i spelet förklarar varje ny sorts selektor med exempel: läs den.</li><li>20 minuter. Vid stopp visar varje lag sin nivålista.</li></ul>
+<p><strong>Det här känner ni igen från klipp 5:</strong></p>
+<table><thead><tr><th>Nivå</th><th>Uppgift</th><th>Selektor i klipp 5</th></tr></thead><tbody><tr><td>1, 2</td><td>välj alla av en sort</td><td>element (<code>body</code>, <code>h1</code>)</td></tr><tr><td>4</td><td>välj det som ligger <em>på</em> något annat</td><td>ättling (<code>nav a</code>)</td></tr><tr><td>6</td><td>välj det som har en viss klass</td><td>klass (<code>.concert</code>)</td></tr><tr><td>9</td><td>välj två sorter på en gång</td><td>gruppering (<code>h1, h2</code>)</td></tr></tbody></table>
+<p><strong>Det här är nytt, men går att lista ut med panelen till höger:</strong></p>
+<table><thead><tr><th>Nivå</th><th>Vad som är nytt</th></tr></thead><tbody><tr><td>3, 5</td><td><code>#</code> före ett namn väljer ett element med ett <em>id</em>, ett namn som bara får finnas en gång på sidan. Vi använder inte id i kursen, men spelet vill ha det redan på nivå 3.</td></tr><tr><td>7, 8</td><td>ett element och en klass ihop, utan mellanslag: <code>orange.small</code> är de apelsiner som har klassen <code>small</code>.</td></tr><tr><td>10, 11</td><td><code>*</code> väljer allt, som i box-sizing-raden. <code>plate *</code> är allt som ligger på en tallrik.</td></tr></tbody></table>
+<p><strong>Nivå 12–32 är bonus.</strong> De tar upp selektorer som inte finns i kursen, och ni behöver dem inte i projektet. Varje nivå ni klarar ger ändå en bock.</p>
+<p><strong>Tips:</strong> Håll muspekaren över sakerna på bordet för att se deras HTML. Läs uppgiften högt i laget innan någon skriver. Skriver ni fel skakar bordet; inget annat händer, så det är fritt fram att prova.</p>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>

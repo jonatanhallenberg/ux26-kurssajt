@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Övning T6 · Kort och knappar – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+img[src*="mobil"]{max-width:300px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Övning T6 · Kort och knappar</h1>
+<p class="meta">Tisdag 24/11 · Förmiddag · Vecka 48 · Kursmål F5 · ca 35 min · för dig som hinner</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
+<p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
+<p><strong>Du bygger:</strong> Fotoklubben Bländarens startsida och anmälningssida från förra veckan, med en meny utan understrykningar, träffarna som vita kort, en länk som ser ut som en knapp och ett formulär där varje fält har sin etikett på egen rad. Sist kontrollerar du stilmallen i CSS-validatorn. Det är samma byggstenar som de flesta webbplatser består av.</p>
+<img src="bilder/t6-slutbild-start.png" alt="Slutbild: startsidan med menyn, tre vita kort med träffar och en mörkblå knapp Anmäl dig i det första kortet" />
+<img src="bilder/t6-slutbild-anmalan.png" alt="Slutbild: anmälningssidan med fetstilta etiketter ovanför fälten, fält i hela bredden och en mörkblå knapp Skicka anmälan" />
+<p><strong>Du behöver:</strong> mappen <code>ovningar</code>, öppen i VS Code, och Live Server. Mappen <code>t6-start</code>, som ligger som zip-fil bredvid den här övningen i Learnpoint. Klipp 5 och 6 sedda och övning T4 och T5 gjorda.</p>
+<p><strong>Paletten:</strong></p>
+<table><thead><tr><th>Färg</th><th>Hex-kod</th><th>Används till</th></tr></thead><tbody><tr><td>nästan svart</td><td><code>#222831</code></td><td>text</td></tr><tr><td>ljust gråblå</td><td><code>#eef1f4</code></td><td>bakgrund</td></tr><tr><td>vit</td><td><code>#ffffff</code></td><td>kort, text på knappar</td></tr><tr><td>ljusgrå</td><td><code>#c9d1da</code></td><td>kanter</td></tr><tr><td>mörkblå</td><td><code>#1f4e79</code></td><td>länkar, knappar</td></tr><tr><td>djupblå</td><td><code>#163a5c</code></td><td>knapp under muspekaren</td></tr></tbody></table>
+<hr />
+<h2>Etapp 1 · Grunden på båda sidorna</h2>
+<p><em>Varför:</em> det här är samma början som i T4 och T5: stilmallen, box-sizing-raden, text och färger, och en maxbredd i mitten.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Hämta <code>t6-start.zip</code> från Learnpoint, packa upp den och dra mappen <code>t6-start</code> till <strong>OVNINGAR</strong> i filpanelen. Öppna <code>t6-start/index.html</code> med Live Server.</li><li>Skapa <code>style.css</code> i <code>t6-start</code> (högerklicka på mappen, <strong>New File…</strong>) och skriv:</li></ol>
+<pre><code class="lang-css">/* Fotoklubben Bländaren: kort och knappar */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: #222831;
+  background-color: #eef1f4;
+}
+
+header,
+main,
+footer {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+a {
+  color: #1f4e79;
+}</code></pre>
+<ol start="3"><li>Spara. Lägg till länken till stilmallen efter <code>&lt;title&gt;</code>-raden i <strong>både</strong> <code>index.html</code> och <code>signup.html</code>:</li></ol>
+<pre><code class="lang-html">&lt;link rel="stylesheet" href="style.css" /&gt;</code></pre>
+<ol start="4"><li>Spara båda filerna och titta på båda sidorna. Menyn högst upp tar dig mellan dem.</li></ol>
+<p><code>header, main, footer</code> är en gruppering: de tre delarna får samma maxbredd (48 × 16 = 768 pixlar) och läggs i mitten med <code>margin: 0 auto</code>, så att de står kant i kant under varandra.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>Packa upp <code>t6-start.zip</code> och lägg <code>t6-start</code> i <code>ovningar</code>.</li><li><code>style.css</code> i <code>t6-start</code>, länkad från båda sidorna. Börja med en kommentar och box-sizing-raden.</li><li><code>body</code>: typsnittet <code>system-ui, Helvetica, Arial, sans-serif</code>, radavståndet <code>1.5</code>, textfärgen och bakgrundsfärgen ur paletten.</li><li>En gruppering av <code>header</code>, <code>main</code> och <code>footer</code>: <code>max-width</code> <code>48rem</code> och centrerade med <code>margin</code>.</li><li>Alla länkar (<code>a</code>) i den mörkblå färgen.</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Båda sidorna använder samma <code>style.css</code>, som börjar med box-sizing-raden. Texten och bakgrunden har palettens färger och typsnittet är datorns eget utan klackar. Sidhuvud, huvudinnehåll och sidfot är högst 768 pixlar breda (i <code>rem</code>) och centrerade, skrivet i en enda regel. Länkarna är mörkblå.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Båda sidorna har ljust gråblå bakgrund och innehållet står i en kolumn mitt i ett brett fönster, med rubriken, menyn och sidfoten i linje med texten.</div>
+<h2>Etapp 2 · Menyn</h2>
+<p><em>Varför:</em> menylänkarna ska se annorlunda ut än länkarna i texten, och en <em>ättlingselektor</em> väljer bara länkarna i menyn.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Sist i <code>style.css</code>, skriv:</li></ol>
+<pre><code class="lang-css">nav a {
+  margin-right: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}</code></pre>
+<ol start="2"><li>Spara. Håll pekaren över <em>Start</em> och <em>Anmälan</em>. Titta också på länken <em>Anmäl dig</em> i det första träffkortet.</li></ol>
+<ul><li><code>nav a</code> är en <em>ättlingselektor</em>: mellanslaget betyder "inuti". Den väljer bara de <code>a</code> som ligger någonstans inuti <code>nav</code>. Länken <em>Anmäl dig</em> ligger inte i menyn och är därför fortfarande understruken.</li><li><code>margin-right</code> är luften till höger om varje länk, så att de inte står ihop.</li><li><code>nav a:hover</code> är menylänkarna medan muspekaren är över dem.</li></ul>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>En regel som bara väljer länkarna inuti <code>nav</code> (två element med mellanslag emellan): <code>16px</code> luft till höger (<code>margin-right</code>), fet text och ingen understrykning.</li><li>En regel för samma länkar medan muspekaren är över dem (<code>:hover</code>): understrukna.</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Menylänkarna är feta, inte understrukna och har 16 pixlar luft till höger. Under muspekaren blir de understrukna. Länkar utanför menyn påverkas inte.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> <em>Start</em> och <em>Anmälan</em> är feta, mörkblå, utan understrykning och med luft emellan, och understrykningen kommer när du håller pekaren över dem. <em>Anmäl dig</em> i kortet är fortfarande understruken.</div>
+<h2>Etapp 3 · Korten</h2>
+<p><em>Varför:</em> en klass kan sitta på flera element, och då får alla samma utseende från en enda regel.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>I <code>index.html</code>: ge vart och ett av de tre <code>&lt;article&gt;</code> klassen <code>card</code>, så att alla tre raderna blir:</li></ol>
+<pre><code class="lang-html">&lt;article class="card"&gt;</code></pre>
+<ol start="2"><li>Spara. Sist i <code>style.css</code>, skriv:</li></ol>
+<pre><code class="lang-css">.card {
+  margin-bottom: 16px;
+  padding: 16px 24px;
+  background-color: #ffffff;
+  border: 1px solid #c9d1da;
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin-top: 0;
+}</code></pre>
+<ol start="3"><li>Spara och titta.</li></ol>
+<ul><li>Samma klass på tre element: regeln <code>.card</code> gäller alla tre.</li><li><code>margin-bottom</code> är luften under varje kort, så att de inte ligger kant i kant.</li><li><code>.card h3</code> är en ättlingselektor igen, med en klass först: rubrikerna inuti korten. <code>margin-top: 0</code> tar bort rubrikens luft ovanför, så att den inte hamnar långt ner i kortet.</li></ul>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>Ge de tre <code>article</code> i <code>index.html</code> klassen <code>card</code>.</li><li>En regel för <code>.card</code>: <code>16px</code> luft under (<code>margin-bottom</code>), <code>padding</code> <code>16px 24px</code>, vit bakgrund, en <code>1px</code> hel (<code>solid</code>) kant i den ljusgrå färgen och <code>border-radius</code> <code>8px</code>.</li><li>En regel för rubrikerna inuti korten (klassen, mellanslag, <code>h3</code>): ingen luft ovanför (<code>margin-top</code>).</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>De tre träffarna är vita kort med en tunn ljusgrå kant, rundade hörn (8 pixlar), luft innanför (16 pixlar uppe och nere, 24 till sidorna) och 16 pixlar mellan korten. Rubrikerna i korten har ingen luft ovanför. Alla tre får utseendet från samma regel.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Under <em>Kommande träffar</em> ligger tre vita kort med lika stora mellanrum, och varje korts rubrik börjar nära kortets överkant.</div>
+<h2>Etapp 4 · En länk som knapp</h2>
+<p><em>Varför:</em> en länk ligger i textraden som ett ord, och <code>display: inline-block</code> gör den till en låda som kan få luft runt sig och se ut som en knapp.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>I <code>index.html</code>, i det första kortet: ge länken <em>Anmäl dig</em> klassen <code>button</code>, så att raden blir:</li></ol>
+<pre><code class="lang-html">&lt;p&gt;&lt;a href="signup.html" class="button"&gt;Anmäl dig&lt;/a&gt;&lt;/p&gt;</code></pre>
+<ol start="2"><li>Spara. Sist i <code>style.css</code>, skriv:</li></ol>
+<pre><code class="lang-css">.button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #1f4e79;
+  border: 0;
+  border-radius: 6px;
+}
+
+.button:hover {
+  background-color: #163a5c;
+}</code></pre>
+<ol start="3"><li>Spara och titta. Håll pekaren över knappen.</li><li>Högerklicka på knappen och välj <strong>Inspektera</strong>. I <strong>Styles</strong>, bocka av <code>display: inline-block</code> i regeln <code>.button</code>. Den mörkblå bakgrunden går nu nästan ända upp till texten ovanför, och kortet under knappen blir lägre: luften runt länken räknas inte in i raden. Bocka i den igen.</li><li>Längre ner i Styles står regeln <code>a</code> med <code>color: #1f4e79</code>, överstruken. Den gäller inte, för <code>.button</code> säger <code>color: #ffffff</code>.</li></ol>
+<ul><li>En länk är från början ett <em>inline-element</em>: den ligger i textraden som ett ord bland andra, och luft ovanför och under tar inte plats. Ett <em>block-element</em>, som <code>p</code> och <code>h1</code>, tar en egen rad i hela bredden. <code>inline-block</code> är mitt emellan: lådan stannar i raden men får plats för sin padding.</li><li>När två regler säger olika om samma sak gäller den här ordningen, som kallas <em>kaskaden</em>: en klass vinner över ett element, och kommer två lika regler efter varandra vinner den senare. Därför blir texten vit, fast regeln <code>a</code> säger mörkblå.</li><li><code>border: 0</code> behövs inte för länken, men knappen i formuläret i nästa etapp har en kant från början, och den tar raden bort.</li></ul>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>Ge länken <em>Anmäl dig</em> klassen <code>button</code>.</li><li>En regel för <code>.button</code>, i den här ordningen: <code>display</code> med värdet <code>inline-block</code>, <code>padding</code> <code>12px 24px</code>, textstorleken <code>1rem</code>, fet text, vit textfärg, ingen understrykning, mörkblå bakgrund, ingen kant (<code>border: 0</code>) och <code>border-radius</code> <code>6px</code>.</li><li>En regel för knappen under muspekaren: den djupblå bakgrunden ur paletten.</li><li>Bocka av <code>display</code> i DevTools Styles och se vad som händer med lådan. Leta reda på den överstrukna <code>color</code> i regeln <code>a</code>: varför gäller den inte?</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Länken <em>Anmäl dig</em> ser ut som en knapp: mörkblå med vit fet text utan understrykning, luft innanför (12 pixlar uppe och nere, 24 till sidorna), rundade hörn (6 pixlar) och ingen kant. Under muspekaren blir den djupblå. Utseendet kommer från en klass som också ska gå att använda på formulärets knapp.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> <em>Anmäl dig</em> är en mörkblå knapp med vit text som blir mörkare under muspekaren, och knappen tränger inte in i texten ovanför. Du kan förklara varför regeln <code>a</code> är överstruken i Styles.</div>
+<h2>Etapp 5 · Formuläret</h2>
+<p><em>Varför:</em> en etikett på egen rad ovanför ett brett fält är lättare att läsa och att träffa, särskilt för den som zoomar.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Gå till anmälningssidan i Chrome. Etiketterna står till vänster om fälten och fälten är olika breda.</li><li>I <code>signup.html</code>: ge knappen sist i formuläret klassen <code>button</code>, så att raden blir:</li></ol>
+<pre><code class="lang-html">&lt;button class="button"&gt;Skicka anmälan&lt;/button&gt;</code></pre>
+<ol start="3"><li>Spara. Sist i <code>style.css</code>, skriv:</li></ol>
+<pre><code class="lang-css">label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  border: 1px solid #c9d1da;
+  border-radius: 4px;
+}</code></pre>
+<ol start="4"><li>Spara och titta.</li></ol>
+<ul><li><code>label</code> är ett inline-element, som en länk. <code>display: block</code> gör att etiketten tar en egen rad, och fältet hamnar under den.</li><li><code>width: 100%</code> gör fälten lika breda som raden de står i.</li><li>Formulärfält ärver inte typsnittet från <code>body</code>, så det skrivs här igen.</li><li>Knappen har nu samma utseende som <em>Anmäl dig</em> på startsidan, utan en enda ny rad CSS. Det är poängen med en klass.</li><li><code>&lt;button class="button"&gt;</code> ser dubbelt ut, men elementet och klassen är två olika saker: <code>.button</code> med punkt väljer klassen, <code>button</code> utan punkt skulle välja elementet.</li></ul>
+<p>Hela <code>style.css</code> ser nu ut så här:</p>
+<pre><code class="lang-css">/* Fotoklubben Bländaren: kort och knappar */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: #222831;
+  background-color: #eef1f4;
+}
+
+header,
+main,
+footer {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+a {
+  color: #1f4e79;
+}
+
+nav a {
+  margin-right: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.card {
+  margin-bottom: 16px;
+  padding: 16px 24px;
+  background-color: #ffffff;
+  border: 1px solid #c9d1da;
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #1f4e79;
+  border: 0;
+  border-radius: 6px;
+}
+
+.button:hover {
+  background-color: #163a5c;
+}
+
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  border: 1px solid #c9d1da;
+  border-radius: 4px;
+}</code></pre>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>Ge <code>&lt;button&gt;</code> i <code>signup.html</code> klassen <code>button</code>.</li><li><code>label</code>: på egen rad (<code>display: block</code>), <code>4px</code> luft under och fet text.</li><li>En gruppering av <code>input</code>, <code>select</code> och <code>textarea</code>: bredden <code>100%</code>, <code>padding</code> <code>8px</code>, samma typsnitt som <code>body</code> (fälten ärver det inte), textstorleken <code>1rem</code>, en <code>1px</code> ljusgrå hel kant och <code>border-radius</code> <code>4px</code>.</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Varje etikett står i fetstil på egen rad, med 4 pixlar luft ner till sitt fält. Alla fält är lika breda som kolumnen, har 8 pixlar luft innanför, samma typsnitt och storlek som sidans text, en tunn ljusgrå kant och lätt rundade hörn (4 pixlar). Knappen ser ut som knappen på startsidan.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Anmälningssidan ser ut som slutbilden överst: etiketterna i fetstil ovanför fälten, alla fält lika breda, och <em>Skicka anmälan</em> som en mörkblå knapp likadan som <em>Anmäl dig</em>. Klickar du på en etikett hamnar markören i fältet, precis som förra veckan.</div>
+<h2>Etapp 6 · CSS-validatorn</h2>
+<p><em>Varför:</em> webbläsaren hoppar tyst över CSS den inte förstår, men CSS-validatorn säger var felet är.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Gå till <code>https://jigsaw.w3.org/css-validator/</code> i Chrome. Det är W3C:s validator för CSS, samma organisation som HTML-validatorn du använde förra veckan.</li><li>Klicka på fliken <strong>By file upload</strong>. Klicka <strong>Välj fil</strong> (Choose File), gå till <code>ovningar/t6-start</code> och välj <code>style.css</code>. Klicka <strong>Check</strong>.</li><li>Överst står <em>Congratulations! No Error Found.</em> och under det hela din stilmall. Har du fått fel: läs radnumret och meddelandet, rätta i VS Code, spara och kontrollera igen.</li><li>Prova att göra fel med flit: ta bort <code>#</code> i <code>background-color: #ffffff;</code> i regeln <code>.card</code> och spara. Kontrollera filen igen (välj filen på nytt med <strong>Välj fil</strong> innan du klickar <strong>Check</strong>, annars skickar Chrome den gamla).</li><li>Nu står felet under <em>Errors</em>, med radnumret, selektorn <code>.card</code> och ett meddelande om att <code>ffffff</code> inte är ett giltigt värde för <code>background-color</code>. Titta i Chrome: korten har blivit genomskinliga.</li><li>Sätt tillbaka <code>#</code>, spara och kontrollera en sista gång: inga fel.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Kontrollera <code>style.css</code> i CSS-validatorn på <code>jigsaw.w3.org/css-validator/</code>, fliken <em>By file upload</em>. Rätta tills det inte finns några fel. Ta sedan bort <code>#</code> från en färg, kontrollera igen och läs vad validatorn säger och på vilken rad. Välj filen på nytt varje gång du kontrollerar. Sätt tillbaka <code>#</code>.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p><code>style.css</code> ger inga fel i W3C:s CSS-validator. Du har sett hur validatorn rapporterar en färg utan <code>#</code>.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Validatorn visar <em>Congratulations! No Error Found.</em> för din <code>style.css</code>. Du kan säga vilken rad validatorn pekade på när <code>#</code> saknades, och hur korten såg ut i Chrome då.</div>
+<hr />
+<h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
+<p>Tryck på Tab-tangenten på anmälningssidan, flera gånger. Markeringen hoppar mellan länkarna, fälten och knappen; det är så den som inte använder mus tar sig fram. Gör markeringen tydligare: <code>:focus</code> fungerar som <code>:hover</code>, men gäller när elementet är valt med tangentbordet. Ge fälten och <code>.button</code> en regel med <code>:focus</code> och egenskapen <code>outline</code>, en ram som ritas utanför kanten utan att ta plats, till exempel <code>outline: 3px solid #f2a541;</code>. Tabba igenom sidan och titta efter att ramen syns tydligt både mot den gråblå bakgrunden runt fälten och runt den mörkblå knappen. Syns den dåligt någonstans, välj en annan färg ur eller nära paletten. Kör validatorn igen.</p>
+<h2>Vanliga fel</h2>
+<ul><li><strong>Knappen har blå text och understrykning, eller bara bakgrund bakom texten:</strong> klassen sitter på fel element eller är felstavad. <code>class="button"</code> ska sitta på <code>&lt;a&gt;</code> (och på <code>&lt;button&gt;</code>), inte på <code>&lt;p&gt;</code> runt omkring. Kontrollera i Elements att länken har klassen och i Styles att regeln <code>.button</code> finns med.</li><li><strong>Knappens bakgrund går ända upp till texten ovanför, eller sticker ner mot kortets kant:</strong> <code>display: inline-block</code> saknas eller är felstavad. Utan den är länken inline, och dess padding tar ingen plats i raden.</li><li><strong>Startsidan har färger men anmälningssidan inte:</strong> <code>&lt;link&gt;</code>-raden saknas i <code>signup.html</code>. Varje sida behöver sin egen länk till stilmallen, även om filen är densamma.</li></ul>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>

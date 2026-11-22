@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Övning T5 · Lådan – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+img[src*="mobil"]{max-width:300px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Övning T5 · Lådan</h1>
+<p class="meta">Tisdag 24/11 · Förmiddag · Vecka 48 · Kursmål F5 · ca 35 min</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
+<p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
+<p><strong>Du bygger:</strong> pannkaksreceptet från förra veckan, nu som ett vitt receptkort mitt på en beige bakgrund. Kortet blir aldrig bredare än att raderna går att läsa, ingredienserna hamnar i en gul ruta med rundade hörn, och det blir luft mellan delarna. Allt det bygger på <em>lådmodellen</em>: att varje element på sidan är en rektangulär låda med innehåll, luft innanför, en kant och luft utanför.</p>
+<img src="bilder/t5-slutbild.png" alt="Slutbild: receptet i en vit kolumn mitt på beige bakgrund, centrerad rubrik, bilden med rundade hörn och ingredienserna i en gul ruta med guldkant" />
+<p><strong>Du behöver:</strong> mappen <code>ovningar</code>, öppen i VS Code, och Live Server. Mappen <code>t5-start</code>, som ligger som zip-fil bredvid den här övningen i Learnpoint. Klipp 5 och 6 sedda. Övning T4 är bra att ha gjort, men inte nödvändig.</p>
+<p><strong>Paletten:</strong></p>
+<table><thead><tr><th>Färg</th><th>Hex-kod</th><th>Används till</th></tr></thead><tbody><tr><td>mörkbrun</td><td><code>#3a2e2a</code></td><td>text</td></tr><tr><td>beige</td><td><code>#f3e9dc</code></td><td>bakgrund runt kortet</td></tr><tr><td>vit</td><td><code>#ffffff</code></td><td>receptkortet</td></tr><tr><td>smörgul</td><td><code>#fff1c9</code></td><td>rutan runt ingredienserna</td></tr><tr><td>guld</td><td><code>#d9a441</code></td><td>rutans kant</td></tr></tbody></table>
+<hr />
+<h2>Etapp 1 · Stilmallen och första raden</h2>
+<p><em>Varför:</em> varje stilmall börjar likadant, med en länk från sidan och raden som gör att bredder blir som du skriver dem.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Hämta <code>t5-start.zip</code> från Learnpoint och packa upp den (Mac: dubbelklicka; Windows: högerklicka, <strong>Extrahera alla</strong>). Dra mappen <code>t5-start</code> till <strong>OVNINGAR</strong> i filpanelen i VS Code.</li><li>Öppna <code>t5-start/recipe.html</code> med Live Server (högerklicka, <strong>Open with Live Server</strong>).</li><li>Högerklicka på mappen <code>t5-start</code> i filpanelen, välj <strong>New File…</strong> och skapa <code>style.css</code>. Skriv:</li></ol>
+<pre><code class="lang-css">/* Pannkakor: lådan */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, serif;
+  line-height: 1.6;
+  color: #3a2e2a;
+  background-color: #f3e9dc;
+}</code></pre>
+<ol start="4"><li>Spara. Öppna <code>recipe.html</code>, ställ markören i slutet av <code>&lt;title&gt;</code>-raden, tryck Enter och skriv:</li></ol>
+<pre><code class="lang-html">&lt;link rel="stylesheet" href="style.css" /&gt;</code></pre>
+<ol start="5"><li>Spara och titta i Chrome.</li></ol>
+<p><code>* { box-sizing: border-box; }</code> är raden vi alltid börjar med, så att bredden du anger är bredden du får. Utan den läggs luften innanför kanten och själva kanten <em>till</em> bredden, så att en låda som ska vara 640 pixlar bred blir bredare. <code>*</code> väljer alla element.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>Packa upp <code>t5-start.zip</code>, lägg <code>t5-start</code> i <code>ovningar</code> och öppna <code>recipe.html</code> med Live Server.</li><li>Skapa <code>style.css</code> i <code>t5-start</code>: en kommentar om vad filen är, box-sizing-raden på <code>*</code>, och en regel för <code>body</code> med typsnittet <code>Georgia, serif</code>, radavståndet <code>1.6</code>, textfärgen och bakgrundsfärgen ur paletten.</li><li>Länka stilmallen i <code>&lt;head&gt;</code> med <code>link</code> (<code>rel</code> och <code>href</code>).</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>En länkad <code>style.css</code> som börjar med box-sizing-raden. Sidan har Georgia (med reservtypsnitt), radavståndet 1,6, mörkbrun text och beige bakgrund.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Hela sidan är beige med mörkbrun text i Georgia. Texten går fortfarande ända ut till kanterna på fönstret; det ändrar du nu.</div>
+<h2>Etapp 2 · Maxbredd och centrering</h2>
+<p><em>Varför:</em> rader som går över hela skärmen är svåra att läsa, så innehållet får en största bredd och läggs i mitten.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>I <code>style.css</code>, efter <code>body</code>-regeln och en tom rad, skriv:</li></ol>
+<pre><code class="lang-css">main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 24px 32px;
+  background-color: #ffffff;
+}</code></pre>
+<ol start="2"><li>Spara och titta i Chrome. Gör sedan Chrome-fönstret smalare och bredare genom att dra i fönstrets kant.</li></ol>
+<p>Allt innehåll på sidan ligger i <code>&lt;main&gt;</code>, så den här regeln gör hela receptet till ett vitt kort.</p>
+<ul><li><code>max-width</code> är den största bredd elementet får ha. <code>40rem</code> är 40 gånger 16 = 640 pixlar. I ett smalt fönster blir kortet smalare, men aldrig bredare än 640. (<code>width</code> skulle i stället låsa bredden, även när fönstret är smalare.)</li><li><code>margin</code> är luften <em>utanför</em> lådan. Med två värden gäller det första uppe och nere och det andra till höger och vänster. <code>auto</code> betyder "dela det som blir över lika på båda sidor", och det lägger lådan i mitten.</li><li><code>padding</code> är luften <em>innanför</em> lådans kant, mellan kanten och innehållet. <code>24px 32px</code> är 24 pixlar uppe och nere och 32 pixlar till höger och vänster. <code>px</code> är pixlar.</li></ul>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>En regel för <code>main</code>:</p>
+<ol><li><code>max-width</code> på <code>40rem</code> (det är 640 pixlar)</li><li><code>margin</code> med två värden: <code>0</code> uppe och nere, <code>auto</code> till höger och vänster, så att lådan hamnar i mitten</li><li><code>padding</code> med två värden: <code>24px</code> uppe och nere, <code>32px</code> till höger och vänster</li><li>vit bakgrund ur paletten</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Receptet ligger i ett vitt kort som är högst 640 pixlar brett (skrivet i <code>rem</code>) och centrerat. Innanför kortets kant är det 24 pixlar luft uppe och nere och 32 till sidorna.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> I ett brett fönster ligger receptet i en vit kolumn mitt på beige bakgrund, med lika mycket beige till vänster och höger. I ett smalt fönster fyller kolumnen nästan hela bredden. Texten börjar en bit in från den vita kantens sida.</div>
+<h2>Etapp 3 · Bilden</h2>
+<p><em>Varför:</em> bilden ska följa kortets bredd, så att den aldrig sticker ut eller blir för liten.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Efter <code>main</code>-regeln, skriv:</li></ol>
+<pre><code class="lang-css">img {
+  width: 100%;
+  border-radius: 8px;
+}</code></pre>
+<ol start="2"><li>Spara och titta. Gör fönstret smalt och sedan brett igen.</li></ol>
+<ul><li><code>width: 100%</code> betyder "lika bred som utrymmet innanför den låda bilden ligger i", alltså kortets bredd utan dess padding. <code>%</code> räknas alltid från lådan runt omkring.</li><li><code>border-radius</code> rundar hörnen. Ju större värde, desto rundare.</li></ul>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>En regel för <code>img</code>: bredden <code>100%</code> (räknas från lådan bilden ligger i) och rundade hörn med <code>border-radius</code> på <code>8px</code>.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Bilden är alltid exakt så bred som kortets innehåll och har lätt rundade hörn (8 pixlar).</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Bilden går från textens vänsterkant till dess högerkant, har rundade hörn och krymper med kortet när du gör fönstret smalt.</div>
+<h2>Etapp 4 · Rutan runt ingredienserna</h2>
+<p><em>Varför:</em> en <em>klass</em> låter dig ge ett enda element ett eget utseende, och rutan visar lådmodellens alla delar på en gång.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Öppna <code>recipe.html</code>. Hitta den första <code>&lt;section&gt;</code>, den som innehåller rubriken <em>Ingredienser</em>. Lägg till attributet <code>class</code> så att raden blir:</li></ol>
+<pre><code class="lang-html">&lt;section class="ingredients"&gt;</code></pre>
+<ol start="2"><li>Spara. I <code>style.css</code>, sist i filen efter en tom rad, skriv:</li></ol>
+<pre><code class="lang-css">.ingredients {
+  padding: 8px 24px;
+  background-color: #fff1c9;
+  border: 2px solid #d9a441;
+  border-radius: 12px;
+}</code></pre>
+<ol start="3"><li>Spara och titta.</li></ol>
+<ul><li><code>class="ingredients"</code> är en <em>klass</em>: ett namn som du själv hittar på och sätter på ett element i HTML. Klasser döper vi på engelska, som alla namn i koden, medan texten på sidan är på svenska. I CSS väljer du elementet med en punkt före namnet, <code>.ingredients</code>. Punkten står bara i CSS, aldrig i <code>class</code>-attributet. Andra <code>section</code> på sidan påverkas inte.</li><li><code>border</code> är lådans kant, med tre värden: tjocklek (<code>2px</code>), stil (<code>solid</code>, en hel linje) och färg.</li><li><code>padding: 8px 24px</code> ger luft mellan kanten och texten i rutan.</li></ul>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>Ge den <code>section</code> som innehåller ingredienserna klassen <code>ingredients</code> (attributet <code>class</code> i HTML).</li><li>En regel med klasselektorn <code>.ingredients</code> (punkt före namnet):<ul><li><code>padding</code> med två värden: <code>8px</code> uppe och nere, <code>24px</code> till sidorna</li><li>smörgul bakgrund ur paletten</li><li><code>border</code> med tre värden: <code>2px</code>, stilen <code>solid</code> och guldfärgen ur paletten</li><li><code>border-radius</code> på <code>12px</code></li></ul></li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Ingredienserna, med sin rubrik, ligger i en smörgul ruta med en 2 pixlar tjock guldkant och rundade hörn (12 pixlar). Rutan har 8 pixlar luft innanför kanten uppe och nere och 24 till sidorna. Bara ingredienserna får rutan, inte stegen.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> <em>Ingredienser</em> och listan står i en gul ruta med guldkant och rundade hörn, med luft mellan kanten och texten. <em>Gör så här</em> har ingen ruta.</div>
+<h2>Etapp 5 · Luft mellan delarna</h2>
+<p><em>Varför:</em> <code>margin</code> skapar avstånd <em>mellan</em> lådor, och det är det som gör att en sida känns lugn.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>I <code>main</code>-regeln: ändra <code>margin: 0 auto;</code> till</li></ol>
+<pre><code class="lang-css">margin: 32px auto;</code></pre>
+<ol start="2"><li>Lägg till en rad först i <code>.ingredients</code>-regeln:</li></ol>
+<pre><code class="lang-css">.ingredients {
+  margin: 24px 0;
+  padding: 8px 24px;
+  background-color: #fff1c9;
+  border: 2px solid #d9a441;
+  border-radius: 12px;
+}</code></pre>
+<ol start="3"><li>Efter <code>main</code>-regeln, före <code>img</code>-regeln, skriv:</li></ol>
+<pre><code class="lang-css">h1 {
+  margin-top: 0;
+  text-align: center;
+}</code></pre>
+<ol start="4"><li>Spara och titta.</li></ol>
+<ul><li><code>margin: 32px auto</code> ger kortet 32 pixlar beige luft ovanför och under, och behåller <code>auto</code> till sidorna, så att det fortfarande ligger i mitten.</li><li><code>margin: 24px 0</code> ger rutan 24 pixlar luft ovanför och under, och ingen till sidorna.</li><li><code>margin-top</code> är bara luften ovanför. Rubriker har luft ovanför från början; <code>0</code> tar bort den, så att rubriken inte hamnar långt ner i kortet.</li><li><code>text-align: center</code> centrerar texten inuti elementet. Det är något annat än <code>margin: 0 auto</code>, som flyttar hela lådan.</li></ul>
+<p>Hela <code>style.css</code> ser nu ut så här:</p>
+<pre><code class="lang-css">/* Pannkakor: lådan */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, serif;
+  line-height: 1.6;
+  color: #3a2e2a;
+  background-color: #f3e9dc;
+}
+
+main {
+  max-width: 40rem;
+  margin: 32px auto;
+  padding: 24px 32px;
+  background-color: #ffffff;
+}
+
+h1 {
+  margin-top: 0;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.ingredients {
+  margin: 24px 0;
+  padding: 8px 24px;
+  background-color: #fff1c9;
+  border: 2px solid #d9a441;
+  border-radius: 12px;
+}</code></pre>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>Kortet (<code>main</code>): 32 pixlar <code>margin</code> ovanför och under, men fortfarande <code>auto</code> till sidorna.</li><li>Rutan (<code>.ingredients</code>): 24 pixlar <code>margin</code> ovanför och under, <code>0</code> till sidorna.</li><li>En regel för <code>h1</code>: ingen luft ovanför (<code>margin-top</code>) och texten centrerad (<code>text-align</code>).</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Kortet har 32 pixlar beige luft ovanför och under och ligger kvar i mitten. Rutan har 24 pixlar luft ovanför och under. Huvudrubriken är centrerad och har ingen luft ovanför. Sidan ser ut som slutbilden överst.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Det är beige luft ovanför och under det vita kortet, <em>Pannkakor</em> står centrerat högst upp i kortet, och det är tydlig luft mellan bilden och den gula rutan och mellan rutan och <em>Gör så här</em>. Sidan ser ut som slutbilden överst.</div>
+<h2>Etapp 6 · Lådmodellen i DevTools</h2>
+<p><em>Varför:</em> DevTools ritar upp lådmodellen för varje element, med siffror, och det är där du ser varför något ligger där det ligger.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Gör Chrome-fönstret brett, så att det är beige på båda sidor om kortet.</li><li>Högerklicka i den gula rutan, bredvid en ingrediens, och välj <strong>Inspektera</strong>. I Elements: klicka på raden <code>&lt;section class="ingredients"&gt;</code> (en bit upp), så att den är markerad.</li><li>Klicka på fliken <strong>Computed</strong> bredvid Styles. Överst finns en figur med fyra lådor i varandra: ytterst <strong>margin</strong>, sedan <strong>border</strong>, <strong>padding</strong> och innerst innehållet med två mått.</li><li>Läs av: margin 24 uppe och nere och <code>-</code> (noll) på sidorna, border 2 runt om, padding 8 uppe och nere och 24 på sidorna. Innehållet är 524 pixlar brett.</li><li>Håll pekaren över de olika lådorna i figuren. Samma del markeras i färg på sidan: margin i orange, padding i grönt, innehållet i blått.</li><li>Räkna efter: kortet är 640 brett, minus 32 padding på varje sida blir 576, och det är rutans bredd. Minus 2 + 2 i kant och 24 + 24 i padding blir 524.</li><li>Gå tillbaka till <strong>Styles</strong>, klicka på värdet <code>8px 24px</code> i <code>.ingredients</code> och skriv <code>40px</code>. Titta på sidan och i figuren under Computed. Ladda om sidan för att ta bort ändringen.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Markera <code>&lt;section class="ingredients"&gt;</code> i Elements och öppna fliken <em>Computed</em>. Läs av margin, border, padding och innehållets bredd i figuren, och håll pekaren över delarna för att se dem på sidan. Förklara innehållets bredd utifrån kortets <code>max-width</code> och de två <code>padding</code> och <code>border</code> som ligger utanför innehållet. Prova ett annat värde på <code>padding</code> i Styles.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Ta reda på i DevTools hur bred den gula rutans innehåll är, och förklara siffran utifrån kortets maxbredd och lådmodellens delar.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Du kan visa i Computed var margin, border, padding och innehåll finns för rutan, och förklara varför innehållet är 524 pixlar brett (640 − 2 × 32 − 2 × 2 − 2 × 24). Bredare fönster ändrar inte siffrorna; ett fönster smalare än kortet gör det.</div>
+<hr />
+<h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
+<p>Sätt <code>/*</code> och <code>*/</code> runt box-sizing-raden, så att den blir en kommentar, och spara. Mät kortet (<code>main</code>) i Computed: hur brett är det nu, och varför? Ta bort kommentaren igen. Ge sedan stegen under <em>Gör så här</em> en egen ruta med en ny klass, men en annan stil: bara en kant på vänster sida. Egenskapen heter <code>border-left</code> och tar samma tre värden som <code>border</code>. Hitta ett avstånd mellan kanten och listan som ser bra ut, och kontrollera i Computed att det blev som du tänkt.</p>
+<h2>Vanliga fel</h2>
+<ul><li><strong>Rutan syns inte alls:</strong> klassnamnet stämmer inte mellan HTML och CSS. Jämför tecken för tecken: <code>class="ingredients"</code> i HTML och <code>.ingredients</code> i CSS. Punkten ska stå i CSS men <em>inte</em> i <code>class</code>. Kontrollera också att klassen sitter på <code>&lt;section&gt;</code> och inte på <code>&lt;h2&gt;</code> eller <code>&lt;ul&gt;</code>: då blir rutan bara runt en del.</li><li><strong>Kortet ligger inte i mitten, eller är lika brett som fönstret:</strong> värdena i <code>margin</code> står i fel ordning (<code>auto 0</code> i stället för <code>0 auto</code>), eller <code>max-width</code> saknar enhet (<code>40</code> i stället för <code>40rem</code>). Ett mått utan enhet förstår webbläsaren inte, och den hoppar över deklarationen. I DevTools Styles är den då överstruken.</li><li><strong>Inget händer när du sparar stilmallen:</strong> stilmallen ligger i fel mapp, ofta direkt i <code>ovningar</code> i stället för i <code>t5-start</code>, eller så saknas <code>&lt;link&gt;</code>-raden i <code>recipe.html</code>. <code>style.css</code> ska ligga bredvid <code>recipe.html</code> i filpanelen.</li></ul>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>
