@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Övning R5 · Mobilen först – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+img[src*="mobil"]{max-width:300px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Övning R5 · Mobilen först</h1>
+<p class="meta">Torsdag 26/11 · Förmiddag · Vecka 48 · Kursmål F5 · ca 35 min</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
+<p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
+<p><strong>Du bygger:</strong> Fyrmuseets sida från Övning R4 ser bra ut på datorn, men i en mobil är den nästan oläslig. Du gör sidan <em>responsiv</em>, alltså att den anpassar sig efter skärmens bredd. Du arbetar <em>mobil först</em>: först skriver du reglerna så att sidan fungerar på en smal mobilskärm, sedan lägger du till det som bara ska gälla på en bred skärm. Allt testar du i Chromes <em>enhetsläge</em>, där du kan se sidan som på en mobil utan att ha en mobil.</p>
+<img src="bilder/r5-slutbild-mobil.png" alt="Slutbild i mobilbredd: namnet och menyn centrerade i sidhuvudet, bilden på fyren lika bred som skärmen, de tre korten under varandra och sidfotens tre delar under varandra" />
+<p>I datorbredd ser sidan ut precis som när du var klar med Övning R4:</p>
+<img src="bilder/r5-slutbild.png" alt="Slutbild i datorbredd: namnet till vänster och menyn till höger, tre kort på rad och sidfoten i tre kolumner" />
+<p><strong>Du behöver:</strong> mappen <code>ovningar</code> öppen i VS Code, Live Server och Chrome. Mappen <code>r5-start</code>, som ligger som zip-fil bredvid den här övningen i Learnpoint. Den är samma sida som du byggde i Övning R4, färdig, så du börjar från samma läge även om du inte blev klar med R4. Klipp 8 (responsivt) sett.</p>
+<hr />
+<h2>Etapp 1 · Se sidan som i en mobil</h2>
+<p><em>Varför:</em> du behöver ett snabbt sätt att se sidan i mobilbredd varje gång du sparar, och det har Chrome inbyggt.</p>
+<p><em>Enhetsläget</em> (Device Mode på engelska) är en del av DevTools som visar sidan som om den vore på en mobil eller surfplatta. Du slår på och av det med knappen <em>Toggle device toolbar</em>.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Hämta <code>r5-start.zip</code> från Learnpoint och packa upp den. På Mac dubbelklickar du på zip-filen. På Windows högerklickar du på den och väljer <strong>Extrahera alla</strong> (Extract All).</li><li>Dra mappen <code>r5-start</code> från Finder (Mac) eller Utforskaren (Windows) och släpp den på <strong>OVNINGAR</strong> i filpanelen i VS Code.</li><li>Högerklicka på <code>index.html</code> under <code>r5-start</code> och välj <strong>Open with Live Server</strong>.</li><li>Högerklicka någonstans på sidan i Chrome och välj <strong>Inspektera</strong> (Inspect). DevTools öppnas.</li><li>Längst upp till vänster i DevTools finns två små ikoner. Den första är en pil i en ruta. Den andra ser ut som en mobil framför en surfplatta: det är <strong>Toggle device toolbar</strong>. Klicka på den. (Kortkommando: Cmd+Shift+M på Mac, Ctrl+Shift+M på Windows, medan DevTools är markerat.)</li><li>Ovanför sidan dyker en verktygsrad upp. Längst till vänster står <strong>Dimensions: Responsive</strong>. Klicka på det och välj <strong>iPhone 12 Pro</strong> i listan. Finns den inte, välj en annan iPhone eller en Pixel.</li><li>Titta på sidan. Den ser ut som datorversionen, fast krympt: texten är pytteliten och korten står fortfarande tre i bredd. Så ser sidan ut i en riktig mobil också.</li><li>Klicka på <strong>Toggle device toolbar</strong> igen. Nu är du tillbaka i vanligt läge. Klicka en gång till för att slå på enhetsläget igen. Låt det vara på resten av övningen.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Packa upp <code>r5-start.zip</code> från Learnpoint, lägg mappen <code>r5-start</code> i <code>ovningar</code> och öppna <code>index.html</code> med Live Server. Öppna DevTools och slå på enhetsläget med knappen <em>Toggle device toolbar</em> (ikonen med en mobil framför en surfplatta, längst upp till vänster i DevTools, eller Cmd+Shift+M / Ctrl+Shift+M). Välj en mobil under <em>Dimensions</em>, till exempel iPhone 12 Pro.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Visa sidan i Chromes enhetsläge med en mobil vald och se hur den ser ut.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Enhetsläget är på, en mobil är vald under <em>Dimensions</em>, och sidan ser ut som en krympt datorsida med pytteliten text.</div>
+<h2>Etapp 2 · Viewport-raden</h2>
+<p><em>Varför:</em> utan den raden låtsas mobilen att skärmen är lika bred som en datorskärm och krymper hela sidan, så ingenting du skriver för mobilen gör någon nytta.</p>
+<p><em>Viewport</em> är den del av sidan som syns i fönstret. Raden <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</code> i <code>&lt;head&gt;</code> säger till mobilen: gör sidan lika bred som skärmen (<code>width=device-width</code>) och zooma inte (<code>initial-scale=1</code>). Raden ska finnas på alla sidor du gör, också i ditt projekt.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Öppna <code>index.html</code> under <code>r5-start</code> i VS Code. Klicka sist på rad 4, efter <code>&lt;meta charset="utf-8" /&gt;</code>, och tryck Enter.</li><li>Skriv:</li></ol>
+<pre><code class="lang-html">    &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</code></pre>
+<ol start="3"><li>Spara. Rad 1–8 ser nu ut så här:</li></ol>
+<pre><code class="lang-html">&lt;!doctype html&gt;
+&lt;html lang="sv"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+    &lt;title&gt;Fyrmuseet i Hamnviken&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css" /&gt;
+  &lt;/head&gt;</code></pre>
+<ol start="4"><li>Titta i enhetsläget i Chrome. Texten har normal storlek. Men nu syns problemen: namnet och menyn trängs på samma rad, de tre korten är smala som pinnar, och bilden på fyren sticker ut utanför skärmen till höger.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Lägg till ett <code>meta</code>-element med <code>name="viewport"</code> och <code>content="width=device-width, initial-scale=1"</code> i <code>head</code>, direkt efter <code>meta charset</code>. Spara och titta i enhetsläget.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Sidan ska visas i mobilens verkliga bredd, inte som en krympt datorsida.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> I enhetsläget har texten normal storlek. Korten står tre i bredd och är mycket smala, och bilden sticker ut till höger. Det är väntat: det rättar du i resten av övningen.</div>
+<h2>Etapp 3 · Bilder som krymper</h2>
+<p><em>Varför:</em> en bild är lika bred som bildfilen, och är filen bredare än skärmen sticker bilden ut.</p>
+<p><code>max-width: 100%;</code> på en bild betyder: bli aldrig bredare än lådan du ligger i. På en bred skärm har bilden sin vanliga storlek, på en smal krymper den. <code>height: auto;</code> gör att höjden krymper lika mycket, så att bilden inte blir hoptryckt.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Öppna <code>style.css</code> under <code>r5-start</code>. Klicka sist på rad 45, efter <code>}</code> som avslutar regeln <code>a</code>, och tryck Enter två gånger.</li><li>Skriv:</li></ol>
+<pre><code class="lang-css">img {
+  max-width: 100%;
+  height: auto;
+}</code></pre>
+<ol start="3"><li>Spara och titta i enhetsläget. Bilden på fyren är nu lika bred som texten under den.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Skriv en regel för alla <code>img</code> med <code>max-width</code> (i procent, så att bilden aldrig blir bredare än det den ligger i) och <code>height: auto</code>.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Bilden får aldrig vara bredare än skärmen, och den får inte bli hoptryckt.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> I enhetsläget får bilden plats på skärmen och ser ut som förut, bara mindre. I datorbredd (slå av enhetsläget) har bilden samma storlek som innan.</div>
+<h2>Etapp 4 · Grundreglerna blir mobilens</h2>
+<p><em>Varför:</em> mobil först betyder att reglerna som gäller alltid är mobilens, och på en smal skärm ska saker ligga under varandra.</p>
+<p><code>flex-direction</code> bestämmer åt vilket håll en flexbehållare lägger sina barn: <code>row</code> (på rad, det som gäller om du inte skriver något) eller <code>column</code> (i en kolumn, under varandra). Du sätter <code>column</code> på de tre behållarna som ligger på rad: <code>header</code>, <code>.card-row</code> och <code>footer</code>. Menyn <code>nav</code> får vara kvar på rad, för de tre länkarna får plats bredvid varandra också i en mobil.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Leta upp regeln <code>header</code> i <code>style.css</code>. Klicka sist på raden <code>display: flex;</code> i den regeln, tryck Enter och skriv <code>flex-direction: column;</code>, så att regeln börjar så här:</li></ol>
+<pre><code class="lang-css">header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;</code></pre>
+<ol start="2"><li>Gör samma sak i regeln <code>.card-row</code>, så att den blir:</li></ol>
+<pre><code class="lang-css">.card-row {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}</code></pre>
+<ol start="3"><li>Och i regeln <code>footer</code>, så att den börjar:</li></ol>
+<pre><code class="lang-css">footer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;</code></pre>
+<ol start="4"><li>Spara och titta i enhetsläget. Namnet står överst och menyn under, båda i mitten (<code>align-items: center</code> ställer nu barnen i mitten från vänster till höger, eftersom de ligger under varandra). Korten och sidfotens delar ligger under varandra.</li><li>Slå av enhetsläget och titta i datorbredd. Där ligger nu också allt under varandra. Det är väntat: du har skrivit mobilens regler, och datorns lägger du till i nästa etapp.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Lägg till <code>flex-direction: column;</code> i regeln för var och en av de tre flexbehållare som ska ligga under varandra i mobilen: <code>header</code>, <code>.card-row</code> och <code>footer</code>. Låt <code>nav</code> vara.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>I mobilbredd ska namnet och menyn, korten och sidfotens delar ligga under varandra. Menylänkarna ska stå kvar på rad.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> I enhetsläget ser sidan ut som mobilslutbilden. I datorbredd ligger allt under varandra (det rättar du i nästa etapp).</div>
+<h2>Etapp 5 · Brytpunkten vid 700 pixlar</h2>
+<p><em>Varför:</em> på en bred skärm finns plats att lägga saker bredvid varandra igen, och det ska bara hända när skärmen är tillräckligt bred.</p>
+<p>En <em>media query</em> är ett villkor i CSS: <code>@media (min-width: 700px) { … }</code> betyder att reglerna mellan klamrarna bara gäller när fönstret är minst 700 pixlar brett. Bredden där sidan byter utseende kallas <em>brytpunkt</em>. Du har en enda brytpunkt, och media queryn ska stå sist i filen: regler som står senare vinner, så den skriver över grundreglernas <code>column</code> med <code>row</code> på breda skärmar. Inuti media queryn skriver du vanliga regler, med ett extra indrag.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Klicka allra sist i <code>style.css</code>, efter <code>}</code> som avslutar <code>footer div</code>, och tryck Enter två gånger.</li><li>Skriv:</li></ol>
+<pre><code class="lang-css">@media (min-width: 700px) {
+  header,
+  .card-row,
+  footer {
+    flex-direction: row;
+  }
+}</code></pre>
+<p>Selektorn <code>header, .card-row, footer</code> är en gruppering: regeln gäller alla tre. Prettier sätter dem på var sin rad.</p>
+<ol start="3"><li>Spara. Slå av enhetsläget: i datorbredd ser sidan ut som när du var klar med Övning R4.</li><li>Slå på enhetsläget igen och välj <strong>Responsive</strong> under <em>Dimensions</em>. Skriv <code>699</code> i rutan för bredd (den första sifferrutan i verktygsraden) och tryck Enter: sidan ser ut som i mobilen. Skriv <code>700</code>: allt hoppar upp på rad. Prova några bredder däremellan och större, till exempel <code>500</code> och <code>1000</code>. Du kan också dra i det randiga handtaget till höger om sidan.</li><li>Hela <code>style.css</code> ser nu ut så här. Jämför om något ser konstigt ut:</li></ol>
+<pre><code class="lang-css">/* Fyrmuseet i Hamnviken
+   Paletten:
+   #1d3a52 mörkblå (text, sidhuvud, sidfot)
+   #3a7ca5 havsblå (länkar)
+   #e8f3fa ljusblå (sidans bakgrund)
+   #c0392b fyrröd (knappen)
+   #ffffff vit (korten) */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #1d3a52;
+  background-color: #e8f3fa;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Georgia, serif;
+  line-height: 1.2;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 1.125rem;
+}
+
+a {
+  color: #3a7ca5;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  color: #ffffff;
+  background-color: #1d3a52;
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+}
+
+nav a {
+  display: block;
+  padding: 8px 12px;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+nav a:hover {
+  background-color: #3a7ca5;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 24px;
+}
+
+.card-row {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card {
+  flex: 1;
+  padding: 16px;
+  background-color: #ffffff;
+  border: 1px solid #3a7ca5;
+  border-radius: 8px;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #c0392b;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background-color: #1d3a52;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px 24px;
+  color: #ffffff;
+  background-color: #1d3a52;
+}
+
+footer h2 {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+footer div {
+  flex: 1;
+}
+
+@media (min-width: 700px) {
+  header,
+  .card-row,
+  footer {
+    flex-direction: row;
+  }
+}</code></pre>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Lägg en media query med <code>min-width: 700px</code> allra sist i filen. I den: en regel för <code>header</code>, <code>.card-row</code> och <code>footer</code> (gruppering) som sätter <code>flex-direction</code> till <code>row</code>. Prova bredderna 699 och 700 i enhetsläget med <em>Responsive</em> valt.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Från 700 pixlars bredd och uppåt ska sidan se ut som i Övning R4, under 700 som i mobilen. Använd en enda brytpunkt och skriv den med <code>min-width</code>.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Med bredden 699 i enhetsläget ser sidan ut som mobilslutbilden, med 700 och bredare som datorslutbilden. Bilden sticker aldrig ut, vilken bredd du än väljer.</div>
+<hr />
+<h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
+<p>I datorbredd står bilden på fyren ovanför texten. Lägg bilden och stycket under den bredvid varandra från brytpunkten: lägg en <code>div</code> med en egen klass runt <code>img</code> och <code>p</code> i första avsnittet, gör den till en flexbehållare i media queryn och ge barnen <code>flex: 1</code>. I mobilen ska de ligga kvar under varandra. Behöver du ändra något i grundreglerna, eller räcker media queryn?</p>
+<h2>Vanliga fel</h2>
+<ul><li><strong>Ingenting ändras i enhetsläget, sidan är fortfarande pytteliten:</strong> viewport-raden saknas, är felstavad eller ligger utanför <code>&lt;head&gt;</code>. Jämför tecken för tecken med raden i etapp 2. Kontrollera också att det är <code>r5-start/index.html</code> som är öppen i Chrome.</li><li><strong>Allt ligger under varandra också på en bred skärm:</strong> media queryn står inte sist i filen, så grundreglernas <code>column</code> står senare och vinner. Eller så saknas en <code>}</code>: media queryn har två, en för regeln och en för hela <code>@media</code>. Flytta den sist och räkna klamrarna.</li><li><strong>Sidan byter utseende vid fel bredd, eller åt fel håll:</strong> du har skrivit <code>max-width</code> i stället för <code>min-width</code> i media queryn. Med <code>min-width</code> gäller reglerna från 700 pixlar och <em>uppåt</em>.</li></ul>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>

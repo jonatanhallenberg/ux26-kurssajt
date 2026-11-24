@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Flexbox Froggy · lagspel – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+img[src*="mobil"]{max-width:300px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Flexbox Froggy · lagspel</h1>
+<p class="meta">Torsdag 26/11 · Före lunch · Vecka 48 · Kursmål F5 · 20 min · i lag</p>
+<p><strong>Så går det till:</strong> Flexbox Froggy är ett gratis spel i webbläsaren där ni hjälper grodor att hoppa till sina näckrosblad genom att skriva flexbox-CSS. Spelet har 24 nivåer. Ert lag spelar på en dator i 20 minuter. Laget som har klarat flest nivåer när tiden är slut vinner. Ni spelar i samma lag som i morgonens quiz.</p>
+<p><strong>Ni behöver:</strong> en dator per lag med Chrome. Inget konto, ingen installation.</p>
+<p><strong>Regler</strong></p>
+<ul><li>En dator per lag. <strong>Ny person vid tangentbordet för varje nivå</strong>, i tur och ordning runt bordet. De andra får prata, peka och föreslå, men bara den som sitter vid tangentbordet skriver.</li><li>Ingen AI-chatt och inga lösningar från nätet. Ledtrådarna i spelet och era anteckningar från klipp 7 får ni använda.</li><li>Det är antalet <strong>klarade</strong> nivåer som räknas, inte vilken nivå som visas. Klarade nivåer är markerade i nivålistan (klicka på <em>Nivå … av 24</em> överst i spelet). Att hoppa fram i listan ger inga poäng.</li><li>När Jonatan säger stopp släpper alla tangentbordet. Har två lag klarat lika många nivåer delar de placeringen.</li></ul>
+<hr />
+<h2>Starta spelet</h2>
+<ol><li>Gå till <strong>flexboxfroggy.com/#sv</strong>. Då är spelet på svenska. (Har ni öppnat det utan <code>#sv</code>: klicka på <strong>Settings</strong> och välj <strong>Svenska</strong> under <em>Language</em>.)</li><li>Har någon spelat på datorn förut fortsätter spelet där de slutade. Klicka då på <em>Nivå … av 24</em> överst i spelet och sedan <strong>Återställ</strong>, så börjar ni från nivå 1 med en tom lista.</li><li>Till vänster står instruktionen för nivån och under den en kodruta där ni skriver CSS. Till höger syns dammen med grodorna. När grodorna sitter på rätt blad blir knappen <strong>Nästa</strong> klickbar.</li></ol>
+<h2>Det här känner ni igen från klipp 7</h2>
+<table><thead><tr><th>Nivå</th><th>Vad den tränar</th></tr></thead><tbody><tr><td>1–4</td><td><code>justify-content</code>: <code>center</code> och <code>space-between</code> från klipp 7, plus två nya värden (<code>flex-end</code>, <code>space-around</code>) som spelet förklarar</td></tr><tr><td>5–7</td><td><code>align-items</code>, och <code>justify-content</code> och <code>align-items</code> tillsammans</td></tr><tr><td>8–11</td><td><code>flex-direction</code>: <code>column</code> från klipp 7, plus <code>row-reverse</code> (baklänges) som spelet förklarar</td></tr><tr><td>18–19</td><td><code>flex-wrap: wrap</code></td></tr></tbody></table>
+<p>Nivå 12–17 och 20–24 tar upp sådant som inte finns i kursen (<code>order</code>, <code>align-self</code>, <code>flex-flow</code>, <code>align-content</code>). De är bonus: de ger poäng i spelet, men använd dem inte i ditt projekt.</p>
+<h2>Efteråt</h2>
+<p>Spelet sparar hur långt ni kommit i webbläsaren. Vill du spela klart själv kan du öppna det hemma, eller på din egen dator med en gång. Det finns också en fortsättning om <em>grid</em>, Grid Garden (cssgridgarden.com), om du vill veta vad grid är.</p>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>

@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Övning R4 · På rad med flexbox – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+img[src*="mobil"]{max-width:300px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Övning R4 · På rad med flexbox</h1>
+<p class="meta">Torsdag 26/11 · Förmiddag · Vecka 48 · Kursmål F5 · ca 35 min</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
+<p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
+<p><strong>Du bygger:</strong> Fyrmuseet i Hamnviken har fått färger och typsnitt, men allt på sidan ligger under varandra: menyn, korten och sidfoten. Du lägger sakerna <em>på rad</em> med <em>flexbox</em>, ett sätt i CSS att ställa element bredvid varandra och bestämma hur de fördelar platsen. Du skriver bara CSS, utom på ett ställe där du lägger en <code>div</code> runt tre kort. HTML-filen och färgerna är redan klara.</p>
+<img src="bilder/r4-slutbild.png" alt="Slutbild: mörkblått sidhuvud med Fyrmuseet i Hamnviken till vänster och menyn till höger, en bild på fyren, tre vita kort bredvid varandra, en röd knapp och en mörkblå sidfot i tre kolumner" />
+<p><strong>Du behöver:</strong> mappen <code>ovningar</code> öppen i VS Code, Live Server och Chrome. Mappen <code>r4-start</code>, som ligger som zip-fil bredvid den här övningen i Learnpoint. Klipp 7 (flexbox) sett.</p>
+<hr />
+<h2>Etapp 1 · Hämta sidan och titta</h2>
+<p><em>Varför:</em> du ska se hur sidan ser ut utan flexbox, så att du märker vad varje ändring gör.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Hämta <code>r4-start.zip</code> från Learnpoint och packa upp den. På Mac dubbelklickar du på zip-filen. På Windows högerklickar du på den och väljer <strong>Extrahera alla</strong> (Extract All). Nu har du en vanlig mapp som heter <code>r4-start</code>.</li><li>Dra mappen <code>r4-start</code> från Finder (Mac) eller Utforskaren (Windows) och släpp den på <strong>OVNINGAR</strong> i filpanelen i VS Code. I mappen ligger <code>index.html</code>, <code>style.css</code> och en mapp <code>images</code>.</li><li>Högerklicka på <code>index.html</code> under <code>r4-start</code> och välj <strong>Open with Live Server</strong>. Sidan öppnas i Chrome.</li><li>Titta på sidan. Menyn (<em>Start</em>, <em>Besök</em>, <em>Boka visning</em>) står under rubriken, en länk per rad. De tre vita korten ligger under varandra, och sidfoten längst ner är tre delar under varandra.</li><li>Öppna <code>style.css</code> under <code>r4-start</code> i VS Code. Överst står en kommentar med sidans färger. Titta på regeln <code>nav a</code> (rad 53–59): där står <code>display: block;</code>, som gör varje menylänk till ett eget block med luft runt, och ett block tar alltid en egen rad. Därför står länkarna under varandra.</li><li>Du skriver all CSS i <code>style.css</code>. Du byter inga färger och tar inte bort något, du lägger bara till rader.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Packa upp <code>r4-start.zip</code> från Learnpoint, lägg mappen <code>r4-start</code> i <code>ovningar</code> och öppna <code>r4-start/index.html</code> med Live Server. Titta på vilka delar som ligger under varandra. Leta i <code>style.css</code> efter varför menylänkarna står på var sin rad (titta på <code>display</code> i regeln <code>nav a</code>).</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Öppna startsidan i Chrome och jämför med slutbilden: vilka delar ska ligga på rad?</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Sidan visas i Chrome och adressen slutar på <code>/r4-start/index.html</code>. Menyn, korten och sidfoten ligger under varandra.</div>
+<h2>Etapp 2 · Menyn på rad</h2>
+<p><em>Varför:</em> en meny på rad tar mindre plats och ser ut som de menyer du ritat i dina prototyper.</p>
+<p><code>display: flex;</code> gör ett element till en <em>flexbehållare</em>: elementen direkt i den (dess <em>barn</em>) ställer sig då bredvid varandra på en rad, i stället för under varandra. <code>gap</code> är avståndet mellan barnen. Länkarna är barn till <code>nav</code>, så det är <code>nav</code> som ska få <code>display: flex;</code>.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>I <code>style.css</code>: klicka sist på rad 51, efter <code>}</code> som avslutar regeln <code>header</code>, och tryck Enter två gånger.</li><li>Skriv:</li></ol>
+<pre><code class="lang-css">nav {
+  display: flex;
+  gap: 8px;
+}</code></pre>
+<p>När du skriver <code>{</code> lägger VS Code själv till <code>}</code> en bit ner. Skriv bara det som saknas, så att det blir en <code>}</code> och inte två.</p>
+<ol start="3"><li>Spara med Cmd+S (Mac) eller Ctrl+S (Windows). Prettier rättar indraget och Live Server laddar om sidan.</li><li>Menylänkarna står nu bredvid varandra under rubriken.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Gör <code>nav</code> till en flexbehållare med en ny regel för <code>nav</code> (lägg den före <code>nav a</code>). Lägg till ett avstånd mellan länkarna med <code>gap</code> (till exempel <code>8px</code>). Ändra inte <code>display: block;</code> i <code>nav a</code>: länkarna ska fortfarande vara block, det är behållaren som lägger dem på rad.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Menylänkarna ska stå på en rad med lite avstånd emellan.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> <em>Start</em>, <em>Besök</em> och <em>Boka visning</em> står på en rad. Högerklicka på menyn i Chrome och välj <strong>Inspektera</strong>: i DevTools → Elements står en liten etikett <code>flex</code> efter <code>&lt;nav&gt;</code>. Den visar att elementet är en flexbehållare.</div>
+<h2>Etapp 3 · Namnet till vänster, menyn till höger</h2>
+<p><em>Varför:</em> sidhuvudet är det första besökaren ser, och namn till vänster med meny till höger är det mönster de flesta känner igen.</p>
+<p>Sidhuvudet <code>header</code> har två barn: rubriken <code>h1</code> och menyn <code>nav</code>. Gör du <code>header</code> till en flexbehållare hamnar de på samma rad. <code>justify-content</code> bestämmer hur barnen fördelas längs raden: <code>space-between</code> lägger det första längst till vänster, det sista längst till höger och all ledig plats emellan. <code>align-items: center</code> ställer barnen mitt för varandra i höjdled, så att menyn inte hamnar uppe vid kanten.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Leta upp regeln <code>header</code> (rad 47). Klicka sist på rad 47, efter <code>header {</code>, och tryck Enter.</li><li>Skriv de tre raderna, så att regeln blir så här:</li></ol>
+<pre><code class="lang-css">header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  color: #ffffff;
+  background-color: #1d3a52;
+}</code></pre>
+<ol start="3"><li>Spara.</li><li>Gör Chrome-fönstret smalare och bredare. Menyn följer med högerkanten.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Gör <code>header</code> till en flexbehållare. Använd <code>justify-content</code> med värdet som lägger det första barnet till vänster och det sista till höger (<code>space-between</code>), och <code>align-items</code> för att ställa namnet och menyn mitt för varandra i höjdled.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>I sidhuvudet ska museets namn stå till vänster och menyn till höger, på samma höjd.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> <em>Fyrmuseet i Hamnviken</em> står till vänster och menyn längst till höger i det mörkblå sidhuvudet, och menyn ligger mitt för namnet i höjdled. I DevTools → Elements står <code>flex</code> efter både <code>&lt;header&gt;</code> och <code>&lt;nav&gt;</code>.</div>
+<h2>Etapp 4 · Tre kort på rad</h2>
+<p><em>Varför:</em> kort på rad är det vanligaste layoutmönstret på webben, och här behöver du en låda som bara finns för layoutens skull.</p>
+<p>De tre korten ligger i en <code>section</code> tillsammans med rubriken <em>Tre saker du inte får missa</em>. Gör du <code>section</code> till en flexbehållare hamnar rubriken också på raden, och det vill du inte. Därför lägger du en <code>&lt;div&gt;</code> runt bara korten. En <code>div</code> är en låda utan betydelse (det lärde du dig i Övning R1), och här är det just poängen: lådan finns bara för att korten ska kunna ligga på rad. Lådan får klassen <code>card-row</code>. <code>flex: 1</code> på varje kort betyder att korten delar lika på bredden.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Öppna <code>index.html</code> under <code>r4-start</code> i VS Code. Klicka sist på rad 31, efter <code>&lt;h2&gt;Tre saker du inte får missa&lt;/h2&gt;</code>, och tryck Enter.</li><li>Skriv:</li></ol>
+<pre><code class="lang-html">&lt;div class="card-row"&gt;</code></pre>
+<p>När du skriver <code>&gt;</code> lägger VS Code själv till <code>&lt;/div&gt;</code> direkt efter. Ta bort det <code>&lt;/div&gt;</code> (bara på den här raden), du skriver det längre ner.</p>
+<ol start="3"><li>Den sista <code>&lt;/article&gt;</code> stod på rad 52 och har nu flyttats ner till rad 53. Klicka sist på rad 53 och tryck Enter. Skriv <code>&lt;/div&gt;</code>.</li><li>Spara. Prettier flyttar in de tre korten ett steg, så att du ser att de ligger i lådan. Rad 30–55 ser nu ut så här:</li></ol>
+<pre><code class="lang-html">      &lt;section&gt;
+        &lt;h2&gt;Tre saker du inte får missa&lt;/h2&gt;
+        &lt;div class="card-row"&gt;
+          &lt;article class="card"&gt;
+            &lt;h3&gt;Tornet&lt;/h3&gt;
+            &lt;p&gt;
+              96 trappsteg upp till lyktan. Högst upp ser du hela skärgården en
+              klar dag.
+            &lt;/p&gt;
+          &lt;/article&gt;
+          &lt;article class="card"&gt;
+            &lt;h3&gt;Linsen&lt;/h3&gt;
+            &lt;p&gt;
+              En glaskupa lika hög som en vuxen, som samlade ljuset till en
+              stråle som syntes 30 kilometer ut till havs.
+            &lt;/p&gt;
+          &lt;/article&gt;
+          &lt;article class="card"&gt;
+            &lt;h3&gt;Fyrvaktarens kök&lt;/h3&gt;
+            &lt;p&gt;
+              Vedspisen, kaffepannan och loggboken står kvar som när den sista
+              fyrvaktaren flyttade 1994.
+            &lt;/p&gt;
+          &lt;/article&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;</code></pre>
+<ol start="5"><li>Gå till <code>style.css</code>. Leta upp regeln <code>.card</code>. Klicka på den tomma raden ovanför <code>.card {</code>, tryck Enter och skriv:</li></ol>
+<pre><code class="lang-css">.card-row {
+  display: flex;
+  gap: 24px;
+}</code></pre>
+<ol start="6"><li>Klicka sist på raden <code>.card {</code>, tryck Enter och skriv <code>flex: 1;</code>, så att regeln blir så här:</li></ol>
+<pre><code class="lang-css">.card {
+  flex: 1;
+  padding: 16px;
+  background-color: #ffffff;
+  border: 1px solid #3a7ca5;
+  border-radius: 8px;
+}</code></pre>
+<ol start="7"><li>Spara.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>I <code>index.html</code>: lägg en <code>div</code> med klassen <code>card-row</code> runt de tre <code>article</code>-elementen, men inte runt rubriken. I <code>style.css</code>: gör <code>.card-row</code> till en flexbehållare med ett <code>gap</code>, och ge <code>.card</code> <code>flex: 1</code> så att korten blir lika breda.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>De tre korten ska ligga bredvid varandra, lika breda, med luft emellan. Rubriken ovanför dem ska ligga kvar på egen rad.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> De tre korten står bredvid varandra med lika bredd och luft emellan, och <em>Tre saker du inte får missa</em> står kvar ovanför. Ändrar du fönstrets bredd blir korten smalare och bredare tillsammans.</div>
+<h2>Etapp 5 · Sidfoten i kolumner</h2>
+<p><em>Varför:</em> en sidfot i kolumner är lätt att läsa av, och nu gör du samma sak en gång till utan hjälp av HTML.</p>
+<p>Sidfoten har redan tre lådor, en <code>div</code> för varje del (<em>Hitta hit</em>, <em>Öppet</em>, <em>Kontakt</em>). Du behöver alltså bara CSS. Selektorn <code>footer div</code> väljer de <code>div</code> som ligger i <code>footer</code>.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>I <code>style.css</code>: leta upp regeln <code>footer</code>. Klicka sist på raden <code>footer {</code>, tryck Enter och skriv de två raderna, så att regeln blir så här:</li></ol>
+<pre><code class="lang-css">footer {
+  display: flex;
+  gap: 24px;
+  padding: 16px 24px;
+  color: #ffffff;
+  background-color: #1d3a52;
+}</code></pre>
+<ol start="2"><li>Klicka allra sist i filen, efter <code>}</code> som avslutar <code>footer h2</code>, tryck Enter två gånger och skriv:</li></ol>
+<pre><code class="lang-css">footer div {
+  flex: 1;
+}</code></pre>
+<ol start="3"><li>Spara.</li><li>Hela <code>style.css</code> ser nu ut så här. Jämför om något ser konstigt ut:</li></ol>
+<pre><code class="lang-css">/* Fyrmuseet i Hamnviken
+   Paletten:
+   #1d3a52 mörkblå (text, sidhuvud, sidfot)
+   #3a7ca5 havsblå (länkar)
+   #e8f3fa ljusblå (sidans bakgrund)
+   #c0392b fyrröd (knappen)
+   #ffffff vit (korten) */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #1d3a52;
+  background-color: #e8f3fa;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Georgia, serif;
+  line-height: 1.2;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 1.125rem;
+}
+
+a {
+  color: #3a7ca5;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  color: #ffffff;
+  background-color: #1d3a52;
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+}
+
+nav a {
+  display: block;
+  padding: 8px 12px;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+nav a:hover {
+  background-color: #3a7ca5;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 24px;
+}
+
+.card-row {
+  display: flex;
+  gap: 24px;
+}
+
+.card {
+  flex: 1;
+  padding: 16px;
+  background-color: #ffffff;
+  border: 1px solid #3a7ca5;
+  border-radius: 8px;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #c0392b;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background-color: #1d3a52;
+}
+
+footer {
+  display: flex;
+  gap: 24px;
+  padding: 16px 24px;
+  color: #ffffff;
+  background-color: #1d3a52;
+}
+
+footer h2 {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+footer div {
+  flex: 1;
+}</code></pre>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Gör <code>footer</code> till en flexbehållare med ett <code>gap</code>. Ge sidfotens tre <code>div</code> <code>flex: 1</code> med selektorn <code>footer div</code>, så att kolumnerna blir lika breda.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Sidfotens tre delar ska stå bredvid varandra som tre lika breda kolumner. Sidan ska se ut som slutbilden.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> <em>Hitta hit</em>, <em>Öppet</em> och <em>Kontakt</em> står som tre kolumner i sidfoten. I DevTools → Elements står <code>flex</code> efter <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;div class="card-row"&gt;</code> och <code>&lt;footer&gt;</code>. Sidan ser ut som slutbilden.</div>
+<hr />
+<h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
+<p>Flexbox lägger saker på <em>en</em> rad. För rader och kolumner samtidigt finns <em>grid</em> (rutnät), som du inte behöver i kursen. Prova att byta ut reglerna för <code>.card-row</code> mot <code>display: grid;</code>, <code>grid-template-columns: repeat(3, 1fr);</code> och <code>gap: 24px;</code>. <code>repeat(3, 1fr)</code> betyder tre kolumner som får en lika stor del (<em>fraction</em>) var av bredden. Ta bort <code>flex: 1</code> från <code>.card</code> och se att resultatet blir detsamma. Lägg sedan till ett fjärde kort i HTML: var hamnar det med grid, och var hade det hamnat med flexbox? Vill du öva mer finns spelet Grid Garden (cssgridgarden.com), som Flexbox Froggy fast för grid.</p>
+<h2>Vanliga fel</h2>
+<ul><li><strong>Ingenting händer när du sparar, eller Prettier slutar ordna indraget:</strong> en <code>}</code> saknas eller finns två gånger. VS Code lägger till <code>}</code> själv när du skriver <code>{</code>, så det är lätt att få en för mycket. Varje regel ska ha exakt en <code>{</code> och en <code>}</code>. Titta på regeln du just skrev.</li><li><strong>Rubriken <em>Tre saker du inte får missa</em> hamnar också på raden, bredvid korten:</strong> <code>div class="card-row"</code> står ovanför rubriken i stället för under den, eller så har du lagt <code>display: flex;</code> på <code>section</code>. Lådan ska bara omsluta de tre korten.</li><li><strong>Menylänkarna står fortfarande under varandra:</strong> du har lagt <code>display: flex;</code> i regeln <code>nav a</code> i stället för i en egen regel för <code>nav</code>. Det är behållaren, inte länkarna, som ska vara flex.</li></ul>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>

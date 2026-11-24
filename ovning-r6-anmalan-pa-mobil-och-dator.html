@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Övning R6 · Anmälan på mobil och dator – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+img[src*="mobil"]{max-width:300px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Övning R6 · Anmälan på mobil och dator</h1>
+<p class="meta">Torsdag 26/11 · Förmiddag · Vecka 48 · Kursmål F5 · ca 30 min · för dig som hinner</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
+<p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
+<p><strong>Du bygger:</strong> Fotoklubben Bländarens anmälningssida, samma som du stylade i Övning T6, ska fungera lika bra i mobilen som på datorn. I mobilen står alla fält under varandra i en kolumn. På datorn får formuläret en <em>maxbredd</em>, alltså en största bredd det aldrig går över, och två par fält står bredvid varandra. Knapparna lär sig själva att gå ner på en ny rad när de inte får plats. Sist kontrollerar du CSS:en i CSS-validatorn.</p>
+<img src="bilder/r6-slutbild.png" alt="Slutbild i datorbredd: ett vitt formulär med Namn och E-post bredvid varandra, datum och antal bredvid varandra, sedan rullgardinen och textrutan, och två knappar på en rad" />
+<img src="bilder/r6-slutbild-mobil.png" alt="Slutbild i mobilbredd: alla fält under varandra i full bredd, knappen Skicka anmälan och under den knappen Till startsidan" />
+<p><strong>Du behöver:</strong> mappen <code>ovningar</code> öppen i VS Code, Live Server och Chrome. Mappen <code>r6-start</code>, som ligger som zip-fil bredvid den här övningen i Learnpoint. Du ska kunna slå på enhetsläget i DevTools (Övning R5, etapp 1).</p>
+<hr />
+<h2>Etapp 1 · Hämta sidan och lägg till viewport-raden</h2>
+<p><em>Varför:</em> viewport-raden ska finnas på varje sida, annars hjälper inget av det du gör för mobilen.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Hämta <code>r6-start.zip</code> från Learnpoint och packa upp den. På Mac dubbelklickar du på zip-filen. På Windows högerklickar du på den och väljer <strong>Extrahera alla</strong> (Extract All).</li><li>Dra mappen <code>r6-start</code> från Finder (Mac) eller Utforskaren (Windows) och släpp den på <strong>OVNINGAR</strong> i filpanelen i VS Code. I mappen ligger <code>index.html</code>, <code>signup.html</code> och <code>style.css</code>.</li><li>Öppna <code>signup.html</code> under <code>r6-start</code> i VS Code. Klicka sist på rad 4, efter <code>&lt;meta charset="utf-8" /&gt;</code>, tryck Enter och skriv:</li></ol>
+<pre><code class="lang-html">    &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</code></pre>
+<ol start="4"><li>Spara. Gör samma sak i <code>index.html</code>: samma rad, på samma ställe, rad 5.</li><li>Högerklicka på <code>signup.html</code> och välj <strong>Open with Live Server</strong>. Öppna DevTools (högerklicka på sidan, <strong>Inspektera</strong>) och slå på enhetsläget med <strong>Toggle device toolbar</strong> (Cmd+Shift+M / Ctrl+Shift+M). Välj en mobil under <em>Dimensions</em>, till exempel iPhone 12 Pro.</li><li>Titta: i mobilen ser formuläret redan helt okej ut, eftersom fälten är lika breda som sidan. Slå av enhetsläget och gör Chrome-fönstret riktigt brett. Där blir fälten väldigt långa.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Packa upp <code>r6-start.zip</code> från Learnpoint och lägg mappen i <code>ovningar</code>. Lägg viewport-raden i <code>head</code> på både <code>signup.html</code> och <code>index.html</code>, direkt efter <code>meta charset</code>. Öppna <code>signup.html</code> med Live Server och titta på formuläret både i enhetsläget och i ett brett fönster.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Båda sidorna ska ha viewport-raden. Titta på formuläret i mobilbredd och i ett brett fönster.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Båda html-filerna har viewport-raden på rad 5. I enhetsläget har texten normal storlek, och fälten är lika breda som skärmen.</div>
+<h2>Etapp 2 · Formuläret i en kolumn med maxbredd</h2>
+<p><em>Varför:</em> ett fält som är en hel skärm brett är svårt att läsa av, så formuläret får en största bredd och blir ett eget vitt kort.</p>
+<p>Fälten har redan <code>width: 100%;</code> från Övning T6: de blir lika breda som det de ligger i. Ger du <code>form</code> en <code>max-width</code> blir fälten aldrig bredare än så. I mobilen, där skärmen är smalare än maxbredden, märks ingen skillnad.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Öppna <code>style.css</code> under <code>r6-start</code>. Klicka allra sist i filen, efter <code>}</code> som avslutar regeln <code>input, select, textarea</code>, och tryck Enter två gånger.</li><li>Skriv:</li></ol>
+<pre><code class="lang-css">form {
+  max-width: 36rem;
+  padding: 8px 24px;
+  background-color: #ffffff;
+  border: 1px solid #c9d1da;
+  border-radius: 8px;
+}</code></pre>
+<p>När du skriver <code>{</code> lägger VS Code själv till <code>}</code>. Skriv bara det som saknas, så att det blir en <code>}</code> och inte två.</p>
+<ol start="3"><li>Spara. I ett brett fönster är formuläret nu ett vitt kort, 36rem (576 pixlar) brett. Slå på enhetsläget: där fyller kortet hela bredden.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Skriv en regel för <code>form</code> med <code>max-width</code> (till exempel <code>36rem</code>). Ge den också <code>padding</code>, vit bakgrund, en <code>border</code> i palettens grå färg och <code>border-radius</code>, så att formuläret blir ett kort.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Formuläret ska vara ett vitt kort med en maxbredd, så att fälten inte blir längre än ungefär 36rem på en bred skärm. I mobilen ska det fylla bredden.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> I ett brett fönster slutar formuläret långt före högerkanten. I enhetsläget fyller det bredden. Fälten står fortfarande under varandra överallt.</div>
+<h2>Etapp 3 · Knappar som får plats</h2>
+<p><em>Varför:</em> två knappar bredvid varandra får inte plats på en smal skärm, och då ska den andra gå ner på en ny rad i stället för att tryckas ihop.</p>
+<p>Knapparna ligger i stycket <code>&lt;p class="buttons"&gt;</code>. Knappen <em>Till startsidan</em> har två klasser, <code>button</code> och <code>button-light</code>, med mellanslag emellan: den får stilen från båda reglerna. <code>flex-wrap: wrap;</code> betyder att en flexbehållare får bryta raden, alltså låta de barn som inte får plats gå ner på en ny rad, ungefär som ord i en text.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Klicka allra sist i <code>style.css</code>, efter <code>}</code> som avslutar <code>form</code>, tryck Enter två gånger och skriv:</li></ol>
+<pre><code class="lang-css">.buttons {
+  display: flex;
+  gap: 12px;
+}</code></pre>
+<ol start="2"><li>Spara och titta i enhetsläget med en mobil vald. Knapparna står på samma rad men är hoptryckta, så att texten i dem delas på två rader.</li><li>Klicka sist på raden <code>display: flex;</code> i <code>.buttons</code>, tryck Enter och skriv <code>flex-wrap: wrap;</code>, så att regeln blir:</li></ol>
+<pre><code class="lang-css">.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}</code></pre>
+<ol start="4"><li>Spara. I mobilen står <em>Till startsidan</em> nu under <em>Skicka anmälan</em>, med lika mycket luft emellan som bredvid. I ett brett fönster står de på samma rad.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Gör <code>.buttons</code> till en flexbehållare med ett <code>gap</code>. Titta i mobilbredd vad som händer med knapparna. Lägg sedan till <code>flex-wrap</code> med värdet <code>wrap</code>, så att en knapp som inte får plats går ner på en ny rad.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Knapparna ska stå bredvid varandra när det finns plats och under varandra när det inte gör det, med samma avstånd åt båda hållen. Texten i en knapp får aldrig delas på två rader.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> I mobilbredd står knapparna under varandra, och texten i varje knapp står på en rad. I ett brett fönster står de bredvid varandra. Ingen media query behövs för det.</div>
+<h2>Etapp 4 · Två fält bredvid varandra från brytpunkten</h2>
+<p><em>Varför:</em> på en bred skärm tar korta fält som namn och e-post onödigt mycket höjd när de står under varandra.</p>
+<p>Precis som korten i Övning R4 behöver fälten en låda som bara finns för layoutens skull. Du lägger en <code>div</code> med klassen <code>field-pair</code> runt <em>Namn</em> och <em>E-post</em>, och en till runt <em>datum</em> och <em>antal</em>. I mobilen gör lådorna ingenting, fälten står kvar under varandra. Från brytpunkten 700 pixlar blir lådorna flexbehållare, så att fälten i dem står bredvid varandra.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Öppna <code>signup.html</code>. Klicka sist på rad 23, efter <code>&lt;form&gt;</code>, tryck Enter och skriv <code>&lt;div class="field-pair"&gt;</code>. Lägger VS Code till <code>&lt;/div&gt;</code> direkt efter, ta bort det.</li><li>Klicka sist på rad 32 (den <code>&lt;/p&gt;</code> som avslutar E-post-fältet), tryck Enter och skriv <code>&lt;/div&gt;</code>.</li><li>Klicka sist på rad 33 (det <code>&lt;/div&gt;</code> du nyss skrev), tryck Enter och skriv <code>&lt;div class="field-pair"&gt;</code>. Ta bort <code>&lt;/div&gt;</code> om VS Code lägger till det.</li><li>Klicka sist på rad 42 (den <code>&lt;/p&gt;</code> som avslutar fältet <em>Hur många kommer ni?</em>), tryck Enter och skriv <code>&lt;/div&gt;</code>.</li><li>Spara. Prettier flyttar in fälten ett steg. Rad 23–43 ser nu ut så här:</li></ol>
+<pre><code class="lang-html">      &lt;form&gt;
+        &lt;div class="field-pair"&gt;
+          &lt;p&gt;
+            &lt;label for="name"&gt;Namn&lt;/label&gt;
+            &lt;input type="text" id="name" required /&gt;
+          &lt;/p&gt;
+          &lt;p&gt;
+            &lt;label for="email"&gt;E-post&lt;/label&gt;
+            &lt;input type="email" id="email" required /&gt;
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="field-pair"&gt;
+          &lt;p&gt;
+            &lt;label for="date"&gt;Vilken lördag vill du gå?&lt;/label&gt;
+            &lt;input type="date" id="date" required /&gt;
+          &lt;/p&gt;
+          &lt;p&gt;
+            &lt;label for="count"&gt;Hur många kommer ni?&lt;/label&gt;
+            &lt;input type="number" id="count" /&gt;
+          &lt;/p&gt;
+        &lt;/div&gt;</code></pre>
+<ol start="6"><li>Gå till <code>style.css</code>. Klicka allra sist i filen, efter <code>}</code> som avslutar <code>.buttons</code>, tryck Enter två gånger och skriv:</li></ol>
+<pre><code class="lang-css">@media (min-width: 700px) {
+  .field-pair {
+    display: flex;
+    gap: 16px;
+  }
+
+  .field-pair p {
+    flex: 1;
+  }
+}</code></pre>
+<ol start="7"><li>Spara. I ett brett fönster står <em>Namn</em> och <em>E-post</em> bredvid varandra, och likaså datum och antal. Slå på enhetsläget, välj <strong>Responsive</strong> under <em>Dimensions</em> och skriv <code>699</code> och sedan <code>700</code> i rutan för bredd: vid 700 hoppar fälten upp bredvid varandra.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>I <code>signup.html</code>: lägg en <code>div</code> med klassen <code>field-pair</code> runt de två första fälten (varje fält ligger i ett eget <code>p</code>), och en till runt fälten för datum och antal. I <code>style.css</code>, allra sist: en media query med <code>min-width: 700px</code>. I den gör du <code>.field-pair</code> till en flexbehållare med ett <code>gap</code>, och ger <code>.field-pair p</code> <code>flex: 1</code>, så att fälten i paret blir lika breda.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Från 700 pixlars bredd ska Namn och E-post stå bredvid varandra, och datum och antal bredvid varandra, lika breda. Under 700 ska alla fält stå under varandra. En enda brytpunkt, skriven med <code>min-width</code>.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Med bredden 700 eller mer står två par fält bredvid varandra, som i datorslutbilden. Med 699 står alla fält under varandra, som i mobilslutbilden. Klickar du på en etikett hamnar markören fortfarande i rätt fält.</div>
+<h2>Etapp 5 · CSS-validatorn</h2>
+<p><em>Varför:</em> i projektet ska CSS:en validera, och en <code>}</code> för mycket eller ett felstavat värde syns inte alltid i Chrome.</p>
+<p><em>CSS-validatorn</em> (jigsaw.w3.org/css-validator) gör för CSS det som HTML-validatorn gör för HTML: den läser filen och säger vad som bryter mot reglerna.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Spara <code>style.css</code> i VS Code.</li><li>Öppna en ny flik i Chrome och gå till <code>jigsaw.w3.org/css-validator</code>.</li><li>Klicka på fliken <strong>By file upload</strong>. Klicka på <strong>Choose File</strong> (Välj fil), gå till <code>ovningar</code>, sedan <code>r6-start</code>, och välj <code>style.css</code>. Klicka <strong>Check</strong>.</li><li>Överst ska det stå <strong>Congratulations! No Error Found.</strong> Sidan kan också vara på svenska, beroende på hur din Chrome är inställd.</li><li>Står det fel: läs radnumret och meddelandet, rätta i VS Code, spara och välj filen på nytt innan du klickar <strong>Check</strong> igen.</li><li>Validera också <code>signup.html</code> i HTML-validatorn (validator.w3.org, <em>Validate by File Upload</em>) om du vill kontrollera att dina <code>div</code> hamnade rätt.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Ladda upp <code>style.css</code> i CSS-validatorn på jigsaw.w3.org/css-validator under <em>By file upload</em>. Rätta det den hittar, och välj filen på nytt efter varje ändring.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p><code>style.css</code> ska validera i CSS-validatorn utan fel.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> CSS-validatorn visar <em>Congratulations! No Error Found.</em> (eller samma sak på svenska). Sidan ser ut som slutbilderna i båda bredderna.</div>
+<hr />
+<h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
+<p>Från brytpunkten kan etiketterna stå <em>till vänster</em> om fälten i stället för ovanför. Gör varje <code>p</code> i formuläret till en flexbehållare i media queryn, ge <code>label</code> en fast bredd med <code>width</code> och fältet <code>flex: 1</code>, och <code>align-items: center</code> så att etiketten hamnar mitt för fältet. Fundera sedan: blir det lättare eller svårare att läsa än i slutbilden? Vad händer med fältparen?</p>
+<h2>Vanliga fel</h2>
+<ul><li><strong>Formuläret är fortfarande lika brett som sidan på en bred skärm:</strong> regeln heter något annat än <code>form</code>, eller så står <code>max-width</code> i en annan regel. Kontrollera också att du sparat och att det är <code>r6-start/signup.html</code> som är öppen.</li><li><strong>Fälten står bredvid varandra också i mobilen:</strong> reglerna för <code>.field-pair</code> står utanför media queryn. De ska stå mellan <code>@media (min-width: 700px) {</code> och media queryns sista <code>}</code>.</li><li><strong>Tre fält hamnar på samma rad, eller ett fält står ensamt bredvid ett tomt hål:</strong> en <code>&lt;div class="field-pair"&gt;</code> eller <code>&lt;/div&gt;</code> står på fel rad. Varje låda ska omsluta exakt två <code>&lt;p&gt;</code>. Titta på indraget efter att Prettier sparat: de två fälten i en låda står ett steg längre in än <code>&lt;div&gt;</code>.</li></ul>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>
