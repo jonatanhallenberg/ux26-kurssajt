@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
-    <title>Flexbox Froggy · lagspel – Frontend UX26</title>
+    <title>Flexbox Froggy · två och två – Frontend UX26</title>
     <style>
 :root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
 --gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
@@ -33,20 +33,24 @@ footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
   <body>
     <main>
       <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
-<h1>Flexbox Froggy · lagspel</h1>
-<p class="meta">Torsdag 26/11 · Före lunch · Vecka 48 · Kursmål F5 · 20 min · i lag</p>
-<p><strong>Så går det till:</strong> Flexbox Froggy är ett gratis spel i webbläsaren där ni hjälper grodor att hoppa till sina näckrosblad genom att skriva flexbox-CSS. Spelet har 24 nivåer. Ert lag spelar på en dator i 20 minuter. Laget som har klarat flest nivåer när tiden är slut vinner. Ni spelar i samma lag som i morgonens quiz.</p>
-<p><strong>Ni behöver:</strong> en dator per lag med Chrome. Inget konto, ingen installation.</p>
-<p><strong>Regler</strong></p>
-<ul><li>En dator per lag. <strong>Ny person vid tangentbordet för varje nivå</strong>, i tur och ordning runt bordet. De andra får prata, peka och föreslå, men bara den som sitter vid tangentbordet skriver.</li><li>Ingen AI-chatt och inga lösningar från nätet. Ledtrådarna i spelet och era anteckningar från klipp 7 får ni använda.</li><li>Det är antalet <strong>klarade</strong> nivåer som räknas, inte vilken nivå som visas. Klarade nivåer är markerade i nivålistan (klicka på <em>Nivå … av 24</em> överst i spelet). Att hoppa fram i listan ger inga poäng.</li><li>När Jonatan säger stopp släpper alla tangentbordet. Har två lag klarat lika många nivåer delar de placeringen.</li></ul>
+<h1>Flexbox Froggy · två och två</h1>
+<p class="meta">Torsdag 26/11 · Före lunch · Vecka 48 · Kursmål F5 · 20 min · två och två</p>
+<p><strong>Så går det till:</strong> Flexbox Froggy är ett gratis spel i webbläsaren där ni hjälper grodor att hoppa till sina näckrosblad genom att skriva flexbox-CSS. Jonatan visar först på tavlan hur det fungerar. Sedan spelar ni två och två på en dator. Det är ingen tävling.</p>
+<p><strong>Mål:</strong> nivå 1–7. Nivå 8–11 är för er som hinner.</p>
+<p><strong>Ni behöver:</strong> en dator per par med Chrome. Inget konto, ingen installation.</p>
 <hr />
-<h2>Starta spelet</h2>
-<ol><li>Gå till <strong>flexboxfroggy.com/#sv</strong>. Då är spelet på svenska. (Har ni öppnat det utan <code>#sv</code>: klicka på <strong>Settings</strong> och välj <strong>Svenska</strong> under <em>Language</em>.)</li><li>Har någon spelat på datorn förut fortsätter spelet där de slutade. Klicka då på <em>Nivå … av 24</em> överst i spelet och sedan <strong>Återställ</strong>, så börjar ni från nivå 1 med en tom lista.</li><li>Till vänster står instruktionen för nivån och under den en kodruta där ni skriver CSS. Till höger syns dammen med grodorna. När grodorna sitter på rätt blad blir knappen <strong>Nästa</strong> klickbar.</li></ol>
-<h2>Det här känner ni igen från klipp 7</h2>
-<table><thead><tr><th>Nivå</th><th>Vad den tränar</th></tr></thead><tbody><tr><td>1–4</td><td><code>justify-content</code>: <code>center</code> och <code>space-between</code> från klipp 7, plus två nya värden (<code>flex-end</code>, <code>space-around</code>) som spelet förklarar</td></tr><tr><td>5–7</td><td><code>align-items</code>, och <code>justify-content</code> och <code>align-items</code> tillsammans</td></tr><tr><td>8–11</td><td><code>flex-direction</code>: <code>column</code> från klipp 7, plus <code>row-reverse</code> (baklänges) som spelet förklarar</td></tr><tr><td>18–19</td><td><code>flex-wrap: wrap</code></td></tr></tbody></table>
-<p>Nivå 12–17 och 20–24 tar upp sådant som inte finns i kursen (<code>order</code>, <code>align-self</code>, <code>flex-flow</code>, <code>align-content</code>). De är bonus: de ger poäng i spelet, men använd dem inte i ditt projekt.</p>
+<h2>Gör så här</h2>
+<ol><li>Gå till <strong>flexboxfroggy.com/#sv</strong>. Då är spelet på svenska. (Har ni öppnat det utan <code>#sv</code>: klicka på <strong>Settings</strong> och välj <strong>Svenska</strong> under <em>Language</em>.)</li><li>Har någon spelat på datorn förut fortsätter spelet där det slutade. Klicka då på <em>Nivå … av 24</em> överst i spelet och sedan <strong>Återställ</strong>, så börjar ni från nivå 1.</li><li>Läs nivån tillsammans. Säg vad ni tror innan ni skriver.</li><li>Skriv raden i kodrutan till vänster. Grodorna flyttar sig medan ni skriver. När de sitter på rätt blad blir knappen <strong>Nästa</strong> klickbar.</li><li>Byt vid tangentbordet på varje nivå.</li></ol>
+<h2>Så tänker ni</h2>
+<p>Dammen är lådan. Grodorna är det som ligger direkt i den. <code>display: flex</code> står redan i koden. På nivå 1–7 är frågan alltid densamma: åt vilket håll ska grodorna flyttas?</p>
+<table><thead><tr><th>Håll</th><th>Egenskap</th></tr></thead><tbody><tr><td>I sidled</td><td><code>justify-content</code></td></tr><tr><td>I höjdled</td><td><code>align-items</code></td></tr></tbody></table>
+<p>Det gör inget att gissa fel. Se vad som händer med grodorna och ändra.</p>
+<h2>Nivåerna</h2>
+<table><thead><tr><th>Nivå</th><th>Vad den tränar</th></tr></thead><tbody><tr><td>1–4</td><td><code>justify-content</code>: <code>center</code> och <code>space-between</code> från klipp 7, plus två nya värden (<code>flex-end</code>, <code>space-around</code>) som spelet förklarar</td></tr><tr><td>5–7</td><td><code>align-items</code>, och <code>justify-content</code> och <code>align-items</code> tillsammans</td></tr><tr><td>8–11</td><td><code>flex-direction</code>: <code>column</code> från klipp 7, plus <code>row-reverse</code> (baklänges) som spelet förklarar. Med <code>column</code> byter de två hållen plats: <code>justify-content</code> flyttar i höjdled och <code>align-items</code> i sidled</td></tr></tbody></table>
+<p>Resten av nivåerna behöver ni inte. Många av dem tar upp sådant som inte finns i kursen (till exempel <code>order</code> och <code>align-self</code>).</p>
+<p><strong>Fastnar ni?</strong> Ska grodorna i sidled eller i höjdled? Fråga sedan paret bredvid, och räck upp handen om ni fortfarande sitter fast.</p>
 <h2>Efteråt</h2>
-<p>Spelet sparar hur långt ni kommit i webbläsaren. Vill du spela klart själv kan du öppna det hemma, eller på din egen dator med en gång. Det finns också en fortsättning om <em>grid</em>, Grid Garden (cssgridgarden.com), om du vill veta vad grid är.</p>
+<p>Spelet sparar hur långt ni kommit i webbläsaren. Vill du spela klart själv kan du öppna det hemma, på din egen dator. Det finns också en fortsättning om <em>grid</em>, Grid Garden (cssgridgarden.com), om du vill veta vad grid är.</p>
       <footer>Frontend UX26 · STI · vecka 47–50</footer>
     </main>
     <script>
