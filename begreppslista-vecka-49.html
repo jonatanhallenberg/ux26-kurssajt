@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Begreppslista vecka 49 – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+img[src*="mobil"]{max-width:300px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Begreppslista vecka 49</h1>
+<p class="meta">Klipp 9–13 · Före måndag 30/11 och tisdag 1/12: klipp 9 och 10 · Före torsdag 3/12: klipp 11, 12 och 13</p>
+<p>Här är orden som är nya i klippen, i den ordning de dyker upp. Du behöver inte kunna dem utantill. Slå upp ett ord här när du hör det i klippet, och prova efteråt om du kan förklara vart och ett med egna ord. Siffran inom parentes är instuderingsfrågan där ordet kommer tillbaka.</p>
+<h2>Klipp 9 · JavaScript: variabler, funktioner och Console</h2>
+<p><strong>Skript</strong> – JavaScript i en egen fil, <code>script.js</code>, i samma mapp som html-filerna. Den hämtas med en rad sist i <code>body</code>, för skriptet måste komma efter det som det ska hitta. (fråga 1)</p>
+<p><strong>Console</strong> – fliken i DevTools där du ser vad skriptet gör. Du öppnar den med Cmd+Option+J på Mac och Ctrl+Shift+J på Windows. (fråga 2)</p>
+<p>**<code>console.log()</code>** – skriver ut det som står inom parentesen i Console, med filen och raden till höger. Det syns inte på sidan. (fråga 2)</p>
+<p><strong>Variabel</strong> – ett namn på ett värde, till exempel <code>ticketPrice</code> för talet 50. Text skrivs inom dubbla citattecken, tal utan. (fråga 3)</p>
+<p>**<code>const</code> och <code>let</code>** – <code>const</code> är en variabel som inte ändras, <code>let</code> en som får ändras. Börja alltid med <code>const</code>. (fråga 3)</p>
+<p><strong>Funktion</strong> – en bit kod med ett namn, som du kan köra så många gånger du vill, till exempel <code>totalPrice(4)</code>. (fråga 4)</p>
+<p>**Parameter och <code>return</code>** – parametern är värdet som skickas in i funktionen, och <code>return</code> skickar tillbaka svaret. (fråga 4)</p>
+<h2>Klipp 10 · DOM och events: knappen som gör något</h2>
+<p><strong>DOM</strong> – webbläsarens bild av sidan, det du ser under Elements i DevTools. Det är den skriptet läser och ändrar, inte html-filen. (fråga 5)</p>
+<p>**<code>querySelector</code>** – hittar ett element på sidan med samma selektor som i CSS: <code>"h1"</code>, <code>".info-button"</code> eller <code>"#name"</code>. (fråga 5)</p>
+<p>**<code>textContent</code>** – texten inuti ett element. Skriver du en ny text där byts den gamla ut på sidan. (fråga 6)</p>
+<p>**<code>hidden</code>** – klassen som gömmer ett element, med regeln <code>.hidden { display: none; }</code>. <code>display: none</code> gömmer elementet helt, så att det inte tar någon plats. (fråga 7)</p>
+<p>**<code>classList</code>** – elementets klasser. <code>toggle</code> tar bort en klass om den finns och sätter dit den om den saknas, <code>add</code> sätter alltid dit och <code>remove</code> tar alltid bort. (fråga 8)</p>
+<p>**Event och <code>addEventListener</code>** – ett event är en händelse på sidan, till exempel ett klick. <code>addEventListener</code> lyssnar på den och får händelsen, <code>"click"</code>, och en funktion som körs varje gång det händer. (fråga 8)</p>
+<h2>Klipp 11 · Villkor och formulärkontroll</h2>
+<p><strong>Villkor</strong> – kod som bara körs om något stämmer. Det skrivs med <code>if</code>, och frågan står inom parentesen. Svaret är <code>true</code> eller <code>false</code>. (fråga 9)</p>
+<p>**<code>else</code>** – betyder annars: koden som körs när frågan i <code>if</code> inte stämmer. Det blir alltid den ena delen, aldrig båda. (fråga 9)</p>
+<p><strong>Jämförelse</strong> – frågan i ett villkor. <code>===</code> betyder lika med och <code>!==</code> inte lika med, <code>&lt;</code> och <code>&gt;</code> fungerar som i matten, och <code>&amp;&amp;</code> betyder och: båda måste stämma. (fråga 10)</p>
+<p>**<code>novalidate</code>** – ord på <code>form</code> som ber webbläsaren låta bli sin egen kontroll av <code>required</code>, eftersom vi gör kontrollen själva. (fråga 11)</p>
+<p>**<code>submit</code> och <code>preventDefault</code>** – <code>submit</code> är händelsen när formuläret skickas. <code>event.preventDefault()</code> stoppar webbläsaren från att skicka formuläret och ladda om sidan. (fråga 11)</p>
+<p>**<code>.value</code>** – det som står i ett fält, alltid som text. <code>trim()</code> tar bort mellanslag före och efter, och <code>Number()</code> gör texten till ett tal. (fråga 10, 12)</p>
+<p>**<code>allOk</code>** – en variabel med <code>let</code> som är <code>true</code> från början och blir <code>false</code> vid varje fel. Bara om den fortfarande är <code>true</code> visas bekräftelsen. (fråga 12)</p>
+<h2>Klipp 12 · Felsökning: läs felet, Console och breakpoints</h2>
+<p><strong>Felmeddelande</strong> – en röd rad i Console med tre delar: typen, texten och filen med raden längst till höger. (fråga 13)</p>
+<p><strong>Sources</strong> – fliken i DevTools som visar dina filer. Klickar du på länken i ett felmeddelande öppnas Sources med raden markerad. (fråga 13)</p>
+<p>**<code>SyntaxError</code>** – webbläsaren kan inte läsa koden, för det saknas en parentes, en klammer eller ett citattecken. Då körs ingenting i filen. (fråga 14)</p>
+<p>**<code>ReferenceError</code>** – du använder ett namn som inte finns, nästan alltid för att det är felstavat. (fråga 15)</p>
+<p>**<code>null</code>** – ingenting. <code>TypeError: Cannot read properties of null</code> betyder att <code>querySelector</code> inte hittade elementet, för att selektorn inte stämmer med HTML. (fråga 15)</p>
+<p><strong>Tyst fel</strong> – inget rött i Console, men sidan gör fel. Det hittar du genom att titta på värdena med <code>console.log()</code> eller en breakpoint. (fråga 16)</p>
+<p><strong>Breakpoint</strong> – en paus i skriptet. Du klickar på radnumret i Sources, skriptet stannar där, och med Resume går det vidare. (fråga 16)</p>
+<h2>Klipp 13 · Koda med AI: vad den kan, var den har fel, hur du kontrollerar</h2>
+<p><strong>AI-chatt</strong> – en tjänst i webbläsaren där du skriver en fråga och får ett svar, också kod. Det finns gratis AI-chattar. (fråga 17)</p>
+<p><strong>Prompt</strong> – det du skriver till AI-chatten: vad du vill ha, och gärna din egen kod så att den vet vad din sida innehåller. (fråga 17)</p>
+<p><strong>Utkast</strong> – ett första förslag att utgå från. Det är något AI-chatten är bra på, men det är inte färdigt. (fråga 17)</p>
+<p><strong>Har fel och låter säker</strong> – den första risken: AI-chatten kan hitta på egenskaper som inte finns, eller blanda ihop namn, och skriver lika säkert ändå. (fråga 18)</p>
+<p><strong>Personuppgifter</strong> – uppgifter om en person, som namn och adress. Klistra aldrig in sådant, eller något som inte är ditt, i en AI-chatt. (fråga 18)</p>
+<p><strong>De fyra frågorna</strong> – det du frågar varje AI-svar innan du använder det: Fungerar det? Kan jag förklara varje rad? Passar det min sida? Fungerar det för alla? (fråga 19)</p>
+<p><strong>AI-loggen</strong> – en del av projektet där du skriver en rad varje gång du använt AI: vad du frågade, vad som blev fel och vad du ändrade. (fråga 20)</p>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>
