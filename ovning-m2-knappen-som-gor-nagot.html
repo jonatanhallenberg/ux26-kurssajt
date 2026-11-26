@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Övning M2 · Knappen som gör något – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+img[src*="mobil"]{max-width:300px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Övning M2 · Knappen som gör något</h1>
+<p class="meta">Måndag 30/11 · Distans · Vecka 49 · Kursmål F6, KUN5 · ca 40 min</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
+<p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Under den står <em>Ser du inte det?</em> med det du gör om något inte stämmer. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
+<p><strong>Du bygger:</strong> Tärningens startsida får två knappar. <em>Visa nästa träff</em> visar och döljer en rad om nästa spelkväll, och <em>Vad kostar det?</em> visar och döljer medlemsavgiften, med beloppet hämtat ur skriptet. Skriptet byter också text på rubriken. Allt bygger på samma tre steg, som du kommer att använda hela veckan: <strong>hitta</strong> ett element på sidan, <strong>lyssna</strong> efter ett klick, och <strong>ändra</strong> något.</p>
+<img src="bilder/m2-slutbild.png" alt="Slutbild: Tärningens startsida med rubriken Välkommen till Brädspelsklubben Tärningen, knappen Visa nästa träff med raden om frågesport under, och knappen Vad kostar det? med raden Medlemskapet kostar 200 kronor per år under" />
+<p>Bilden visar sidan efter att du klickat på båda knapparna. När sidan just har laddats syns knapparna men inte raderna under dem.</p>
+<p><strong>Du behöver:</strong> mappen <code>ovningar</code> öppen i VS Code, Live Server och Chrome. Klipp 10 sett.</p>
+<ul><li><strong>Blev du klar med Övning M1:</strong> fortsätt i mappen <code>m1-start</code>. Du behöver inget nytt.</li><li><strong>Blev du inte klar:</strong> hämta mappen <code>m2-start</code> (startfilerna ligger i Learnpoint, i övningens kursdel), packa upp den och lägg den i <code>ovningar</code> som i M1. Den är M1 färdig. Arbeta i den i stället.</li></ul>
+<p>Filerna heter likadant i båda mapparna. Övningen säger bara <code>index.html</code>, <code>style.css</code> och <code>script.js</code>: det är filerna i den mapp du arbetar i.</p>
+<p><strong>Fastnar du:</strong> skriv i chatten i Teams-mötet vilken etapp du är på och vad du ser.</p>
+<hr />
+<h2>Etapp 1 · Hitta ett element och byt dess text</h2>
+<p><em>Varför:</em> innan skriptet kan ändra något på sidan måste det hitta elementet, och det gör det med samma selektorer som du använder i CSS.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Öppna <code>index.html</code> med Live Server och öppna Console (Cmd+Option+J på Mac, Ctrl+Shift+J på Windows). De nio raderna från M1 står där.</li><li>Öppna <code>script.js</code>. Klicka allra sist i filen, tryck Enter två gånger och skriv:</li></ol>
+<pre><code class="lang-js">// Hitta rubriken och byt dess text
+const heading = document.querySelector("h1");
+console.log(heading);</code></pre>
+<ol start="3"><li>Spara. Sist i Console står nu <code>&lt;h1&gt;Brädspelsklubben Tärningen&lt;/h1&gt;</code>. Håll muspekaren över den raden: rubriken markeras på sidan. Skriptet har hittat elementet.</li><li>Byt raden <code>console.log(heading);</code> mot den här raden:</li></ol>
+<pre><code class="lang-js">heading.textContent = "Välkommen till " + clubName;</code></pre>
+<ol start="5"><li>Spara. Rubriken på sidan är nu <em>Välkommen till Brädspelsklubben Tärningen</em>.</li><li>Titta i <code>index.html</code> i VS Code: där står fortfarande <code>&lt;h1&gt;Brädspelsklubben Tärningen&lt;/h1&gt;</code>. Högerklicka sedan på rubriken i Chrome och välj <strong>Inspektera</strong>. I Elements står den nya texten.</li></ol>
+<ul><li><code>document</code> är sidan som webbläsaren har läst in. <code>querySelector("h1")</code> letar upp det första elementet som passar selektorn, precis som i CSS: <code>"h1"</code> för ett element, <code>".namn"</code> med punkt för en klass.</li><li>Det webbläsaren har läst in är dess egen bild av sidan, den du ser i Elements. Skriptet ändrar i den bilden, inte i filen. Därför står den gamla texten kvar i <code>index.html</code>.</li><li><code>textContent</code> är texten inuti elementet. Med <code>=</code> ger du den en ny text.</li></ul>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>Sist i <code>script.js</code>: hitta sidans <code>h1</code> med <code>document.querySelector()</code> och spara den i en variabel, <code>heading</code>. Skriv ut variabeln i Console och håll pekaren över raden.</li><li>Byt utskriften mot en rad som ger rubriken texten <em>Välkommen till</em> plus klubbens namn ur variabeln <code>clubName</code>. Egenskapen för texten i ett element heter <code>textContent</code>.</li><li>Jämför texten i <code>index.html</code> med den i Elements.</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Skriptet hittar sidans huvudrubrik och byter dess text till <em>Välkommen till Brädspelsklubben Tärningen</em>, med namnet ur variabeln. Ta reda på var ändringen syns och var den inte syns.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Rubriken i Chrome är <em>Välkommen till Brädspelsklubben Tärningen</em>, Elements visar samma text, och <code>index.html</code> har kvar den gamla. Inget i Console är rött.</div>
+<p><strong>Ser du inte det?</strong></p>
+<ul><li>*Console visar <code>null</code> i steg 3:* selektorn hittar inget. Kontrollera att det står <code>"h1"</code> med citattecken och utan punkt.</li><li>*Rött i Console med <code>Cannot set properties of null (setting 'textContent')</code>:* samma sak, <code>querySelector</code> hittade inget, så det finns ingen rubrik att ge text.</li><li>*Rött med <code>clubName is not defined</code>:* du arbetar i en mapp där M1:s variabler saknas eller heter något annat. Arbeta i <code>m2-start</code> i stället.</li></ul>
+<h2>Etapp 2 · Knappen och texten som ska döljas</h2>
+<p><em>Varför:</em> JavaScript gömmer inget själv. Det slår på och av en klass, och det är CSS som bestämmer att elementet med klassen inte syns.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Öppna <code>index.html</code>. Klicka sist på raden <code>&lt;p&gt;Vi träffas varje torsdag och spelar tillsammans.&lt;/p&gt;</code> (rad 11) och tryck Enter. Skriv:</li></ol>
+<pre><code class="lang-html">&lt;button class="meetup-button"&gt;Visa nästa träff&lt;/button&gt;
+&lt;p class="next-meetup hidden"&gt;
+  Torsdag 3 december klockan 18: frågesport i biblioteket.
+&lt;/p&gt;</code></pre>
+<p>Spara. Prettier ordnar indraget.</p>
+<ol start="2"><li>Öppna <code>style.css</code>. Klicka allra sist i filen, tryck Enter två gånger och skriv:</li></ol>
+<pre><code class="lang-css">/* Klassen som JavaScript sätter på och tar bort */
+.hidden {
+  display: none;
+}</code></pre>
+<ol start="3"><li>Spara och titta i Chrome. Knappen <em>Visa nästa träff</em> syns under raden om torsdagar, men raden om frågesporten syns inte. Klickar du på knappen händer ingenting än.</li><li>Inspektera knappen och titta i Elements. Under knappen står <code>&lt;p class="next-meetup hidden"&gt;</code>: elementet finns, men syns inte.</li></ol>
+<ul><li><code>&lt;button&gt;</code> är en knapp. Utanför ett formulär gör den ingenting förrän ett skript säger vad den ska göra.</li><li>Stycket har två klasser, <code>next-meetup</code> och <code>hidden</code>, med mellanslag emellan. Den första säger vad det är, så att skriptet kan hitta det. Den andra döljer det.</li><li><code>display: none;</code> är egenskapen som gömmer ett element helt, som om det inte fanns på sidan.</li></ul>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>I <code>index.html</code>, efter stycket om torsdagar: en <code>button</code> med klassen <code>meetup-button</code> och texten <em>Visa nästa träff</em>, och ett stycke med texten <em>Torsdag 3 december klockan 18: frågesport i biblioteket.</em> och två klasser: <code>next-meetup</code> och <code>hidden</code>.</li><li>Sist i <code>style.css</code>: en regel för klassen <code>.hidden</code> som gömmer elementet helt med <code>display</code>.</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Under stycket om torsdagar finns en knapp, <em>Visa nästa träff</em>, och en rad om nästa träff som inte syns när sidan laddas. Raden göms med en klass, <code>hidden</code>, som har en regel i stilmallen.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Knappen syns, raden om frågesporten syns inte i Chrome, men den finns i Elements med <code>class="next-meetup hidden"</code>.</div>
+<p><strong>Ser du inte det?</strong></p>
+<ul><li><em>Raden om frågesporten syns ändå:</em> regeln <code>.hidden</code> saknas, eller har ingen punkt, eller <code>hidden</code> är felstavat på ett av ställena. Jämför tecken för tecken.</li><li><em>Ingen knapp syns:</em> du har skrivit i <code>meetups.html</code> eller i en annan mapps <code>index.html</code>. Titta i adressfältet och i filpanelen.</li></ul>
+<h2>Etapp 3 · Hitta knappen och lyssna efter klick</h2>
+<p><em>Varför:</em> skriptet måste få veta när någon klickar, och det gör det genom att lyssna på knappen.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Sist i <code>script.js</code>, efter en tom rad, skriv:</li></ol>
+<pre><code class="lang-js">// Knappen som visar och döljer nästa träff
+const meetupButton = document.querySelector(".meetup-button");
+const nextMeetup = document.querySelector(".next-meetup");
+
+meetupButton.addEventListener("click", function () {
+  console.log("Klick");
+});</code></pre>
+<ol start="2"><li>Spara. Klicka på knappen <em>Visa nästa träff</em> i Chrome och titta i Console: <code>Klick</code>. Klicka några gånger till. Chrome skriver inte en ny rad varje gång, utan visar en siffra framför <code>Klick</code> som räknar upp.</li></ol>
+<ul><li>Selektorerna har punkt före namnet, eftersom det är klasser, precis som i CSS.</li><li><code>addEventListener</code> betyder "lyssna efter". Den får två saker: vilken händelse, <code>"click"</code>, och vad som ska hända då.</li><li>Det som ska hända är en funktion utan namn: <code>function () { … }</code>. Allt mellan <code>{</code> och <code>}</code> körs varje gång någon klickar. Lägg märke till hur den sista raden slutar: <code>});</code>. Klammern stänger funktionen och parentesen stänger <code>addEventListener(</code>.</li><li>Klicket syns bara i Console än så länge. Det är ett bra sätt att se att lyssnandet fungerar innan du ändrar något.</li></ul>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>Hitta knappen (<code>.meetup-button</code>) och stycket (<code>.next-meetup</code>) och spara dem i var sin variabel, <code>meetupButton</code> och <code>nextMeetup</code>.</li><li>Lyssna efter händelsen <code>"click"</code> på knappen med <code>addEventListener</code>. Som andra värde: en funktion, <code>function () { … }</code>, som skriver <em>Klick</em> i Console.</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>När du klickar på <em>Visa nästa träff</em> skriver skriptet <em>Klick</em> i Console. Knappen och stycket finns i var sin variabel.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Varje klick på knappen ger <code>Klick</code> i Console, eller räknar upp siffran framför det. Inget är rött.</div>
+<p><strong>Ser du inte det?</strong></p>
+<ul><li>*Rött i Console med <code>Cannot read properties of null (reading 'addEventListener')</code>:* <code>querySelector</code> hittade ingen knapp. Kontrollera att selektorn har punkt (<code>".meetup-button"</code>) och att namnet är stavat exakt som <code>class</code> i <code>index.html</code>.</li><li>*Rött med <code>SyntaxError</code>:* oftast saknas <code>)</code> på sista raden, så att det står <code>}</code> eller <code>};</code> i stället för <code>});</code>. Då körs ingenting i filen, inte ens rubrikbytet från etapp 1.</li><li><em>Inget händer och inget är rött:</em> kontrollera att det står <code>"click"</code>, på engelska och med små bokstäver.</li></ul>
+<h2>Etapp 4 · Klicket ändrar sidan</h2>
+<p><em>Varför:</em> nu byter du utskriften i Console mot det som ska hända på sidan: klassen <code>hidden</code> slås av och på.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>I <code>script.js</code>: byt raden <code>console.log("Klick");</code> mot</li></ol>
+<pre><code class="lang-js">nextMeetup.classList.toggle("hidden");</code></pre>
+<p>så att lyssnaren ser ut så här:</p>
+<pre><code class="lang-js">meetupButton.addEventListener("click", function () {
+  nextMeetup.classList.toggle("hidden");
+});</code></pre>
+<ol start="2"><li>Spara. Klicka på <em>Visa nästa träff</em>: raden om frågesporten syns. Klicka igen: den försvinner.</li><li>Inspektera knappen och leta upp stycket under den i Elements. Klicka på knappen på sidan och titta på stycket i Elements medan du klickar. Ordet <code>hidden</code> försvinner och kommer tillbaka i <code>class</code>, och raden blinkar lila när den ändras.</li></ol>
+<ul><li><code>classList</code> är elementets klasser. <code>toggle("hidden")</code> betyder: finns klassen, ta bort den; finns den inte, lägg till den. Därför fungerar samma knapp både för att visa och för att dölja.</li><li>Det finns också <code>classList.add("hidden")</code>, som bara lägger till, och <code>classList.remove("hidden")</code>, som bara tar bort.</li><li>Inget i skriptet säger "gör osynlig". Skriptet byter klass, och CSS-regeln <code>.hidden</code> gör resten.</li></ul>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Byt utskriften i lyssnaren mot en rad som slår av och på klassen <code>hidden</code> på stycket: <code>classList.toggle()</code>. Titta på stycket i Elements medan du klickar.</p>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Ett klick på <em>Visa nästa träff</em> visar raden om nästa träff, nästa klick döljer den igen. Visa i Elements vad som händer med stycket.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Knappen visar och döljer raden om frågesporten, om och om igen. I Elements ser du <code>hidden</code> komma och gå i stycket.</div>
+<p><strong>Ser du inte det?</strong></p>
+<ul><li><em>Klassen kommer och går i Elements men inget syns:</em> namnet i <code>toggle()</code> stämmer inte med regeln i CSS. Står det <code>toggle(".hidden")</code> med punkt? Ta bort punkten: i <code>classList</code> skriver du klassens namn utan punkt.</li><li><em>Inget händer i Elements:</em> lyssnaren körs inte. Sätt tillbaka <code>console.log("Klick");</code> en stund och se om det kommer något i Console.</li></ul>
+<h2>Etapp 5 · En andra knapp på egen hand</h2>
+<p><em>Varför:</em> samma mönster, hitta, lyssna, ändra, fungerar på vilken knapp som helst, och nu gör du det en gång till från början.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<p>Försök först själv utifrån den blå nivån. Det här är hela lösningen, om du behöver den.</p>
+<ol><li>I <code>index.html</code>: klicka sist på raden <code>&lt;/p&gt;</code> som avslutar stycket <em>Kom en torsdag och prova …</em> (rad 20) och tryck Enter. Skriv:</li></ol>
+<pre><code class="lang-html">&lt;button class="fee-button"&gt;Vad kostar det?&lt;/button&gt;
+&lt;p class="fee-info hidden"&gt;Medlemskapet betalar du en gång om året.&lt;/p&gt;</code></pre>
+<ol start="2"><li>Spara. Sist i <code>script.js</code>, efter en tom rad, skriv:</li></ol>
+<pre><code class="lang-js">// Knappen som visar och döljer vad det kostar
+const feeButton = document.querySelector(".fee-button");
+const feeInfo = document.querySelector(".fee-info");
+
+feeInfo.textContent =
+  "Medlemskapet kostar " + membershipFee + " kronor per år.";
+
+feeButton.addEventListener("click", function () {
+  feeInfo.classList.toggle("hidden");
+});</code></pre>
+<p>Raden med <code>textContent</code> blir för lång för en rad, så Prettier delar den efter <code>=</code> när du sparar. Det är samma kod.</p>
+<ol start="3"><li>Spara. Klicka på <em>Vad kostar det?</em>: <em>Medlemskapet kostar 200 kronor per år.</em> syns. Klicka igen: den försvinner.</li></ol>
+<p>Texten i <code>index.html</code> säger inget om beloppet. Skriptet byter den mot en mening med beloppet ur <code>membershipFee</code>, så att sidan alltid visar samma avgift som skriptet räknar med. Regeln <code>.hidden</code> finns redan i <code>style.css</code> och fungerar för alla element som får klassen.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>I <code>index.html</code>, efter stycket <em>Kom en torsdag och prova …</em>: en knapp med klassen <code>fee-button</code> och texten <em>Vad kostar det?</em>, och ett stycke med klasserna <code>fee-info</code> och <code>hidden</code> och texten <em>Medlemskapet betalar du en gång om året.</em></li><li>I <code>script.js</code>: hitta knappen och stycket. Ge stycket texten <em>Medlemskapet kostar 200 kronor per år.</em>, där beloppet kommer från <code>membershipFee</code>. Lyssna efter klick på knappen och slå av och på <code>hidden</code> på stycket.</li><li>Du behöver ingen ny CSS.</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>En knapp <em>Vad kostar det?</em> under stycket om att prova på, som visar och döljer en mening om vad medlemskapet kostar. Beloppet i meningen kommer från skriptets variabel, inte från HTML. Sidan ser ut som slutbilden överst när du klickat på båda knapparna.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Båda knapparna visar och döljer sin rad, var för sig. Under <em>Vad kostar det?</em> står <em>Medlemskapet kostar 200 kronor per år.</em> Sidan ser ut som slutbilden. Inget i Console är rött.</div>
+<p><strong>Ser du inte det?</strong></p>
+<ul><li><em>Det står "Medlemskapet betalar du en gång om året." i stället för beloppet:</em> raden med <code>textContent</code> körs inte, eller ändrar ett annat element. Kontrollera att den står i <code>script.js</code> och att <code>feeInfo</code> är stavat likadant överallt.</li><li><em>Den nya knappen visar och döljer fel rad:</em> du har kopierat lyssnaren från etapp 3 och glömt byta <code>nextMeetup</code> mot <code>feeInfo</code> inuti den.</li><li>*Rött med <code>SyntaxError: Identifier 'feeButton' has already been declared</code>:* du har skrivit <code>const feeButton</code> två gånger. Varje variabel skapas bara en gång. Ta bort den ena raden.</li></ul>
+<hr />
+<h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
+<p>Lägg till en tredje knapp, <em>Fler medlemmar</em>, som inte visar eller döljer något, utan ökar <code>members</code> med 1 och skriver ut en mening om vad alla tillsammans betalar nu, med <code>totalFee</code>. Skriv meningen i ett stycke på sidan med <code>textContent</code>, inte bara i Console. Varför måste <code>members</code> vara skapad med <code>let</code> för att det ska fungera?</p>
+<h2>Vanliga fel</h2>
+<ul><li><strong>Knappen gör ingenting, och Console visar inget alls:</strong> skriptet är inte länkat från den sida du tittar på, eller du tittar på en annan mapp än den du ändrar i. Adressfältet ska sluta på den mapp du arbetar i och <code>index.html</code>, och Console ska visa <em>Tärningen är igång</em> när sidan laddas.</li><li>**<code>Cannot read properties of null (reading 'addEventListener')</code>:** <code>querySelector</code> hittade inget element med den selektorn. Det är nästan alltid en punkt som saknas (<code>"meetup-button"</code> i stället för <code>".meetup-button"</code>) eller ett namn som är stavat olika i HTML och JavaScript. Jämför tecken för tecken.</li><li><strong>Punkten på fel ställe:</strong> I <code>querySelector</code> skriver du punkt före en klass (<code>".next-meetup"</code>), precis som i CSS. I <code>class="…"</code> i HTML och i <code>classList.toggle("…")</code> skriver du namnet <em>utan</em> punkt.</li></ul>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>

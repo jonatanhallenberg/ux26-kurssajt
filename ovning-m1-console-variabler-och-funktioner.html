@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Övning M1 · Console, variabler och funktioner – Frontend UX26</title>
+    <style>
+:root{--bg:#f6f4ef;--kort:#fff;--text:#1f2933;--dov:#5b6673;--linje:#d9d4c7;--ram:#2f5d8a;
+--gron:#1f7a4d;--gron-bg:#e3f4ea;--bla:#2f5d8a;--bla-bg:#e4eef8;--rod:#b23a3a;--rod-bg:#f9e5e5;--svart:#222;--svart-bg:#e8e8e8}
+*{box-sizing:border-box}body{margin:0;padding:24px 16px 64px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;color:var(--text);background:var(--bg)}
+main{max-width:760px;margin:0 auto}h1{font-size:1.8rem;margin:0 0 4px}h2{font-size:1.35rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var(--linje)}h3{font-size:1.1rem;margin:20px 0 6px}
+p{margin:0 0 12px}ul,ol{margin:0 0 12px;padding-left:26px}li{margin:4px 0}img{max-width:100%;height:auto;border:1px solid var(--linje);border-radius:8px;display:block;margin:8px 0 14px}
+img[src*="mobil"]{max-width:300px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;padding:1px 5px;border-radius:4px;background:#eeeae0}
+pre{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:8px;background:#1f2933;color:#f3f1ea;overflow:auto;font-size:.9rem;line-height:1.45}pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre button{position:absolute;top:6px;right:6px;font:inherit;font-size:.75rem;padding:3px 8px;border:1px solid #889;border-radius:6px;background:#2f3a46;color:#eee;cursor:pointer}pre button:hover{background:#3d4a58}
+blockquote{margin:0 0 12px;padding:8px 14px;border-left:4px solid var(--linje);background:var(--kort);border-radius:0 8px 8px 0;color:var(--dov)}
+table{border-collapse:collapse;margin:0 0 14px;width:100%}th,td{border:1px solid var(--linje);padding:6px 10px;text-align:left;vertical-align:top}th{background:var(--kort)}
+hr{border:0;border-top:1px solid var(--linje);margin:24px 0}
+details{margin:0 0 10px;border:1px solid var(--linje);border-radius:10px;background:var(--kort)}details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;border-radius:10px}
+details>summary::-webkit-details-marker{display:none}details>summary::before{content:"▸";display:inline-block;width:1em;color:var(--dov)}details[open]>summary::before{content:"▾"}
+details>.inner{padding:4px 16px 8px;border-top:1px solid var(--linje)}
+details.gron>summary{background:var(--gron-bg);color:var(--gron)}details.bla>summary{background:var(--bla-bg);color:var(--bla)}details.rod>summary{background:var(--rod-bg);color:var(--rod)}details.svart>summary{background:var(--svart-bg);color:var(--svart)}
+.meta{color:var(--dov);margin:0 0 18px}.klar{padding:10px 14px;margin:14px 0 0;border-radius:8px;background:var(--kort);border:1px dashed var(--linje)}
+.valj{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin:0 0 18px;background:var(--kort);border:1px solid var(--linje);border-radius:10px}
+.valj span{color:var(--dov);margin-right:4px}.valj button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--linje);border-radius:999px;background:var(--bg);cursor:pointer}
+.valj button.aktiv{border-color:var(--ram);background:#eaf1f8;font-weight:600}
+nav.topp{font-size:.9rem;color:var(--dov);margin:0 0 14px}nav.topp a{color:var(--ram)}
+footer{margin-top:40px;color:var(--dov);font-size:.9rem;text-align:center}
+</style>
+  </head>
+  <body>
+    <main>
+      <nav class="topp"><a href="index.html">← Alla övningar</a></nav>
+<h1>Övning M1 · Console, variabler och funktioner</h1>
+<p class="meta">Måndag 30/11 · Distans · Vecka 49 · Kursmål F6, KUN5 · ca 35 min</p><div class="valj"><span>Visa nivå:</span><button type="button" data-niva="gron">🟢 Grön</button><button type="button" data-niva="bla">🔵 Blå</button><button type="button" data-niva="rod">🔴 Röd</button><button type="button" data-niva="alla">Alla</button><button type="button" data-niva="inga">Fäll ihop</button></div>
+<p><strong>Läs så här:</strong> Välj en nivå per etapp: 🟢 Grön ger dig varje steg, 🔵 Blå säger vad som behövs men inte koden, 🔴 Röd ger bara kravet. Etapperna är desamma på alla nivåer, så du kan byta nivå mellan etapperna (och mitt i om du fastnar). Varje etapp slutar med <em>Så vet du att etappen är klar</em>: kontrollera den innan du går vidare. Under den står <em>Ser du inte det?</em> med det du gör om något inte stämmer. Längst ner finns <em>Vanliga fel</em> och, om du vill ha mer, ⚫ Svart.</p>
+<p><strong>Du bygger:</strong> ditt första skript, till Brädspelsklubben Tärningens sida från förra veckan. Sidan ser likadan ut efteråt. Allt som händer syns i <em>Console</em>, en del av DevTools där webbläsaren skriver ut det skriptet ber om, och där den visar fel i rött. Skriptet räknar ut vad medlemsavgifterna blir, sätter ihop meningar och har en egen funktion som du kan prova direkt i Console. Sist gör du ett fel med flit och läser felmeddelandet.</p>
+<p>När du är klar visar Console de här raderna, uppifrån och ner, med <code>script.js</code> och ett radnummer längst till höger på varje rad:</p>
+<pre><code class="lang-text">Tärningen är igång
+Brädspelsklubben Tärningen
+200
+2400
+Välkommen till Brädspelsklubben Tärningen
+Medlemsavgiften är 200 kronor per år.
+2400
+600
+Nu är vi 13 medlemmar.</code></pre>
+<p><strong>Du behöver:</strong> mappen <code>ovningar</code> öppen i VS Code, Live Server och Chrome. Mappen <code>m1-start</code>: startfilerna ligger i Learnpoint, i övningens kursdel. Klipp 9 sett.</p>
+<p><strong>Fastnar du:</strong> skriv i chatten i Teams-mötet vilken etapp du är på och vad du ser. Jonatan finns där hela förmiddagen. Det går också bra att dela skärm.</p>
+<hr />
+<h2>Etapp 1 · Skriptfilen och första raden</h2>
+<p><em>Varför:</em> allt JavaScript du skriver i kursen ligger i en egen fil, <code>script.js</code>, som sidan länkar till, och det första du gör är att se att den körs.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Hämta startfilerna från Learnpoint, i övningens kursdel, och packa upp dem. På Mac dubbelklickar du på zip-filen. På Windows högerklickar du på den och väljer <strong>Extrahera alla</strong> (Extract All). Du får en mapp som heter <code>m1-start</code>.</li><li>Dra mappen <code>m1-start</code> från Finder (Mac) eller Utforskaren (Windows) och släpp den på <strong>OVNINGAR</strong> i filpanelen i VS Code. Klicka på pilen framför <code>m1-start</code> så att du ser filerna: <code>images</code>, <code>index.html</code>, <code>meetups.html</code> och <code>style.css</code>.</li><li>Högerklicka på mappen <code>m1-start</code> i filpanelen och välj <strong>New File…</strong>. Skriv <code>script.js</code> och tryck Enter. Filen öppnas och är tom.</li><li>Skriv de här två raderna i <code>script.js</code>:</li></ol>
+<pre><code class="lang-js">// Tärningens skript
+console.log("Tärningen är igång");</code></pre>
+<p>Den första raden är en <em>kommentar</em>: allt efter <code>//</code> läser webbläsaren inte, det är en anteckning till dig. Den andra raden ber webbläsaren skriva ut texten i Console. Texten står inom dubbla citattecken, och raden slutar med semikolon.</p>
+<ol start="5"><li>Spara (Cmd+S på Mac, Ctrl+S på Windows).</li><li>Öppna <code>index.html</code> under <code>m1-start</code>. Klicka sist på rad 17, efter <code>&lt;/p&gt;</code> på raden med länken <em>Se när vi träffas</em>, och tryck Enter. Skriv:</li></ol>
+<pre><code class="lang-html">&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+<ol start="7"><li>Spara. Raderna 17–19 ser nu ut så här:</li></ol>
+<pre><code class="lang-html">    &lt;p&gt;&lt;a href="meetups.html"&gt;Se när vi träffas&lt;/a&gt;&lt;/p&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;</code></pre>
+<p>Skriptet ska alltid stå sist i <code>body</code>, på raden före <code>&lt;/body&gt;</code>. Webbläsaren läser sidan uppifrån och ner, och skriptet måste komma efter det som det ska hitta. I dag letar skriptet inte efter något på sidan, men vi gör likadant varje gång.</p>
+<ol start="8"><li>Högerklicka på <code>index.html</code> i filpanelen och välj <strong>Open with Live Server</strong>. Sidan öppnas i Chrome och ser ut som förut.</li><li>Öppna Console: tryck <strong>Cmd+Option+J</strong> på Mac eller <strong>Ctrl+Shift+J</strong> på Windows (och Chromebook). DevTools öppnas med fliken <strong>Console</strong> vald. Du kan också högerklicka på sidan, välja <strong>Inspektera</strong> (Inspect) och klicka på fliken <strong>Console</strong> högst upp i DevTools.</li><li>I Console står <code>Tärningen är igång</code>. Längst till höger på samma rad står <code>script.js:2</code>: filen och raden som skrev ut texten.</li></ol>
+<p>Står det också <code>Live reload enabled.</code> i Console är det Live Server som säger att den laddar om sidan när du sparar. Det kan du strunta i.</p>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>Packa upp startfilerna från Learnpoint, lägg mappen <code>m1-start</code> i <code>ovningar</code> och skapa en tom <code>script.js</code> i <code>m1-start</code>.</li><li>Skriv en kommentar om vad filen är (<code>//</code>), och en rad med <code>console.log()</code> som skriver ut texten <em>Tärningen är igång</em>.</li><li>Länka skriptet från <code>index.html</code> med ett <code>script</code>-element med attributet <code>src</code>, sist i <code>body</code>, på raden före <code>&lt;/body&gt;</code>.</li><li>Öppna <code>index.html</code> med Live Server och öppna Console (Cmd+Option+J / Ctrl+Shift+J).</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>En egen fil <code>script.js</code> i <code>m1-start</code>, länkad sist i <code>body</code> på <code>index.html</code>, som skriver ut <em>Tärningen är igång</em> i Console.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Console visar <code>Tärningen är igång</code>, med <code>script.js:2</code> längst till höger på raden. Inget i Console är rött.</div>
+<p><strong>Ser du inte det?</strong></p>
+<ul><li><em>Console är tom:</em> kontrollera att det är <code>m1-start/index.html</code> som är öppen i Chrome (titta i adressfältet), att du har sparat båda filerna (en vit prick på fliken i VS Code betyder osparad fil), och att <code>script.js</code> ligger i <code>m1-start</code> på samma nivå som <code>index.html</code> i filpanelen. Ladda om sidan med Cmd+R / Ctrl+R.</li><li>*Rött i Console med <code>404</code> och <code>script.js</code>:* webbläsaren hittar inte filen. Filnamnet i <code>src</code> och filens namn måste vara exakt lika, med små bokstäver: <code>script.js</code>.</li><li><em>Du ser fliken Elements, inte Console:</em> klicka på fliken <strong>Console</strong> högst upp i DevTools. Ser du den inte, klicka på <code>&gt;&gt;</code> där.</li></ul>
+<h2>Etapp 2 · Variabler</h2>
+<p><em>Varför:</em> en variabel är ett namn på ett värde, så att du kan använda värdet på flera ställen och bara behöver ändra det på ett.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>I <code>script.js</code>: klicka sist på rad 2, tryck Enter två gånger och skriv:</li></ol>
+<pre><code class="lang-js">const clubName = "Brädspelsklubben Tärningen";
+const membershipFee = 200;
+let members = 12;
+
+console.log(clubName);
+console.log(membershipFee);</code></pre>
+<ol start="2"><li>Spara. Live Server laddar om sidan själv. Titta i Console: två nya rader, <code>Brädspelsklubben Tärningen</code> och <code>200</code>.</li></ol>
+<p>Så här läser du raderna:</p>
+<ul><li><code>const clubName = "Brädspelsklubben Tärningen";</code> betyder: skapa en variabel som heter <code>clubName</code> och ge den värdet <em>Brädspelsklubben Tärningen</em>. Text står alltid inom dubbla citattecken.</li><li><code>membershipFee</code> (medlemsavgift) får talet <code>200</code>. Tal skrivs utan citattecken.</li><li><code>const</code> betyder att värdet inte ska ändras. <code>let</code> betyder att det får ändras. Antalet medlemmar, <code>members</code>, kan bli fler, så den får <code>let</code>. Börja alltid med <code>const</code>, och byt bara till <code>let</code> när värdet faktiskt ska ändras.</li><li>Namnen skriver vi på engelska, ihop, med stor bokstav där ett nytt ord börjar: <code>clubName</code>, <code>membershipFee</code>. Det kallas <em>camelCase</em>. Texten som besökaren läser är på svenska.</li><li><code>console.log(clubName);</code> skriver ut <em>värdet</em> av variabeln, inte ordet <code>clubName</code>. Det är därför det inte står några citattecken runt <code>clubName</code>.</li></ul>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>Tre variabler: <code>clubName</code> med texten <em>Brädspelsklubben Tärningen</em>, <code>membershipFee</code> med talet 200, och <code>members</code> med talet 12. De två första ska aldrig ändras (<code>const</code>), antalet medlemmar får ändras (<code>let</code>).</li><li>Skriv ut värdet av <code>clubName</code> och <code>membershipFee</code> med <code>console.log()</code>. Ingen citattecken runt variabelns namn.</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Klubbens namn (text), medlemsavgiften 200 kronor och antalet medlemmar, 12, ligger i var sin variabel med engelskt namn. Bara antalet får kunna ändras. Namnet och avgiften skrivs ut i Console.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Console visar tre rader: <code>Tärningen är igång</code>, <code>Brädspelsklubben Tärningen</code> och <code>200</code>. Siffrorna längst till höger är 2, 8 och 9: raderna i <code>script.js</code> där <code>console.log</code> står.</div>
+<p><strong>Ser du inte det?</strong></p>
+<ul><li>*Console visar <code>clubName</code> och inte klubbens namn:* du har skrivit <code>console.log("clubName");</code> med citattecken. Då skrivs ordet ut som text. Ta bort citattecknen.</li><li>*Rött i Console med <code>is not defined</code>:* namnet är stavat olika på två ställen. JavaScript skiljer på stora och små bokstäver, så <code>clubname</code> och <code>clubName</code> är två olika namn. Felmeddelandet säger vilket namn och vilken rad.</li><li><em>Inga nya rader alls:</em> spara filen och ladda om sidan.</li></ul>
+<h2>Etapp 3 · Räkna och sätta ihop text</h2>
+<p><em>Varför:</em> med variabler kan skriptet räkna åt dig och bygga meningar som alltid stämmer med värdena.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Sist i <code>script.js</code>, efter en tom rad, skriv:</li></ol>
+<pre><code class="lang-js">console.log(membershipFee * members);
+console.log("Välkommen till " + clubName);
+console.log("Medlemsavgiften är " + membershipFee + " kronor per år.");</code></pre>
+<ol start="2"><li>Spara och titta i Console: <code>2400</code>, <code>Välkommen till Brädspelsklubben Tärningen</code> och <code>Medlemsavgiften är 200 kronor per år.</code></li></ol>
+<ul><li><code>*</code> är gånger. Du räknar med <code>+</code>, <code>-</code>, <code>*</code> (gånger) och <code>/</code> (delat med), som på en miniräknare. 200 gånger 12 är 2400: så mycket får klubben in på ett år.</li><li>Mellan två texter betyder <code>+</code> "sätt ihop". Lägg märke till mellanslaget inuti citattecknen i <code>"Välkommen till "</code>: utan det blir det <em>Välkommen tillBrädspelsklubben Tärningen</em>.</li><li>I den sista raden sätts tre delar ihop: en text, ett tal och en text till.</li></ul>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<p>Tre nya rader med <code>console.log()</code>:</p>
+<ol><li>medlemsavgiften gånger antalet medlemmar (<code>*</code> är gånger)</li><li>texten <em>Välkommen till</em> ihopsatt med klubbens namn (<code>+</code> sätter ihop text; tänk på mellanslaget)</li><li>meningen <em>Medlemsavgiften är 200 kronor per år.</em>, där 200 kommer från variabeln</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Console visar vad alla medlemmars avgifter blir tillsammans, en välkomstmening med klubbens namn och en mening om vad avgiften är. Namnet och talen kommer från variablerna, inte skrivna en gång till.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Console visar <code>2400</code>, <code>Välkommen till Brädspelsklubben Tärningen</code> och <code>Medlemsavgiften är 200 kronor per år.</code>, med mellanslag på rätt ställen.</div>
+<p><strong>Ser du inte det?</strong></p>
+<ul><li>*Det står <code>200 * 12</code> eller liknande:* du har citattecken runt uträkningen. Det som står inom citattecken är text och räknas inte ut.</li><li><em>Orden sitter ihop:</em> lägg till ett mellanslag inuti citattecknen, före det avslutande <code>"</code>.</li><li>*Rött i Console med <code>SyntaxError</code>:* ett citattecken eller en parentes saknas på raden som står till höger om felet. Räkna: varje <code>"</code> ska ha en partner, och varje <code>(</code> en <code>)</code>.</li></ul>
+<h2>Etapp 4 · En egen funktion</h2>
+<p><em>Varför:</em> en funktion är en uträkning med ett namn, som du kan använda om och om igen med olika värden.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Sist i <code>script.js</code>, efter en tom rad, skriv:</li></ol>
+<pre><code class="lang-js">function totalFee(count) {
+  return count * membershipFee;
+}
+
+console.log(totalFee(members));
+console.log(totalFee(3));</code></pre>
+<ol start="2"><li>Spara. Console visar två nya rader: <code>2400</code> och <code>600</code>.</li><li>Klicka längst ner i Console, där det står en blå <code>&gt;</code>. Skriv <code>totalFee(5)</code> och tryck Enter. Console svarar <code>1000</code>.</li><li>Prova ett par andra tal på samma sätt, till exempel <code>totalFee(20)</code>. Skriv också bara <code>membershipFee</code> och tryck Enter: Console visar variabelns värde.</li></ol>
+<p>Så här läser du funktionen:</p>
+<ul><li><code>function totalFee(count)</code> skapar en funktion som heter <code>totalFee</code> (sammanlagd avgift). <code>count</code> (antal) inom parenteserna är funktionens <em>parameter</em>: ett namn på det värde du skickar in när du använder funktionen.</li><li>Det som står mellan <code>{</code> och <code>}</code> är det funktionen gör. <code>return</code> betyder "det här är svaret": antalet gånger avgiften.</li><li><code>totalFee(3)</code> <em>anropar</em> funktionen, alltså använder den, med värdet 3. Då blir <code>count</code> 3 och svaret 3 gånger 200, 600. <code>totalFee(members)</code> skickar in värdet i <code>members</code>, 12.</li><li>Indraget med två mellanslag gör Prettier åt dig när du sparar.</li></ul>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>En funktion <code>totalFee</code> med en parameter, <code>count</code>, som med <code>return</code> lämnar tillbaka <code>count</code> gånger medlemsavgiften.</li><li>Skriv ut svaret i Console två gånger: när funktionen får antalet medlemmar, och när den får 3.</li><li>Prova funktionen direkt i Console: skriv anropet vid <code>&gt;</code> längst ner och tryck Enter.</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>En funktion med en parameter räknar ut vad ett antal medlemmar betalar tillsammans. Console visar svaret för klubbens medlemmar och för tre personer. Funktionen går att använda direkt i Console.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Console visar <code>2400</code> och <code>600</code> från skriptet, och när du skriver <code>totalFee(5)</code> i Console svarar den <code>1000</code>.</div>
+<p><strong>Ser du inte det?</strong></p>
+<ul><li>*<code>totalFee is not defined</code> när du skriver i Console:* du har sparat, men sidan i Chrome är en annan än den du ändrar, eller namnet är stavat olika. Kontrollera stora och små bokstäver: <code>totalFee</code>.</li><li>*Console svarar <code>undefined</code>:* ordet <code>return</code> saknas i funktionen. Utan <code>return</code> lämnar funktionen inget svar tillbaka.</li><li>*Console svarar <code>NaN</code>:* du har anropat funktionen utan tal, <code>totalFee()</code>. NaN betyder "inte ett tal". Skriv ett tal inom parenteserna.</li></ul>
+<h2>Etapp 5 · Ett fel med flit</h2>
+<p><em>Varför:</em> felmeddelanden är till för att hjälpa dig, och det går fortare att läsa dem när du har sett ett innan det händer på riktigt.</p>
+<details class="gron" data-niva="gron"><summary>🟢 Grön · Steg för steg</summary><div class="inner">
+<ol><li>Först något som är tillåtet. Sist i <code>script.js</code>, efter en tom rad, skriv:</li></ol>
+<pre><code class="lang-js">members = 13;
+console.log("Nu är vi " + members + " medlemmar.");</code></pre>
+<p>Spara. Console visar <code>Nu är vi 13 medlemmar.</code> Det går bra att ändra <code>members</code>, för den skapades med <code>let</code>.</p>
+<ol start="2"><li>Nu felet. Efter en tom rad, skriv de här två raderna sist i filen:</li></ol>
+<pre><code class="lang-js">membershipFee = 250;
+console.log(membershipFee);</code></pre>
+<ol start="3"><li>Spara och titta i Console. Längst ner står en röd rad:</li></ol>
+<pre><code class="lang-text">Uncaught TypeError: Assignment to constant variable.</code></pre>
+<p>Längst till höger på raden står <code>script.js:25</code>.</p>
+<ol start="4"><li>Läs felet i tre delar:<ul><li><strong>Typen:</strong> <code>TypeError</code>. <em>Uncaught</em> betyder att ingen fångade felet, så skriptet stannade.</li><li><strong>Texten:</strong> <em>Assignment to constant variable</em> betyder "du försöker ge en konstant ett nytt värde". En konstant är en variabel skapad med <code>const</code>.</li><li><strong>Var:</strong> <code>script.js:25</code> är filen och raden. Gå till rad 25 i <code>script.js</code> i VS Code (radnumren står till vänster): där står <code>membershipFee = 250;</code>.</li></ul></li><li>Titta också på vad som <em>inte</em> hände: raden <code>console.log(membershipFee);</code> efter felet skrev inte ut något. När ett fel stoppar skriptet körs ingenting efter det.</li><li>Ta bort de två raderna du skrev i steg 2 och spara. Den röda raden försvinner.</li></ol>
+</div></details>
+<details class="bla" data-niva="bla"><summary>🔵 Blå · Med ledtrådar</summary><div class="inner">
+<ol><li>Ge <code>members</code> värdet 13 och skriv ut meningen <em>Nu är vi 13 medlemmar.</em>, där talet kommer från variabeln.</li><li>Försök sedan ge <code>membershipFee</code> ett nytt värde, och skriv ut det på raden efter. Spara och läs felet i Console: typ, text, fil och rad. Hitta raden i VS Code.</li><li>Ta bort raderna med felet.</li></ol>
+</div></details>
+<details class="rod" data-niva="rod"><summary>🔴 Röd · Bara kravet</summary><div class="inner">
+<p>Ändra antalet medlemmar till 13 och skriv ut det i en mening. Försök sedan ändra medlemsavgiften, läs felmeddelandet och förklara för dig själv vad det säger och varför. Ta bort felet igen.</p>
+</div></details>
+<div class="klar"><strong>Så vet du att etappen är klar:</strong> Du kan säga vad felets typ, text, fil och rad var, och varför <code>members</code> gick att ändra men inte <code>membershipFee</code>. Efter att du tagit bort felet visar Console samma nio rader som överst i övningen och inget rött.</div>
+<p><strong>Ser du inte det?</strong></p>
+<ul><li><em>Inget rött syns:</em> du har skrivit <code>let membershipFee</code> någonstans, eller skrivit raden med ett annat namn. Jämför med steg 2.</li><li><em>Felet står kvar efter att du tagit bort raderna:</em> spara filen. Står det fortfarande kvar, ladda om sidan.</li><li><em>Radnumret är ett annat än 25:</em> det gör inget, så länge raden i VS Code är den med <code>membershipFee = 250;</code>. Du har fler eller färre tomma rader än övningen.</li></ul>
+<hr />
+<h2>⚫ Svart · Utöka (frivilligt, utan facit)</h2>
+<p>Skriv en funktion till, <code>feeText(count)</code>, som inte räknar ut ett tal utan lämnar tillbaka en hel mening, till exempel <em>4 medlemmar betalar 800 kronor tillsammans.</em> Låt den använda <code>totalFee</code> inuti sig. Prova den i Console med några olika tal. Vad händer om du skriver <code>feeText("fyra")</code>? Varför?</p>
+<h2>Vanliga fel</h2>
+<ul><li><strong>Ingenting alls händer i Console, inte ens första raden:</strong> skriptet är inte länkat, eller länkat till fel fil. Kontrollera att <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code> står i <code>index.html</code> (inte i <code>meetups.html</code>) på raden före <code>&lt;/body&gt;</code>, och att <code>script.js</code> ligger bredvid <code>index.html</code> i filpanelen. Sidan <em>Träffar</em> har inget skript, så där är Console tom.</li><li>**Rött i Console med <code>SyntaxError</code> och ingenting skrivs ut:** ett tecken saknas, oftast ett citattecken eller en parentes. Då kan webbläsaren inte läsa filen alls, och ingen rad körs, inte ens de som är rätt. Gå till raden som står längst till höger och räkna citattecken och parenteser. Ett tecken att filen inte går att läsa: Prettier gör inga indrag när du sparar.</li><li><strong>VS Code skriver något annat än du tänkt:</strong> medan du skriver föreslår VS Code ord i en liten ruta. Trycker du Enter eller Tab väljs förslaget. Tryck Esc för att stänga rutan, och jämför sedan raden med övningen tecken för tecken.</li></ul>
+      <footer>Frontend UX26 · STI · vecka 47–50</footer>
+    </main>
+    <script>
+const knappar=document.querySelectorAll('.valj button');
+function visa(niva){document.querySelectorAll('details[data-niva]').forEach(d=>{d.open = niva==='alla' ? true : (niva==='inga' ? false : d.dataset.niva===niva)});
+knappar.forEach(k=>k.classList.toggle('aktiv',k.dataset.niva===niva));try{localStorage.setItem('niva',niva)}catch(e){}}
+knappar.forEach(k=>k.addEventListener('click',()=>visa(k.dataset.niva)));
+let start='inga';try{start=localStorage.getItem('niva')||'inga'}catch(e){}if(knappar.length)visa(start);
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent='Kopiera';
+b.addEventListener('click',()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='Kopierat';setTimeout(()=>b.textContent='Kopiera',1500)})});p.appendChild(b)});
+</script>
+  </body>
+</html>
